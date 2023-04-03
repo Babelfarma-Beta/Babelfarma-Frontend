@@ -1,0 +1,13 @@
+<body>
+    <app-navbar-comprador></app-navbar-comprador>
+        <div class="fondo">
+            <div class="contenedor">
+                <p>Esta es la ubicación de la farmacia seleccionada</p>
+                <div class="mapa">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3901.675662331555!2d-77.1232944!3d-12.0658225!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105cb4af3db04c1%3A0x29438c3ce2bb4f1e!2sFarmacia%20Angela%20Maria!5e0!3m2!1ses-419!2spe!4v1664080293664!5m2!1ses-419!2spe" width="80%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <br>
+                <button mat-raised-button routerLink="/CompraFinalizada/{{idClienteIngresado}}">Confirmar</button>
+            </div>
+        </div>
+</body>

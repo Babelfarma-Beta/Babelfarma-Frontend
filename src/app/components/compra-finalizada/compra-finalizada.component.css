@@ -1,0 +1,66 @@
+body{
+    background-image: url('/assets/img/fondo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+
+.title{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 48px;
+    color: black;
+}
+
+.parrafo{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    color: black;
+}
+    
+    
+
+.contenedor{
+    background-image: url('/assets/img/fondo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.carta{
+    width: 70%;
+    height: auto;
+    margin-top: 50px;
+    
+}
+
+
+button{
+    padding: 10px;
+    margin: 20px;
+}
+
+@media only screen and (max-width: 500px)
+{
+    img{
+        width: 70%;
+    }
+    
+    .carta{
+        width:100%;
+    }
+
+    .parrafo{
+        font-size: 30px;
+    }
+
+}

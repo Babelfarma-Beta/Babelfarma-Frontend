@@ -1,0 +1,39 @@
+body {
+    width: 100%;
+    height: 100vh;
+    background-image: url('/assets/img/fondo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.buscador{
+    margin: auto;
+    width: 90%;
+    height: auto;
+}
+
+.fondotabla{
+    margin: 2%; 
+    background-color: white;
+    padding-bottom: 3%;
+}
+
+.mat-form-field{
+    margin: auto;
+    width: 100%;
+    height: auto;
+}
+
+table{
+    margin: auto;
+    width: 90%;
+    height: auto;
+
+}
+mat-form-field{
+    margin-top: 10%;
+    font-size: 14px;
+    width: 90%;
+}

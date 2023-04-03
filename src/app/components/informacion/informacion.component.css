@@ -1,0 +1,60 @@
+body{
+    background-image: url('/assets/img/fondo.png');
+    background-size: contain;
+    height: auto;
+}
+
+p {
+    max-width: 450px;
+}
+
+.img_sec1{
+    width: 180px;
+    height: 100px;
+  
+}
+
+.sec1{
+    text-align: center;
+
+}
+
+.img_sec2{
+    width: 200px;
+    height: 200px;
+
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+section{
+    background: white;
+    margin: 50px auto;
+    padding: 50px;
+    border-radius: 10px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+   flex-wrap: wrap;
+}
+
+.sec1 div div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+    padding: 50px;
+    padding-top: 0;
+}
+
+.sec1 div{
+    padding: 10px;
+}

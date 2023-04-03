@@ -1,0 +1,88 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "nombre": "Orfidal 1mg",
+      "precio": "S/5.00",
+      "stock": 20,
+      "descripcion": ""
+    },
+    {
+      "id": 3,
+      "nombre": "Panadol 100mg/ml",
+      "precio": "S/15.00",
+      "stock": 10,
+      "descripcion": ""
+    },
+    {
+      "id": 5,
+      "nombre": "Aspirina",
+      "precio": "S/2.50",
+      "stock": 10,
+      "descripcion": ""
+    },
+    {
+      "id": 6,
+      "nombre": "Panadol Forte",
+      "precio": "S/15.00",
+      "stock": 10,
+      "descripcion": "Panadol forte para la gripe"
+    },
+    {
+      "id": 7,
+      "nombre": "Rifosina",
+      "precio": "S/35.50",
+      "stock": 15,
+      "descripcion": ""
+    }
+  ],
+  "clientes": [
+    {
+      "id": 74641364,
+      "nombres": "Luis Diego",
+      "apellidoPaterno": "Barja",
+      "apellidoMaterno": "Estrada",
+      "correo": "diego.barja79@gmail.com",
+      "celular": 986016337,
+      "contrasenia": "contraseña:v"
+    },
+    {
+      "id": 74996429,
+      "nombres": "Angel",
+      "apellidoPaterno": "Sosa",
+      "apellidoMaterno": "Ostos",
+      "correo": "gabrielo.09.angel@gmail.com",
+      "celular": 929176371,
+      "contrasenia": "123"
+    },
+    {
+      "id": 5165165,
+      "nombres": "hyth",
+      "apellidoPaterno": "ty",
+      "apellidoMaterno": "hyt",
+      "correo": "htyht",
+      "celular": 621515,
+      "contrasenia": "htyhh"
+    },
+    {
+      "id": 12345678,
+      "nombres": "Annsherly",
+      "apellidoPaterno": "Acuña",
+      "apellidoMaterno": "Alvites",
+      "correo": "email@example.com",
+      "celular": 987654321,
+      "contrasenia": "qwertyuiop"
+    }
+  ],
+  "farmacias": [
+    {
+      "id": 1234567890,
+      "nombresDuenio": "Pricila Yacori",
+      "apellidosDuenio": "Lucero Lucero",
+      "nombreEstablecimiento": "Farma Vida",
+      "direccion": "Av. Primavera",
+      "correoContacto": "pri.lu@farmavida.com",
+      "contrasenia": "1234567890"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+<body>
+    <app-navbar-comprador></app-navbar-comprador>
+    <div class="contenedor">
+        <div class="carta">
+                <mat-card>
+                    <p class="title">Babel Farma</p>
+                    <div class="mat_card_container">
+
+                    <div class="right">
+                            <form [formGroup]="myForm" class="contenido" autocomplete="off">
+                            <div class="producto" *ngFor="let element of productosCarrito;let indice = index">
+                                <div class="texto">
+                                    <h2>{{element.nombre}}</h2>
+                                    <br>
+                                    <p class="normal">Precio: S/. {{element.precio.toFixed(2)}}</p>
+                                    <p class="normal">Descripción: {{element.descripcion}}</p>
+                                    <input formControlName="cantidad" type="number"  class="cantidad" placeholder="Cantidad a comprar" min="1" max="{{element.stock}}"  (change)="getSemisuma(indice)" onKeypress=" event.returnValue = false;" >
+                                    <br>
+                                    <p class="normal">Vendido por Farmacia {{returnNombreFarmacia(element.id)}}</p>
+                                </div>
+
+                                <div class="button">
+                                    <button mat-raised-button class="boton1" (click)="eliminarProducto(indice)">Eliminar</button>
+                                </div>
+                            </div>
+                            </form >
+                    </div>
+
+                    <div class="left">
+                        <div  class="opciones">
+                            <div style="display:flex; margin: auto; ">
+                                <button mat-raised-button class="boton btn" routerLink="/RutaFarmacia/{{idClienteIngresado}}">Recojo en tienda</button>
+                                <button mat-raised-button class="boton1 btn" (click)="vaciarCarrito()">Eliminar</button>
+
+                            </div>
+                            <div class="paypal">
+                                <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
+                            </div>
+
+                        </div>
+                    </div>
+
+            </div>
+                <hr>
+                <p class="normal">Subtotal: &nbsp; &nbsp; &nbsp; S/. {{subtotal().toFixed(2)}} = $ {{(subtotal()/3.8).toFixed(2)}}</p>
+            </mat-card>
+
+        </div>
+
+    </div>
+
+</body>

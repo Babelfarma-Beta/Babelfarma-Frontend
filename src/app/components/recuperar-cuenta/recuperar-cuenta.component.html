@@ -1,0 +1,28 @@
+
+<body>
+<div class="contenedor">
+<div [formGroup]="myForm" class="main-div">
+    <mat-card class="example-card">
+        <p class="title">Recuperar contraseña</p>
+        <img src="/assets/img/logo.png">
+        <input formControlName="id" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" minlength="8" maxlength="11" class="form-control" placeholder="Ingresa tu número de DNI/RUC">
+        <input formControlName="correo" onKeypress="if(event.keyCode == 32) event.returnValue = false;" type="email" class="form-control" placeholder="Ingresa tu correo electronico">
+        <input formControlName="contrasenia" type="password" class="form-control" placeholder="Ingresa tu nueva contraseña">
+        <div *ngIf="myForm.get('contrasenia')?.errors?.['minlength'] && myForm.get('contrasenia')?.touched" style="color:rgb(157, 0, 0);">
+            <span class="mda-form-msg">
+              Tu contraseña debe tener como mínimo 8 caracteres
+            </span>
+          </div>
+        <input formControlName="confContrasenia" type="password" class="form-control" placeholder="Confirma tu contraseña">
+        <button 
+        mat-raised-button 
+        type="button"
+        (click)="updateContrasenia()"
+        [disabled]="myForm.invalid">
+        Actualizar contraseña
+        </button>
+    </mat-card>
+
+   </div>
+</div>
+</body>
