@@ -3,18 +3,15 @@ import { Cliente } from './../../models/cliente';
 import { Farmacia } from './../../models/farmacia';
 import { VentaService } from './../../services/venta.service';
 import { Venta } from './../../models/venta';
-import { environment } from './../../../environments/environment';
-import { IPayPalConfig, ICreateOrderRequest } from './../../../../node_modules/ngx-paypal/lib/models/paypal-models.d';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductService } from './../../services/product.service';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder,Validators } from '@angular/forms';
 import { DistritoService } from './../../services/distrito.service';
 import { Distrito } from './../../models/distrito';
 import { Product } from './../../models/product';
 import { CarritoDeComprasService } from './../../services/carrito-de-compras.service';
-import { Component, OnInit, Query, NgModule, ViewChild, ElementRef } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -24,7 +21,6 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class CarritoComprasComponent implements OnInit {
 
-  public payPalConfig!: IPayPalConfig;
   productosCarrito: Product[] = [];
   idDistrito!: number;
   distritos!: Distrito[];
@@ -56,7 +52,7 @@ export class CarritoComprasComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.initConfig();
+
   }
   checked = false;
   disabled = false;
@@ -74,67 +70,67 @@ export class CarritoComprasComponent implements OnInit {
   getClienteId(){
     this.idClienteIngresado = this.route.snapshot.params['id'];
   }
-  
 
-  private initConfig(): void {
-    this.payPalConfig = {
-      currency: 'USD',
-      clientId: environment.clientId,
-      createOrderOnClient: (data) => <ICreateOrderRequest><unknown>{
-        intent: 'CAPTURE',
-        purchase_units: [{
-          amount: {
-            currency_code: 'USD',
-            value: this.subtotalInDollars(),
-            breakdown: {
-              item_total: {
-                currency_code: 'USD',
-                value: this.subtotalInDollars()
-              }
-            }
-          },
-          items: [{
-            name: 'Enterprise Subscription',
-            quantity: '1',
-            category: 'DIGITAL_GOODS',
-            unit_amount: {
-              currency_code: 'USD',
-              value: this.subtotalInDollars(),
-            },
-          }]
-        }]
-      },
-      advanced: {
-        commit: 'true'
-      },
-      style: {
-        label: 'paypal',
-        layout: 'vertical'
-      },
-      onApprove: (data, actions) => {
-        console.log('onApprove - transaction was approved, but not authorized', data, actions);
-        actions.order.get().then((details: any) => {
-          console.log('onApprove - you can get full order details inside onApprove: ', details);
-        });
 
-      },
-      onClientAuthorization: (data) => {
-        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-        //aqui
-        this.registrarVentas();
-        this.actualizarStock();
-      },
-      onCancel: (data, actions) => {
-        console.log('OnCancel', data, actions);
-      },
-      onError: err => {
-        console.log('OnError', err);
-      },
-      onClick: (data, actions) => {
-        console.log('onClick', data, actions);
-      }
-    };
-  }
+  // private initConfig(): void {
+  //   this.payPalConfig = {
+  //     currency: 'USD',
+  //     clientId: environment.clientId,
+  //     createOrderOnClient: (data) => <ICreateOrderRequest><unknown>{
+  //       intent: 'CAPTURE',
+  //       purchase_units: [{
+  //         amount: {
+  //           currency_code: 'USD',
+  //           value: this.subtotalInDollars(),
+  //           breakdown: {
+  //             item_total: {
+  //               currency_code: 'USD',
+  //               value: this.subtotalInDollars()
+  //             }
+  //           }
+  //         },
+  //         items: [{
+  //           name: 'Enterprise Subscription',
+  //           quantity: '1',
+  //           category: 'DIGITAL_GOODS',
+  //           unit_amount: {
+  //             currency_code: 'USD',
+  //             value: this.subtotalInDollars(),
+  //           },
+  //         }]
+  //       }]
+  //     },
+  //     advanced: {
+  //       commit: 'true'
+  //     },
+  //     style: {
+  //       label: 'paypal',
+  //       layout: 'vertical'
+  //     },
+  //     onApprove: (data, actions) => {
+  //       console.log('onApprove - transaction was approved, but not authorized', data, actions);
+  //       actions.order.get().then((details: any) => {
+  //         console.log('onApprove - you can get full order details inside onApprove: ', details);
+  //       });
+
+  //     },
+  //     onClientAuthorization: (data) => {
+  //       console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+  //       //aqui
+  //       this.registrarVentas(); Estas funciones se usan cuando se realiza la compra
+  //       this.actualizarStock(); Estas funciones se usan cuando se realiza la compra
+  //     },
+  //     onCancel: (data, actions) => {
+  //       console.log('OnCancel', data, actions);
+  //     },
+  //     onError: err => {
+  //       console.log('OnError', err);
+  //     },
+  //     onClick: (data, actions) => {
+  //       console.log('onClick', data, actions);
+  //     }
+  //   };
+  // }
 
 
 
@@ -142,9 +138,6 @@ export class CarritoComprasComponent implements OnInit {
   returnNombreFarmacia(id:any): string{
     return this.nombresFarmacias[id];
   }
-
-
-
 
   processProductResponse(resp: any) {
     const dateProduct: Product[] = [];
