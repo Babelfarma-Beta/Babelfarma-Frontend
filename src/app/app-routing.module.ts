@@ -28,31 +28,39 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
+  //Pantallas inciales
+  {path: 'Informacion', component:InformacionComponent},
+  {path: 'Contacatanos', component: ContactanosComponent},
+  {path: 'Login', component: LoginComponent},
   {path: '', component: HomeComponent},
   {path: 'registrotipo', component: RegistroTipoComponent},
-  {path: 'Informacion', component:InformacionComponent},
+  {path: 'RecuperaCuenta', component: RecuperarCuentaComponent},
+
+  //Pantallas de registro
   {path: 'registroComprador', component: RegistroCompradorComponent},
   {path: 'registroDueñoFarmacia', component: RegistroFarmaciaComponent},
-  {path: 'Login', component: LoginComponent},
-  {path: 'Contacatanos', component: ContactanosComponent},
+
+  //Pantallas del comprador
   {path: 'Comprador/:id', component: CompradorComponent},
-  {path: 'ListaDeProductos/:id', component: ListaProductosComponent},
   {path: 'Busqueda/:id', component: BusquedaComponent},
-  {path: 'RegistarProducto/:id', component:RegistrarProductoComponent},
-  {path: 'ActualizarProducto/:id/:idFarmacia', component:ActualizarProductoComponent},
-  {path: 'Farmacia/:id', component: FarmaciaComponent},
+  {path:'ReporteProductoCompras/:id', component: ReporteProductoComprasComponent},
   {path: 'MedicamentosRecomendados/:id', component: MedicamentosRecomendadosComponent},
+  {path:'MostrarFarmacias/:id', component: MostrarFarmaciasComponent},
+  {path: 'ActualizarDatosCliente/:id', component: ActualizarClienteComponent},
   {path: 'CarritoCompras/:id', component: CarritoComprasComponent},
   {path: 'RutaFarmacia/:id', component: RutaFarmaciaComponent},
-  {path: 'RecuperaCuenta', component: RecuperarCuentaComponent},
   {path: 'CompraFinalizada/:id', component: CompraFinalizadaComponent},
-  {path: 'ActualizarDatosCliente/:id', component: ActualizarClienteComponent},
-  {path: 'ActualizarDatosFarmacia/:id', component: ActualizarFarmaciaComponent},
-  {path:'MostrarFarmacias/:id', component: MostrarFarmaciasComponent},
+
+  //Pantallas de la farmacia
+  {path: 'Farmacia/:id', component: FarmaciaComponent},
   {path:'ReporteCategoria/:id', component: ReportePorCategoriaComponent},
-  {path:'ListaDeVentas/:id', component: MostrarVentasComponent},
   {path:'ReporteMontoPorMes/:id', component: ReporteMontoPorMesComponent},
-  {path:'ReporteProductoCompras/:id', component: ReporteProductoComprasComponent},
+  {path: 'RegistarProducto/:id', component:RegistrarProductoComponent},
+  {path: 'ListaDeProductos/:id', component: ListaProductosComponent},
+  {path: 'ActualizarProducto/:id/:idFarmacia', component:ActualizarProductoComponent},
+  {path:'ListaDeVentas/:id', component: MostrarVentasComponent},
+  {path: 'ActualizarDatosFarmacia/:id', component: ActualizarFarmaciaComponent},
+
 ];
 
 @NgModule({
