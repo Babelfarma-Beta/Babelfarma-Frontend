@@ -1,16 +1,13 @@
-<body class="contenedor">
-    <app-navbar></app-navbar>
     <div class="main-div">
         <mat-card class="example-card" layout="row" layout-align="center center">
-            <mat-card-title>Regístrate según tu tipo de usuario</mat-card-title>
-            <div class="usuario">
+            <mat-card-title class="title">Regístrate según tu tipo de usuario</mat-card-title>
+             <div class="content">
                 <button mat-raised-button routerLink="/registroComprador">Comprador</button>
                 <img class="img1" src="/assets/img/comprador.png">
-            </div>
-            <div class="usuario">
+
                 <button mat-raised-button routerLink="/registroDueñoFarmacia">Dueño de farmacia</button>
                 <img class="img2" src="/assets/img/dueño.png">
-            </div>
+              </div>
+
         </mat-card>
     </div>
-</body>

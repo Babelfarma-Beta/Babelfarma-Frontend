@@ -7,7 +7,7 @@ import { ProductService } from './../../services/product.service';
 import { Form, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar.component';
+import { NavbarComponent } from '../../modules/main/components/navbar/navbar.component';
 import { ThisReceiver } from '@angular/compiler';
 
 @Component({

@@ -1,9 +1,9 @@
-import { FarmaciaService } from './../../services/farmacia.service';
-import { Farmacia } from './../../models/farmacia';
+import { FarmaciaService } from '../../../../services/farmacia.service';
+import { Farmacia } from '../../../../models/farmacia';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ClienteService } from './../../services/cliente.service';
-import { Cliente } from './../../models/cliente';
+import { ClienteService } from '../../../../services/cliente.service';
+import { Cliente } from '../../../../models/cliente';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit, enableProdMode } from '@angular/core';
 

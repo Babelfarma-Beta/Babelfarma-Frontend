@@ -5,13 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
-import { RegistroTipoComponent } from './components/registro-tipo/registro-tipo.component';
+import { HomeComponent } from './modules/main/components/home/home.component';
+import { RegistroTipoComponent } from './modules/main/components/registro-tipo/registro-tipo.component';
 import { RegistroCompradorComponent } from './components/registro-comprador/registro-comprador.component';
 import { RegistroFarmaciaComponent } from './components/registro-farmacia/registro-farmacia.component';
-import { LoginComponent } from './components/login/login.component';
-import { ContactanosComponent } from './components/contactanos/contactanos.component';
+import { LoginComponent } from './modules/main/components/login/login.component';
+import { ContactanosComponent } from './modules/main/components/contactanos/contactanos.component';
 import { NavbarCompradorComponent } from './components/navbar-comprador/navbar-comprador.component';
 import { CompradorComponent } from './components/comprador/comprador.component';
 import { ListaProductosComponent } from './components/lista-productos/lista-productos.component';
@@ -21,10 +20,10 @@ import { RegistrarProductoComponent } from './components/registrar-producto/regi
 import { ActualizarProductoComponent } from './components/actualizar-producto/actualizar-producto.component';
 import { FarmaciaComponent } from './components/farmacia/farmacia.component';
 import { MedicamentosRecomendadosComponent } from './components/medicamentos-recomendados/medicamentos-recomendados.component';
-import { InformacionComponent } from './components/informacion/informacion.component';
+import { InformacionComponent } from './modules/main/components/informacion/informacion.component';
 import { CarritoComprasComponent } from './components/carrito-compras/carrito-compras.component';
 import { RutaFarmaciaComponent } from './components/ruta-farmacia/ruta-farmacia.component';
-import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recuperar-cuenta.component';
+import { RecuperarCuentaComponent } from './modules/main/components/recuperar-cuenta/recuperar-cuenta.component';
 import { CompraFinalizadaComponent } from './components/compra-finalizada/compra-finalizada.component';
 import { ActualizarClienteComponent } from './components/actualizar-cliente/actualizar-cliente.component';
 import { ActualizarFarmaciaComponent } from './components/actualizar-farmacia/actualizar-farmacia.component';
@@ -37,7 +36,6 @@ import { ReporteProductoComprasComponent } from './components/reporte-producto-c
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     HomeComponent,
     RegistroTipoComponent,
     RegistroCompradorComponent,

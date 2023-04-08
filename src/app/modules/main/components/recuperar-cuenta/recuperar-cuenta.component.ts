@@ -1,13 +1,13 @@
-import { Farmacia } from './../../models/farmacia';
-import { FarmaciaService } from './../../services/farmacia.service';
-import { Role } from './../../models/role';
+import { Farmacia } from '../../../../models/farmacia';
+import { FarmaciaService } from '../../../../services/farmacia.service';
+import { Role } from '../../../../models/role';
 import { getTestBed } from '@angular/core/testing';
-import { ClienteService } from './../../services/cliente.service';
+import { ClienteService } from '../../../../services/cliente.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProductService } from './../../services/product.service';
+import { ProductService } from '../../../../services/product.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Cliente } from './../../models/cliente';
+import { Cliente } from '../../../../models/cliente';
 import { Component, OnInit } from '@angular/core';
 import { Distrito } from 'src/app/models/distrito';
 

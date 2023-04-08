@@ -1,0 +1,32 @@
+*{
+  box-sizing: border-box;
+}
+
+mat-toolbar{
+    background-color: #EEE9DA;
+}
+
+button{
+    margin: auto;
+    width: 250px;
+}
+
+button:hover{
+  background-color: #3C84AB;
+  color: #FFF;
+}
+
+.content-wrapper{
+  background-image: url('/assets/img/fondo.png');
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+
+
+
