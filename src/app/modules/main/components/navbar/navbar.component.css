@@ -27,15 +27,59 @@ button:hover{
   min-height: 100vh;
 }
 
+.container__responsive{
+  display: none;
+}
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1040px) {
   .list-options {
-    flex-direction: column;
-    align-items: flex-start;
+    display: none;
   }
-  .list-options button {
+
+  .container__responsive {
+    display: block;
+    z-index: 100;
+    max-width: 100%;
+    background-color: #EEE9DA;
+  }
+
+  .container__responsive-button {
+    margin: 0;
+    z-index: 100;
+    border: none;
+    width: 40px;
+    background-color: #EEE9DA;
+    cursor: pointer;
+    padding: 10px 0;
+  }
+
+  .container__responsive-options {
+    margin: 0;
+    position: absolute;
+    width: 100vw;
+    top: -200%;
+    transition: all 1s;
+    z-index: 10;
+  }
+
+  .responsive-button {
     width: 100%;
-    margin-bottom: 10px;
+    border: 1px solid white;
+    background-color: #5C7396;
+    color: #FFFFFF;
+    padding: 10px 0;
+    position: relative;
+    text-align: center;
+    display: block;
+  }
+
+  .container__responsive-options.hidden {
+    top: -200%;
+  }
+
+  .container__responsive-options.visible {
+    top: 60px;
+    left: 0;
   }
 }

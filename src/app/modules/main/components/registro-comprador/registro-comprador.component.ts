@@ -1,12 +1,13 @@
-import { Role } from './../../models/role';
-import { Distrito } from './../../models/distrito';
-import { DistritoService } from './../../services/distrito.service';
-import { Cliente } from './../../models/cliente';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ClienteService } from './../../services/cliente.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Distrito } from 'src/app/models/distrito';
+import { ClienteService } from 'src/app/services/cliente.service';
+import { DistritoService } from 'src/app/services/distrito.service';
+import { Cliente } from 'src/app/models/cliente';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-registro-comprador',

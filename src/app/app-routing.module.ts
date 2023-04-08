@@ -16,8 +16,7 @@ import { RegistrarProductoComponent } from './components/registrar-producto/regi
 import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { ListaProductosComponent } from './components/lista-productos/lista-productos.component';
 import { CompradorComponent } from './components/comprador/comprador.component';
-import { RegistroFarmaciaComponent } from './components/registro-farmacia/registro-farmacia.component';
-import { RegistroCompradorComponent } from './components/registro-comprador/registro-comprador.component';
+
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -37,8 +36,7 @@ const routes: Routes = [
   },
 
   //Pantallas de registro
-  {path: 'registroComprador', component: RegistroCompradorComponent},
-  {path: 'registroDueñoFarmacia', component: RegistroFarmaciaComponent},
+
 
   //Pantallas del comprador
   {path: 'Comprador/:id', component: CompradorComponent},

@@ -7,6 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegistroTipoComponent } from './components/registro-tipo/registro-tipo.component';
 import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recuperar-cuenta.component';
+import { RegistroCompradorComponent } from './components/registro-comprador/registro-comprador.component';
+import { RegistroFarmaciaComponent } from './components/registro-farmacia/registro-farmacia.component';
 
 const routes: Routes = [
   {
@@ -20,7 +22,9 @@ const routes: Routes = [
       {path: 'registrotipo', component: RegistroTipoComponent},
       {path: 'RecuperaCuenta', component: RecuperarCuentaComponent},
     ]
-  }
+  },
+  {path: 'registroComprador', component: RegistroCompradorComponent},
+  {path: 'registroDueñoFarmacia', component: RegistroFarmaciaComponent},
 ];
 
 @NgModule({

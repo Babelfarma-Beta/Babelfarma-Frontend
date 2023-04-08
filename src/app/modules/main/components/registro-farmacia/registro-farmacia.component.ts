@@ -1,12 +1,13 @@
-import { Role } from './../../models/role';
-import { DistritoService } from './../../services/distrito.service';
-import { Distrito } from './../../models/distrito';
-import { Farmacia } from './../../models/farmacia';
-import { FarmaciaService } from './../../services/farmacia.service';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Distrito } from 'src/app/models/distrito';
+import { FarmaciaService } from 'src/app/services/farmacia.service';
+import { DistritoService } from 'src/app/services/distrito.service';
+import { Farmacia } from 'src/app/models/farmacia';
+import { Role } from 'src/app/models/role';
 
 @Component({
   selector: 'app-registro-farmacia',

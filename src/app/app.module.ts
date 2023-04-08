@@ -1,4 +1,4 @@
-import { AngularMaterialModule } from './components/shared/angular-material/angular-material.module';
+import { AngularMaterialModule } from './shared/angular-material/angular-material.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './modules/main/components/home/home.component';
 import { RegistroTipoComponent } from './modules/main/components/registro-tipo/registro-tipo.component';
-import { RegistroCompradorComponent } from './components/registro-comprador/registro-comprador.component';
-import { RegistroFarmaciaComponent } from './components/registro-farmacia/registro-farmacia.component';
 import { LoginComponent } from './modules/main/components/login/login.component';
 import { ContactanosComponent } from './modules/main/components/contactanos/contactanos.component';
 import { NavbarCompradorComponent } from './components/navbar-comprador/navbar-comprador.component';
@@ -38,8 +36,6 @@ import { ReporteProductoComprasComponent } from './components/reporte-producto-c
     AppComponent,
     HomeComponent,
     RegistroTipoComponent,
-    RegistroCompradorComponent,
-    RegistroFarmaciaComponent,
     LoginComponent,
     ContactanosComponent,
     NavbarCompradorComponent,

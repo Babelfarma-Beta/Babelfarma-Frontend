@@ -7,6 +7,18 @@
         <button mat-raised-button routerLink="registrotipo">Registrarse</button>
     </mat-toolbar>
 
+    <mat-toolbar class="container__responsive">
+      <button (click)="toggleMenu()" class="container__responsive-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div [ngClass]="{'container__responsive-options': true, 'hidden': !showMenu, 'visible': showMenu}">
+        <button class="responsive-button" mat-raised-button routerLink="Informacion">Información</button>
+        <button class="responsive-button" mat-raised-button routerLink="Contacatanos">Contáctanos</button>
+        <button class="responsive-button" mat-raised-button routerLink="Login">Ingresar</button>
+        <button class="responsive-button" mat-raised-button routerLink="registrotipo">Registrarse</button>
+      </div>
+    </mat-toolbar>
+
 
 
       <div class="content-wrapper">
