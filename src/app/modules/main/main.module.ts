@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MainRoutingModule } from './main-routing.module';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { MainRoutingModule } from './main-routing.module';
     ReactiveFormsModule,
     MatDialogModule,
     MatChipsModule,
+    MatMenuModule
   ]
 })
 export class MainModule { }
