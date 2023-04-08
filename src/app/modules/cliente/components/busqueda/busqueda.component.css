@@ -1,20 +1,12 @@
 
-
-body {
-    background-image: url('/assets/img/fondo.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
 .card {
 	background-color: white;
     border-style:groove;
 	border-radius: 1rem;
-	
+
 	margin: 1rem;
 	width: 20rem;
-	
+
 }
 
 .card_title{
@@ -36,15 +28,6 @@ body {
     height: 100%;
 }
 
-.container{
-	background-image: url('/assets/img/fondo.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
 
 .button_container{
     text-align: center;
@@ -61,7 +44,7 @@ body {
 }
 
 .info_general{
-    display: flex; 
+    display: flex;
     justify-content: space-between;
 }
 
@@ -81,11 +64,11 @@ body {
 @media only screen and (max-width: 500px)
   {
 
-	
+
 	.card{
 		width: 100%;
         margin: 1rem 0;
-        
+
 	}
 
     .info{
@@ -99,5 +82,5 @@ body {
         height: 100px;
     }
 
-   
+
   }

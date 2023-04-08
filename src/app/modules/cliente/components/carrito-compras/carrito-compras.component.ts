@@ -1,16 +1,16 @@
-import { FarmaciaService } from './../../services/farmacia.service';
-import { Cliente } from './../../models/cliente';
-import { Farmacia } from './../../models/farmacia';
-import { VentaService } from './../../services/venta.service';
-import { Venta } from './../../models/venta';
+import { FarmaciaService } from '../../../../services/farmacia.service';
+import { Cliente } from '../../../../models/cliente';
+import { Farmacia } from '../../../../models/farmacia';
+import { VentaService } from '../../../../services/venta.service';
+import { Venta } from '../../../../models/venta';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProductService } from './../../services/product.service';
+import { ProductService } from '../../../../services/product.service';
 import { FormGroup, FormBuilder,Validators } from '@angular/forms';
-import { DistritoService } from './../../services/distrito.service';
-import { Distrito } from './../../models/distrito';
-import { Product } from './../../models/product';
-import { CarritoDeComprasService } from './../../services/carrito-de-compras.service';
+import { DistritoService } from '../../../../services/distrito.service';
+import { Distrito } from '../../../../models/distrito';
+import { Product } from '../../../../models/product';
+import { CarritoDeComprasService } from '../../../../services/carrito-de-compras.service';
 import { Component, OnInit } from '@angular/core';
 
 

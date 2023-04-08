@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
 
   validate():void{
 
-    var x:number=0;
+    let x:number = 0;
     let c= this.myForm.get('correo')!.value;
     let p= this.myForm.get('contraseña')!.value;
 
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         this.snackBar.open('Ingreso exitoso', '', {
           duration: 3000,
         });
-        this.router.navigate([`/Comprador/${this.idClienteIngresado}`]);
+        this.router.navigate([`client/Comprador/${this.idClienteIngresado}`]);
         break;
       }
       x++;

@@ -1,7 +1,4 @@
 
-<body>
-	<app-navbar-comprador></app-navbar-comprador>
-
 	<form [formGroup]="MyForm" class="Mat_tab_options">
 		<mat-tab-group #tab>
 		  <mat-tab label="Buscar por nombre del producto">
@@ -23,14 +20,14 @@
 	<button class="tab__button" mat-raised-button color="primary" (click)="getProducts()">Borrar filtros</button>
 	</form>
 
-	
+
 
 	<div class="container">
 
 		<mat-card *ngFor="let element of products" class="card">
 			<mat-card-title class="card_title">{{element.nombre}} </mat-card-title>
 			<div class="info_general">
-			
+
 			<div class="image_container">
 					<img  class="image" [src]="element.picture"/>
 			</div>
@@ -46,7 +43,5 @@
 			<button class="button" (click)="AgregarAlCarrito(element.id)">Agregar al carrito</button>
 			</div>
 		</mat-card>
-		
-	
 	</div>
-</body>
+

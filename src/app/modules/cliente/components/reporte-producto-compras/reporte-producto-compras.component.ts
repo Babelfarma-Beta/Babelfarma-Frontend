@@ -1,7 +1,7 @@
-import { Venta } from './../../models/venta';
+import { Venta } from '../../../../models/venta';
 import { Chart, registerables } from 'chart.js';
 import { ActivatedRoute } from '@angular/router';
-import { VentaService } from './../../services/venta.service';
+import { VentaService } from '../../../../services/venta.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -43,7 +43,7 @@ export class ReporteProductoComprasComponent {
     const account: number[] = [];
     var x=0;
 
-    let listCVenta= resp; 
+    let listCVenta= resp;
 
     listCVenta.forEach((element:Venta) => {
       productos.push(element.producto.nombre);
@@ -52,22 +52,22 @@ export class ReporteProductoComprasComponent {
     for(let i = 0 ; i < productos.length ; i++)
     {
       if(productosUnicos.includes(productos[i])){
-      
+
       }
       else{
         productosUnicos.push(productos[i]);
       }
     }
 
-  
-      
+
+
       for(let j = 0 ; j <productosUnicos.length ; j++){
         x=0;
           for(let i = 0 ; i < listCVenta.length ; i++){
             if(listCVenta[i].producto.nombre==productosUnicos[j]){
               x+=1;
             }
-          
+
         }
         account.push(x);
       }
@@ -95,6 +95,6 @@ export class ReporteProductoComprasComponent {
         ]
       }
     })
-  
+
   }
 }

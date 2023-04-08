@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -39,6 +41,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSlideToggleModule,
     FormsModule,
     MatTabsModule,
+    MatSidenavModule,
+    MatListModule
+
   ],
   exports:[
     MatToolbarModule,
@@ -57,7 +62,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatAutocompleteModule,
     MatSlideToggleModule,
     FormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSidenavModule,
+    MatListModule
 ]
 })
 export class AngularMaterialModule { }

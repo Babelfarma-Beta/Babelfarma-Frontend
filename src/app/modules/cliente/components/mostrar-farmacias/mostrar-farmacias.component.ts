@@ -1,9 +1,9 @@
-import { DistritoService } from './../../services/distrito.service';
-import { Distrito } from './../../models/distrito';
+import { DistritoService } from '../../../../services/distrito.service';
+import { Distrito } from '../../../../models/distrito';
 import { Form, FormGroup, FormBuilder } from '@angular/forms';
 import { NavbarCompradorComponent } from '../navbar-comprador/navbar-comprador.component';
-import { FarmaciaService } from './../../services/farmacia.service';
-import { Farmacia } from './../../models/farmacia';
+import { FarmaciaService } from '../../../../services/farmacia.service';
+import { Farmacia } from '../../../../models/farmacia';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 

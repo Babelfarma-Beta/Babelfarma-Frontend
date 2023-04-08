@@ -1,12 +1,12 @@
-import { Farmacia } from './../../models/farmacia';
-import { FarmaciaService } from './../../services/farmacia.service';
-import { CarritoDeComprasService } from './../../services/carrito-de-compras.service';
+import { Farmacia } from '../../../../models/farmacia';
+import { FarmaciaService } from '../../../../services/farmacia.service';
+import { CarritoDeComprasService } from '../../../../services/carrito-de-compras.service';
 import { MatTabGroup } from '@angular/material/tabs';
-import { CategoriaService } from './../../services/categoria.service';
-import { Categoria } from './../../models/categoria';
+import { CategoriaService } from '../../../../services/categoria.service';
+import { Categoria } from '../../../../models/categoria';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ProductService } from './../../services/product.service';
-import { Product } from './../../models/product';
+import { ProductService } from '../../../../services/product.service';
+import { Product } from '../../../../models/product';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({

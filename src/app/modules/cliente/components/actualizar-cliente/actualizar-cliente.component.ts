@@ -1,8 +1,8 @@
-import { Role } from './../../models/role';
-import { Cliente } from './../../models/cliente';
-import { DistritoService } from './../../services/distrito.service';
-import { ClienteService } from './../../services/cliente.service';
-import { Distrito } from './../../models/distrito';
+import { Role } from '../../../../models/role';
+import { Cliente } from '../../../../models/cliente';
+import { DistritoService } from '../../../../services/distrito.service';
+import { ClienteService } from '../../../../services/cliente.service';
+import { Distrito } from '../../../../models/distrito';
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
