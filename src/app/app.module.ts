@@ -16,7 +16,6 @@ import { NavbarFarmaciaComponent } from './components/navbar-farmacia/navbar-far
 import { RegistrarProductoComponent } from './components/registrar-producto/registrar-producto.component';
 import { ActualizarProductoComponent } from './components/actualizar-producto/actualizar-producto.component';
 import { FarmaciaComponent } from './components/farmacia/farmacia.component';
-import { MedicamentosRecomendadosComponent } from './modules/cliente/components/medicamentos-recomendados/medicamentos-recomendados.component';
 import { InformacionComponent } from './modules/main/components/informacion/informacion.component';
 import { CarritoComprasComponent } from './modules/cliente/components/carrito-compras/carrito-compras.component';
 import { RutaFarmaciaComponent } from './modules/cliente/components/ruta-farmacia/ruta-farmacia.component';
@@ -24,7 +23,6 @@ import { RecuperarCuentaComponent } from './modules/main/components/recuperar-cu
 import { CompraFinalizadaComponent } from './modules/cliente/components/compra-finalizada/compra-finalizada.component';
 import { ActualizarClienteComponent } from './modules/cliente/components/actualizar-cliente/actualizar-cliente.component';
 import { ActualizarFarmaciaComponent } from './components/actualizar-farmacia/actualizar-farmacia.component';
-import { MostrarFarmaciasComponent } from './modules/cliente/components/mostrar-farmacias/mostrar-farmacias.component';
 import { ReportePorCategoriaComponent } from './components/reporte-por-categoria/reporte-por-categoria.component';
 import { MostrarVentasComponent } from './components/mostrar-ventas/mostrar-ventas.component';
 import { ReporteMontoPorMesComponent } from './components/reporte-monto-por-mes/reporte-monto-por-mes.component';
@@ -44,7 +42,6 @@ import { ReporteProductoComprasComponent } from './modules/cliente/components/re
     RegistrarProductoComponent,
     ActualizarProductoComponent,
     FarmaciaComponent,
-    MedicamentosRecomendadosComponent,
     InformacionComponent,
     CarritoComprasComponent,
     RutaFarmaciaComponent,
@@ -52,7 +49,6 @@ import { ReporteProductoComprasComponent } from './modules/cliente/components/re
     CompraFinalizadaComponent,
     ActualizarClienteComponent,
     ActualizarFarmaciaComponent,
-    MostrarFarmaciasComponent,
     ReportePorCategoriaComponent,
     MostrarVentasComponent,
     ReporteMontoPorMesComponent,

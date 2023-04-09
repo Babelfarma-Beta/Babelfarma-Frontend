@@ -1,17 +1,4 @@
-body{
-    background-image: url('/assets/img/fondo.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
 
-.container{
-    margin-top: 20px;
-    background-image: url('/assets/img/fondo.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
 
 .chartContainer{
 

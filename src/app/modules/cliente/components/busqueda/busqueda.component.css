@@ -1,12 +1,28 @@
+*{
+  box-sizing: border-box;
+}
+
+.all-content{
+  padding: 1rem;
+}
+
+.container{
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-column-gap: 1rem;
+  grid-row-gap: 2rem;
+  justify-items: center;
+}
+
 
 .card {
 	background-color: white;
-    border-style:groove;
+  border-style:groove;
 	border-radius: 1rem;
 
-	margin: 1rem;
-	width: 20rem;
-
+	width: 400px;
+  position: relative;
 }
 
 .card_title{
@@ -14,9 +30,6 @@
     padding-bottom: 5px;
 }
 
-.tab__button{
-    margin: 0 10px;
-}
 
 .Mat_tab_options{
     background: white;
@@ -30,6 +43,7 @@
 
 
 .button_container{
+   height: 50px;
     text-align: center;
 }
 
@@ -37,10 +51,14 @@
 	border-radius: 3rem;
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 	color: var(--white-text);
-	font-size: 15;
+	font-size: 15px;
 	padding: .8rem 1.5rem;
 	letter-spacing: .1rem;
-    cursor: pointer;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform:translate(-50%,0);
 }
 
 .info_general{
@@ -62,25 +80,17 @@
 }
 
 @media only screen and (max-width: 500px)
-  {
-
-
-	.card{
-		width: 100%;
-        margin: 1rem 0;
-
-	}
-
-    .info{
-        text-align: right;
-        width: 50%;
-    }
-
-
-    .image_container{
-        width: 50%;
-        height: 100px;
-    }
-
-
+{
+  .all-content{
+    padding: 0;
   }
+
+  .container{
+    padding: 10px 0;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .card{
+    width: 100%;
+  }
+}

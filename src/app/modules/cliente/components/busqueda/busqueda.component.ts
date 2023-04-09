@@ -65,7 +65,6 @@ export class BusquedaComponent implements OnInit {
     });
 
     this.products=dateProduct;
-    console.log(this.nombresFarmacias);
   }
 
 

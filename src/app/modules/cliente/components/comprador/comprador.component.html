@@ -1,22 +1,82 @@
 
-    <div class="container">
-        <div class="uno">
-            <mat-card class="example-card1">
-            <h4>Ofertas de la semana</h4>
-            <img class="img1" src="/assets/img/productoPrincipal.PNG">
+<div class="fondotabla">
+
+  <div class="subtitle">
+    <h2>Recomendaciones</h2>
+  </div>
+
+  <table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef class="table-header"> Problemas de Salud Comunes </th>
+    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+  </ng-container>
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions"></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns-->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="example-element-diagram">
+            {{element.description1}}
             <br>
-            <img class="img2" src="/assets/img/productoprincipal2.PNG">
-            </mat-card>
+            {{element.description2}}
+            <br>
+            {{element.description3}}
         </div>
-        <div class="dos">
-            <mat-card class="example-card2" id="card2">
-                <img class="img1" src="/assets/img/moneda.svg">
-                <p class="titulo">Ahorro promedio en soles</p>
-                <br>
-                <p class="moneda">S/ 5.00</p>
-                <br>
-                <br>
-                <p class="parrafo">En los ultimos 12 meses</p>
-            </mat-card>
-        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+</div>
+
+   <div class="fondotabla">
+          <div class="subtitle">
+            <h2>Ofertas</h2>
+          </div>
+          <div class="offer-container">
+            <div class="offer">
+              <mat-card class="example-card">
+                <img [src]="products[0].picture" alt="Oferta Farmacia 1" class="offer-image">
+                <h3 class="offer-title">{{products[0].nombre}}</h3>
+                <p class="offer-description">{{products[0].descripcion}}</p>
+                <p class="offer-price">S/. {{products[0].precio.toFixed(2)}} </p>
+                <button mat-raised-button>Comprar ahora</button>
+              </mat-card>
+            </div>
+            <div class="offer">
+              <mat-card class="example-card">
+                <img [src]="products[1].picture" alt="Oferta Farmacia 2" class="offer-image">
+                <h3 class="offer-title">{{products[1].nombre}}</h3>
+                <p class="offer-description">{{products[1].descripcion}}</p>
+                <p class="offer-price">S/. {{products[1].precio.toFixed(2)}} </p>
+                <button mat-raised-button>Comprar ahora</button>
+              </mat-card>
+            </div>
+            <div class="offer">
+              <mat-card class="example-card">
+                <img [src]="products[2].picture" alt="Oferta Farmacia 3" class="offer-image">
+                <h3 class="offer-title">{{products[2].nombre}}</h3>
+                <p class="offer-description">{{products[2].descripcion}}</p>
+                <p class="offer-price">S/. {{products[2].precio.toFixed(2)}} </p>
+                <button mat-raised-button>Comprar ahora</button>
+              </mat-card>
+            </div>
+          </div>
     </div>
