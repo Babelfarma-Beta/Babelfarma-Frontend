@@ -8,8 +8,10 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
   templateUrl: './navbar-comprador.component.html',
   styleUrls: ['./navbar-comprador.component.css']
 })
+
 export class NavbarCompradorComponent implements OnInit, OnDestroy {
-  idComprador: any;
+
+  idComprador!:any;
   mobileQuery!: MediaQueryList;
   fillerNav = Array.from({ length: 5 }, (_, i) => `Nav Item ${i + 1}`);
   private _mobileQueryListener: () => void;
@@ -20,13 +22,17 @@ export class NavbarCompradorComponent implements OnInit, OnDestroy {
     private carritoService: CarritoDeComprasService,
     private router: Router,
     private route: ActivatedRoute
-  ) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+    ) {
+      this.mobileQuery = media.matchMedia('(max-width: 600px)');
+      this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+      this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
   ngOnInit(): void {
+    this.loadId();
+  }
+
+  loadId(){
     this.idComprador = this.route.snapshot.params['id'];
   }
 
@@ -34,8 +40,11 @@ export class NavbarCompradorComponent implements OnInit, OnDestroy {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  salir(): void {
+  salir(){
     this.carritoService.setproductosCarrito([]);
     this.router.navigate(['/']);
   }
+
+
 }
+

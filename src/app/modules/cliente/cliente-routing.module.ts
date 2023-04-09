@@ -13,18 +13,18 @@ import { NavbarCompradorComponent } from './components/navbar-comprador/navbar-c
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: NavbarCompradorComponent,
     children:[
-      {path: 'Comprador/:id', component: CompradorComponent},
-      {path: 'Busqueda/:id', component: BusquedaComponent},
+      {path: 'Comprador', component: CompradorComponent},
+      {path: 'Busqueda', component: BusquedaComponent},
       {path:'ReporteProductoCompras/:id', component: ReporteProductoComprasComponent},
-      {path: 'MedicamentosRecomendados/:id', component: MedicamentosRecomendadosComponent},
-      {path:'MostrarFarmacias/:id', component: MostrarFarmaciasComponent},
-      {path: 'ActualizarDatosCliente/:id', component: ActualizarClienteComponent},
-      {path: 'CarritoCompras/:id', component: CarritoComprasComponent},
-      {path: 'RutaFarmacia/:id', component: RutaFarmaciaComponent},
-      {path: 'CompraFinalizada/:id', component: CompraFinalizadaComponent},
+      {path: 'MedicamentosRecomendados', component: MedicamentosRecomendadosComponent},
+      {path:'MostrarFarmacias', component: MostrarFarmaciasComponent},
+      {path: 'ActualizarDatosCliente', component: ActualizarClienteComponent},
+      {path: 'CarritoCompras', component: CarritoComprasComponent},
+      {path: 'RutaFarmacia', component: RutaFarmaciaComponent},
+      {path: 'CompraFinalizada', component: CompraFinalizadaComponent},
       {path: '', component: CompradorComponent},
 
     ]

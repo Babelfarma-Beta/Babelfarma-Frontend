@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         this.snackBar.open('Ingreso exitoso', '', {
           duration: 3000,
         });
-        this.router.navigate([`client/Comprador/${this.idClienteIngresado}`]);
+        this.router.navigate([`client/${this.idClienteIngresado}`]);
         break;
       }
       x++;
