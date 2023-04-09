@@ -70,7 +70,7 @@
       <mat-nav-list>
         <mat-list-item
           [routerLinkActive]="['active-nav']"
-          routerLink="activities"
+          routerLink="Comprador/{{idComprador}}"
         >
           <mat-icon class="nav-icon" mat-list-icon>home</mat-icon>
           <a class="nav-link" matLine>Inicio</a>
@@ -78,7 +78,7 @@
 
         <mat-list-item
           [routerLinkActive]="['active-nav']"
-          routerLink="activities"
+          routerLink="Busqueda/{{idComprador}}"
         >
           <mat-icon class="nav-icon" mat-list-icon>add_shopping_cart</mat-icon>
           <a class="nav-link" matLine>Productos</a>
@@ -86,7 +86,7 @@
 
         <mat-list-item
           [routerLinkActive]="['active-nav']"
-          routerLink="services"
+          routerLink="ReporteProductoCompras/{{idComprador}}"
         >
           <mat-icon class="nav-icon" mat-list-icon>assignment_turned_in</mat-icon>
           <a class="nav-link" matLine>Compras</a>
@@ -94,7 +94,7 @@
 
         <mat-list-item
           [routerLinkActive]="['active-nav']"
-          routerLink="informs"
+          routerLink="MedicamentosRecomendados/{{idComprador}}"
         >
           <mat-icon class="nav-icon" mat-list-icon>assignment</mat-icon>
           <a class="nav-link" matLine>Recomendaciones</a>
@@ -102,7 +102,7 @@
 
         <mat-list-item
           [routerLinkActive]="['active-nav']"
-          routerLink="informs"
+          routerLink="MostrarFarmacias/{{idComprador}}"
         >
           <mat-icon class="nav-icon" mat-list-icon>local_pharmacy</mat-icon>
           <a class="nav-link" matLine>Farmacias</a>
@@ -110,7 +110,7 @@
 
         <mat-list-item class="logout"
           [routerLinkActive]="['active-nav']"
-          routerLink="informs"
+          (click)="salir()"
         >
           <mat-icon class="nav-icon" mat-list-icon>exit_to_app</mat-icon>
           <a class="nav-link" matLine>Salir</a>

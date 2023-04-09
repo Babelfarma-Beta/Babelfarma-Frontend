@@ -9,7 +9,7 @@
 }
 
 .responsive-menu{
-  background-color: #5B748C;
+  background-color: #3f51b5;
 }
 
 .active-nav {
@@ -41,7 +41,7 @@
 
 .toolbar {
   color: #3f51b5;
-  background-color: #EEE9DA;
+  background-color: #F0EFFF;
   font-weight: bold;
   display: flex;
 }
@@ -105,9 +105,7 @@
 
 
 .content-wrapper{
-  background-image: url('/assets/img/fondo.png');
-  background-size: cover;
-  background-attachment: fixed;
+  background: #FFF;
   /* display: flex;
   flex-direction: column;
   justify-content: center;
@@ -119,7 +117,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding-top: 16px;
 }
 
