@@ -67,18 +67,15 @@
   justify-content: end;
 }
 
-.notify-content{
+.icon-content{
   height: 100%;
   width: 50px;
+  display: flex;
+  align-items: center;
 }
-.user-content{
-  height: 100%;
-  width: 50px;
-}
-/*notification bell styles*/
-.notify-icon{
-  color: black;
-  height: 100%;
+
+.icon{
+  height: 35px;
   width: 100%;
   font-size: 35px;
   display: flex;
@@ -86,13 +83,12 @@
   align-items: center;
 }
 
-.user-icon{
-  height: 100%;
-  width: 100%;
-  font-size: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.shop-icon{
+  color: #000000;
+}
+
+.icon:hover{
+  cursor: pointer;
 }
 
 .image{

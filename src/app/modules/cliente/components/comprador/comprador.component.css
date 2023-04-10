@@ -23,7 +23,7 @@
     color: #ffffff;
     width: 330px;
     height: 430px;
-    border-radius: 8px;
+    border-radius: 1rem;
     text-align: center;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease-in-out;

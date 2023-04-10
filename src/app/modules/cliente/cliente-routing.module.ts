@@ -6,7 +6,6 @@ import { ReporteProductoComprasComponent } from './components/reporte-producto-c
 import { ActualizarClienteComponent } from './components/actualizar-cliente/actualizar-cliente.component';
 import { CarritoComprasComponent } from './components/carrito-compras/carrito-compras.component';
 import { RutaFarmaciaComponent } from './components/ruta-farmacia/ruta-farmacia.component';
-import { CompraFinalizadaComponent } from './components/compra-finalizada/compra-finalizada.component';
 import { NavbarCompradorComponent } from './components/navbar-comprador/navbar-comprador.component';
 
 const routes: Routes = [
@@ -20,7 +19,6 @@ const routes: Routes = [
       {path: 'ActualizarDatosCliente', component: ActualizarClienteComponent},
       {path: 'CarritoCompras', component: CarritoComprasComponent},
       {path: 'RutaFarmacia', component: RutaFarmaciaComponent},
-      {path: 'CompraFinalizada', component: CompraFinalizadaComponent},
       {path: '', component: CompradorComponent},
 
     ]

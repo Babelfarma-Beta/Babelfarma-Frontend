@@ -27,7 +27,6 @@ export class CarritoComprasComponent implements OnInit {
   subtotalb: any;
   cantidades: any[] = [];
   myForm!: FormGroup;
-  products: Product[] = [];
   idClienteIngresado!: any;
   nombresFarmacias:string[]=[];
 
@@ -58,8 +57,9 @@ export class CarritoComprasComponent implements OnInit {
   disabled = false;
 
   mostrarProc(){
-    this.productosCarrito=this.carritoService.getproductosCarrito();
-    this.productosCarrito.forEach((element)=>{
+      const carrito = JSON.parse(localStorage.getItem('carrito') ?? '[]');
+      this.processProductResponse(carrito);
+      this.productosCarrito.forEach((element)=>{
       this.farmaciaService.getFarmaciaByProductoId(element.id).subscribe((data:Farmacia)=>{
         this.nombresFarmacias[element.id]=(data.nombreEstablecimiento);
       })
@@ -144,6 +144,7 @@ export class CarritoComprasComponent implements OnInit {
 
     let listCProduct = resp;
 
+
     listCProduct.forEach((element: Product) => {
       element.picture = 'data:image/jpeg;base64,' + element.picture;
       dateProduct.push(element);
@@ -179,6 +180,7 @@ export class CarritoComprasComponent implements OnInit {
   vaciarCarrito() {
     this.cantidades = [];
     this.productosCarrito = [];
+    localStorage.clear();
   }
 
   getDistritos(): void {
@@ -210,7 +212,7 @@ export class CarritoComprasComponent implements OnInit {
   eliminarProducto(indice: any) {
     this.cantidades.splice(indice, 1);
     this.productosCarrito.splice(indice, 1);
-
+    localStorage.setItem('carrito', JSON.stringify(this.productosCarrito));
   }
 
   registrarVentas(){

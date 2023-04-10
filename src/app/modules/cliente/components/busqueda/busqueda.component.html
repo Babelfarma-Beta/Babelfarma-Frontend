@@ -17,7 +17,7 @@
 			</mat-form-field>
 		</mat-tab>
 	</mat-tab-group>
-	<button class="tab__button" mat-raised-button color="primary" type="submit" (click)="search()">Buscar</button>
+	<button class="tab__button" mat-raised-button color="primary" type="submit" (click)="search()" class="search-button">Buscar</button>
 	<button class="tab__button" mat-raised-button color="primary" (click)="getProducts()">Borrar filtros</button>
 	</form>
 
@@ -27,21 +27,24 @@
 
 		<mat-card *ngFor="let element of products" class="card">
 			<mat-card-title class="card_title">{{element.nombre}} </mat-card-title>
+
 			<div class="info_general">
 
-			<div class="image_container">
-					<img  class="image" [src]="element.picture"/>
-			</div>
-			<div class="info">
-			<mat-card-content>Stock: {{element.stock}}</mat-card-content>
-			<mat-card-content>Precio: S/. {{element.precio.toFixed(2)}} </mat-card-content>
-			<mat-card-content>Descripción: {{element.descripcion}}</mat-card-content>
-			<mat-card-content>Categoría: {{element.categoria.categoria}}</mat-card-content>
-			<mat-card-content>Vendido por: {{returnNombreFarmacia(element.id)}} </mat-card-content>
-			</div>
-			</div>
-			<div class="button_container">
-			<button class="button" (click)="AgregarAlCarrito(element.id)">Agregar al carrito</button>
+            <div class="image-container">
+                <img  class="image" [src]="element.picture"/>
+            </div>
+
+            <div class="info">
+              <mat-card-content>Stock: {{element.stock}}</mat-card-content>
+              <mat-card-content>Precio: S/. {{element.precio.toFixed(2)}} </mat-card-content>
+              <mat-card-content>Descripción: {{element.descripcion}}</mat-card-content>
+              <mat-card-content>Categoría: {{element.categoria.categoria}}</mat-card-content>
+              <mat-card-content>Vendido por: {{returnNombreFarmacia(element.id)}} </mat-card-content>
+            </div>
+        </div>
+          <div class="button_container">
+          <button class="button" (click)="AgregarAlCarrito(element.id)"
+            mat-raised-button>Agregar al carrito</button>
 			</div>
 		</mat-card>
 	</div>

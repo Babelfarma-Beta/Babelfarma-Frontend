@@ -5,5 +5,5 @@ export class Product {
     precio: number=0;
     descripcion: string='';
     categoria: any;
-    picture: any;
+    picture!: any;
 }

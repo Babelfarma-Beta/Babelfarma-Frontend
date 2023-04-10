@@ -1,51 +1,45 @@
-<body>
-    <div class="contenedor">
-        <div class="carta">
-                <mat-card>
-                    <p class="title">Babel Farma</p>
-                    <div class="mat_card_container">
+ <div class="container">
+  <h2>Mi Carrito</h2>
 
-                    <div class="right">
-                            <form [formGroup]="myForm" class="contenido" autocomplete="off">
-                            <div class="producto" *ngFor="let element of productosCarrito;let indice = index">
-                                <div class="texto">
-                                    <h2>{{element.nombre}}</h2>
-                                    <br>
-                                    <p class="normal">Precio: S/. {{element.precio.toFixed(2)}}</p>
-                                    <p class="normal">Descripción: {{element.descripcion}}</p>
-                                    <input formControlName="cantidad" type="number"  class="cantidad" placeholder="Cantidad a comprar" min="1" max="{{element.stock}}"  (change)="getSemisuma(indice)" onKeypress=" event.returnValue = false;" >
-                                    <br>
-                                    <p class="normal">Vendido por Farmacia {{returnNombreFarmacia(element.id)}}</p>
-                                </div>
+                <div class="information">
 
-                                <div class="button">
-                                    <button mat-raised-button class="boton1" (click)="eliminarProducto(indice)">Eliminar</button>
-                                </div>
+                    <div class="products-container">
+                            <form [formGroup]="myForm" class="products" autocomplete="off">
+                              <div class="product first-line">
+                                <p>Imagen</p>
+                                <p>Productos</p>
+                                <p class="normal">Precio</p>
+                                <p>Cantidad</p>
+                                <p class="normal">Farmacia</p>
+                                <p>Eliminar</p>
+
+                            </div>
+                            <div class="product only-product" *ngFor="let element of productosCarrito;let indice = index">
+                                    <div class="image-container">
+                                      <img [src]="element.picture" alt="product">
+                                    </div>
+                                    <p>{{element.nombre}}</p>
+                                    <p class="normal">S/. {{element.precio.toFixed(2)}}</p>
+                                    <input formControlName="cantidad" type="number"
+                                      class="cantidad" placeholder="Cantidad a comprar" min="1" max="{{element.stock}}"
+                                      (change)="getSemisuma(indice)" onKeypress=" event.returnValue = false;" >
+                                    <p class="normal">{{returnNombreFarmacia(element.id)}}</p>
+                                    <mat-icon (click)="eliminarProducto(indice)" class="delete-product">delete</mat-icon>
+
                             </div>
                             </form >
                     </div>
 
-                    <div class="left">
-                        <div  class="opciones">
-                            <div style="display:flex; margin: auto; ">
-                                <button mat-raised-button class="boton btn" routerLink="/RutaFarmacia/{{idClienteIngresado}}">Recojo en tienda</button>
-                                <button mat-raised-button class="boton1 btn" (click)="vaciarCarrito()">Eliminar</button>
-
-                            </div>
-                            <div class="paypal">
-                                <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
+                    <div class="summary">
+                      <p class="summary-inf summary-title">Resumen de compra</p>
+                      <p class="subtotal summary-inf">Subtotal: S/.{{subtotal().toFixed(2)}}</p>
+                      <p class="total summary-inf">Total a pagar: S/.{{subtotal().toFixed(2)}}</p>
+                            <div class="summary-buttons">
+                                <button mat-raised-button class="button" routerLink="/RutaFarmacia/{{idClienteIngresado}}">Comprar</button>
+                                <button mat-raised-button class="clear-car" (click)="vaciarCarrito()">Eliminar</button>
                             </div>
 
-                        </div>
                     </div>
+                  </div>
 
-            </div>
-                <hr>
-                <p class="normal">Subtotal: &nbsp; &nbsp; &nbsp; S/. {{subtotal().toFixed(2)}} = $ {{(subtotal()/3.8).toFixed(2)}}</p>
-            </mat-card>
-
-        </div>
-
-    </div>
-
-</body>
+      </div>

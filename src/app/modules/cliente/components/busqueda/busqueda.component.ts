@@ -123,22 +123,15 @@ export class BusquedaComponent implements OnInit {
     }
   }
 
-  AgregarAlCarrito(number: number): void{
-
-    this.productService.getProductId(number).subscribe((data)=>{
-      if(this.productosCarrito.length==0)
-      this.productosCarrito.push(data);
-      else
-      if(this.ValidarSinRepeticion(data))
-      this.productosCarrito.push(data);
-
-
-    })
-
-
-
-    this.carritoService.setproductosCarrito(this.productosCarrito);
-
+  AgregarAlCarrito(number: number): void {
+    this.productService.getProductId(number).subscribe((data) => {
+      const carrito = JSON.parse(localStorage.getItem('carrito') ?? '[]');
+      const existeProducto = carrito.some((producto:any) => producto.id === data.id);
+      if (!existeProducto) {
+        carrito.push(data);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+      }
+    });
   }
 
 

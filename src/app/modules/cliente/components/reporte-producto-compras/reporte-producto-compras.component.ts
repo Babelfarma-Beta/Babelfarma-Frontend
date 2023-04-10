@@ -1,5 +1,5 @@
 import { Venta } from '../../../../models/venta';
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables } from 'chart.js/auto';
 import { ActivatedRoute } from '@angular/router';
 import { VentaService } from '../../../../services/venta.service';
 import { Component } from '@angular/core';
@@ -41,7 +41,7 @@ export class ReporteProductoComprasComponent {
     const productos: string[]= [];
     const productosUnicos: string []= [];
     const account: number[] = [];
-    var x=0;
+    let x=0;
 
     let listCVenta= resp;
 
@@ -49,22 +49,21 @@ export class ReporteProductoComprasComponent {
       productos.push(element.producto.nombre);
     });
 
-    for(let i = 0 ; i < productos.length ; i++)
+    for(let element of productos)
     {
-      if(productosUnicos.includes(productos[i])){
+      if(productosUnicos.includes(element)){
+        // TODO document why this block is empty
 
       }
       else{
-        productosUnicos.push(productos[i]);
+        productosUnicos.push(element);
       }
     }
 
-
-
-      for(let j = 0 ; j <productosUnicos.length ; j++){
+      for(let element of productosUnicos){
         x=0;
-          for(let i = 0 ; i < listCVenta.length ; i++){
-            if(listCVenta[i].producto.nombre==productosUnicos[j]){
+          for(let venta of listCVenta){
+            if(venta.producto.nombre==element){
               x+=1;
             }
 
@@ -72,24 +71,22 @@ export class ReporteProductoComprasComponent {
         account.push(x);
       }
 
-
-
     this.chartBar = new Chart('canvas-bar',{
       type:'bar',
       data:{
         labels: productosUnicos,
         datasets:[
           {
-            label:'Compras',
+            label:'Compras por Producto',
             data:account,
             borderColor: '#3cba8f',
             backgroundColor:[
-              'rgba(255,99,132,0.9)',
-              'rgba(54,162,235,0.9)',
-              'rgba(255,206,86,0.9)',
-              'rgba(75,192,192,0.9)',
-              'rgba(153,102,0,0.9)',
-              'rgba(255,159,64,0.9)',
+              '#3f51B5',
+              '#5e64d1',
+              '#7b82ee',
+              '#989cff',
+              '#b5b7ff',
+              '#d2d2ff',
             ]
           }
         ]

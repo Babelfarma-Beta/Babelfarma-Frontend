@@ -20,7 +20,6 @@ import { InformacionComponent } from './modules/main/components/informacion/info
 import { CarritoComprasComponent } from './modules/cliente/components/carrito-compras/carrito-compras.component';
 import { RutaFarmaciaComponent } from './modules/cliente/components/ruta-farmacia/ruta-farmacia.component';
 import { RecuperarCuentaComponent } from './modules/main/components/recuperar-cuenta/recuperar-cuenta.component';
-import { CompraFinalizadaComponent } from './modules/cliente/components/compra-finalizada/compra-finalizada.component';
 import { ActualizarClienteComponent } from './modules/cliente/components/actualizar-cliente/actualizar-cliente.component';
 import { ActualizarFarmaciaComponent } from './components/actualizar-farmacia/actualizar-farmacia.component';
 import { ReportePorCategoriaComponent } from './components/reporte-por-categoria/reporte-por-categoria.component';
@@ -46,7 +45,6 @@ import { ReporteProductoComprasComponent } from './modules/cliente/components/re
     CarritoComprasComponent,
     RutaFarmaciaComponent,
     RecuperarCuentaComponent,
-    CompraFinalizadaComponent,
     ActualizarClienteComponent,
     ActualizarFarmaciaComponent,
     ReportePorCategoriaComponent,
