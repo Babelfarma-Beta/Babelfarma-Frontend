@@ -10,7 +10,6 @@ import { FormGroup, FormBuilder,Validators } from '@angular/forms';
 import { DistritoService } from '../../../../services/distrito.service';
 import { Distrito } from '../../../../models/distrito';
 import { Product } from '../../../../models/product';
-import { CarritoDeComprasService } from '../../../../services/carrito-de-compras.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -25,13 +24,12 @@ export class CarritoComprasComponent implements OnInit {
   idDistrito!: number;
   distritos!: Distrito[];
   subtotalb: any;
-  cantidades: any[] = [];
   myForm!: FormGroup;
   idClienteIngresado!: any;
   nombresFarmacias:string[]=[];
+  cantidadesProductos:CantidadByProduct[] =[];
 
   constructor(
-    private carritoService: CarritoDeComprasService,
     private distritoService: DistritoService,
     private farmaciaService: FarmaciaService,
     private productService: ProductService,
@@ -45,8 +43,7 @@ export class CarritoComprasComponent implements OnInit {
     this.getDistritos();
     this.reactiveForm();
     this.mostrarProc();
-    this.recuperarValores()
-
+    this.initialValors();
   }
 
 
@@ -63,77 +60,27 @@ export class CarritoComprasComponent implements OnInit {
       this.farmaciaService.getFarmaciaByProductoId(element.id).subscribe((data:Farmacia)=>{
         this.nombresFarmacias[element.id]=(data.nombreEstablecimiento);
       })
-
     })
+  }
+
+  initialValors(){
+    this.productosCarrito.forEach((element)=>{
+      const cantidad:CantidadByProduct = {
+        productId: element.id,
+        cantidad: 1,
+      }
+      this.cantidadesProductos.push(cantidad);
+    })
+
+    console.log(this.cantidadesProductos);
   }
 
   getClienteId(){
     this.idClienteIngresado = this.route.snapshot.params['id'];
   }
 
-
-  // private initConfig(): void {
-  //   this.payPalConfig = {
-  //     currency: 'USD',
-  //     clientId: environment.clientId,
-  //     createOrderOnClient: (data) => <ICreateOrderRequest><unknown>{
-  //       intent: 'CAPTURE',
-  //       purchase_units: [{
-  //         amount: {
-  //           currency_code: 'USD',
-  //           value: this.subtotalInDollars(),
-  //           breakdown: {
-  //             item_total: {
-  //               currency_code: 'USD',
-  //               value: this.subtotalInDollars()
-  //             }
-  //           }
-  //         },
-  //         items: [{
-  //           name: 'Enterprise Subscription',
-  //           quantity: '1',
-  //           category: 'DIGITAL_GOODS',
-  //           unit_amount: {
-  //             currency_code: 'USD',
-  //             value: this.subtotalInDollars(),
-  //           },
-  //         }]
-  //       }]
-  //     },
-  //     advanced: {
-  //       commit: 'true'
-  //     },
-  //     style: {
-  //       label: 'paypal',
-  //       layout: 'vertical'
-  //     },
-  //     onApprove: (data, actions) => {
-  //       console.log('onApprove - transaction was approved, but not authorized', data, actions);
-  //       actions.order.get().then((details: any) => {
-  //         console.log('onApprove - you can get full order details inside onApprove: ', details);
-  //       });
-
-  //     },
-  //     onClientAuthorization: (data) => {
-  //       console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-  //       //aqui
   //       this.registrarVentas(); Estas funciones se usan cuando se realiza la compra
   //       this.actualizarStock(); Estas funciones se usan cuando se realiza la compra
-  //     },
-  //     onCancel: (data, actions) => {
-  //       console.log('OnCancel', data, actions);
-  //     },
-  //     onError: err => {
-  //       console.log('OnError', err);
-  //     },
-  //     onClick: (data, actions) => {
-  //       console.log('onClick', data, actions);
-  //     }
-  //   };
-  // }
-
-
-
 
   returnNombreFarmacia(id:any): string{
     return this.nombresFarmacias[id];
@@ -154,21 +101,34 @@ export class CarritoComprasComponent implements OnInit {
   }
 
 
-  recuperarValores() {
-    for (let i = 0; i < this.productosCarrito.length; i++) {
-      this.cantidades[i] = this.myForm.get('cantidad')!.value;
+  getCantidad(productIdBuscado:number){
+    let product = this.cantidadesProductos.find(cp => cp.productId == productIdBuscado)
+    return product?.cantidad;
+  }
+
+  aumentarCantidad(productId:number , stock:number){
+    const productoEncontrado = this.cantidadesProductos.find((producto) => producto.productId == productId);
+    if (productoEncontrado && productoEncontrado.cantidad < stock) {
+      productoEncontrado.cantidad += 1;
     }
   }
 
-
-  getSemisuma(indice: any) { //precio e índice el producto
-
-    let cantidad = this.myForm.get('cantidad')!.value;
-
-    this.cantidades[indice] = cantidad;
-    console.log(this.subtotalInDollars());
-
+  disminuirCantidad(productId:number){
+    const productoEncontrado = this.cantidadesProductos.find((producto) => producto.productId == productId);
+    if (productoEncontrado && productoEncontrado.cantidad > 1) {
+      productoEncontrado.cantidad -= 1;
+    }
   }
+
+  getSubtotal(productId:number, price:number){
+    const productoEncontrado = this.cantidadesProductos.find((producto) => producto.productId == productId);
+    if (productoEncontrado) {
+      return productoEncontrado.cantidad * price;
+    }
+    else
+    return null;
+  }
+
 
   reactiveForm() {
     this.myForm = this.fb.group({
@@ -178,7 +138,7 @@ export class CarritoComprasComponent implements OnInit {
 
 
   vaciarCarrito() {
-    this.cantidades = [];
+    this.cantidadesProductos = [];
     this.productosCarrito = [];
     localStorage.clear();
   }
@@ -192,25 +152,17 @@ export class CarritoComprasComponent implements OnInit {
   subtotal(): number {
 
     let x = 0;
-    for (let i = 0; i < this.cantidades.length; i++) {
+    for (let i = 0; i < this.cantidadesProductos.length; i++) {
 
-      x += this.cantidades[i] * this.productosCarrito[i].precio;
+      x += this.cantidadesProductos[i].cantidad * this.productosCarrito[i].precio;
 
     }
     return x;
   }
 
-  subtotalInDollars(): number {
-
-    var x=this.subtotal()/3.80;
-
-    x=Number(x.toFixed(2));
-
-    return x;
-  }
 
   eliminarProducto(indice: any) {
-    this.cantidades.splice(indice, 1);
+    this.cantidadesProductos.splice(indice,1);
     this.productosCarrito.splice(indice, 1);
     localStorage.setItem('carrito', JSON.stringify(this.productosCarrito));
   }
@@ -230,8 +182,8 @@ export class CarritoComprasComponent implements OnInit {
           farmacia: data,
           producto: this.productosCarrito[i],
           precioUnit: this.productosCarrito[i].precio,
-          cantidad: this.cantidades[i],
-          precioTotal: (this.productosCarrito[i].precio)* (this.cantidades[i]),
+          cantidad: this.cantidadesProductos[i].cantidad,
+          precioTotal: (this.productosCarrito[i].precio)* (this.cantidadesProductos[i].cantidad),
         }
         this.ventaService.addVenta(venta).subscribe(()=>{});
 
@@ -250,7 +202,7 @@ export class CarritoComprasComponent implements OnInit {
         id: 0,
         nombre: this.productosCarrito[i].nombre,
         precio: this.productosCarrito[i].precio,
-        stock: this.productosCarrito[i].stock - this.cantidades[i],
+        stock: this.productosCarrito[i].stock - this.cantidadesProductos[i].cantidad,
         descripcion: this.productosCarrito[i].descripcion,
         categoria: this.productosCarrito[i].categoria,
         picture: this.productosCarrito[i].picture
@@ -268,3 +220,9 @@ export class CarritoComprasComponent implements OnInit {
 
   }
 }
+
+
+export interface CantidadByProduct{
+  productId:number,
+  cantidad:number,
+};

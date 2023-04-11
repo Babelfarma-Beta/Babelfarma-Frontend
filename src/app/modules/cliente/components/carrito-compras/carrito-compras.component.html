@@ -6,26 +6,22 @@
                     <div class="products-container">
                             <form [formGroup]="myForm" class="products" autocomplete="off">
                               <div class="product first-line">
-                                <p>Imagen</p>
                                 <p>Productos</p>
                                 <p class="normal">Precio</p>
                                 <p>Cantidad</p>
-                                <p class="normal">Farmacia</p>
+                                <p class="normal">Subtotal</p>
                                 <p>Eliminar</p>
-
                             </div>
                             <div class="product only-product" *ngFor="let element of productosCarrito;let indice = index">
-                                    <div class="image-container">
-                                      <img [src]="element.picture" alt="product">
-                                    </div>
-                                    <p>{{element.nombre}}</p>
+                                    <p class="product-name">{{element.nombre}}</p>
                                     <p class="normal">S/. {{element.precio.toFixed(2)}}</p>
-                                    <input formControlName="cantidad" type="number"
-                                      class="cantidad" placeholder="Cantidad a comprar" min="1" max="{{element.stock}}"
-                                      (change)="getSemisuma(indice)" onKeypress=" event.returnValue = false;" >
-                                    <p class="normal">{{returnNombreFarmacia(element.id)}}</p>
+                                    <div class="cantidad-container">
+                                      <mat-icon class="icon" (click) = "disminuirCantidad(element.id)">remove</mat-icon>
+                                      <p>{{getCantidad(element.id)}}</p>
+                                      <mat-icon class="icon" (click) = "aumentarCantidad(element.id, element.stock)">add</mat-icon>
+                                    </div>
+                                    <p class="normal">S/. {{ getSubtotal(element.id, element.precio) }}</p>
                                     <mat-icon (click)="eliminarProducto(indice)" class="delete-product">delete</mat-icon>
-
                             </div>
                             </form >
                     </div>
