@@ -18,7 +18,7 @@ const routes: Routes = [
       {path:'ReporteMontoPorMes', component: ReporteMontoPorMesComponent},
       {path: 'RegistarProducto', component:RegistrarProductoComponent},
       {path: 'ListaDeProductos', component: ListaProductosComponent},
-      {path: 'ActualizarProducto', component:ActualizarProductoComponent},
+      {path: 'ActualizarProducto/:id', component:ActualizarProductoComponent},
       {path:'ListaDeVentas', component: MostrarVentasComponent},
       {path: 'ActualizarDatosFarmacia', component: ActualizarFarmaciaComponent},
       {path: '', component: FarmaciaComponent},

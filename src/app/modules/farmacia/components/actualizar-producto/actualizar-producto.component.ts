@@ -3,7 +3,7 @@ import { Categoria } from '../../../../models/categoria';
 import { Component, OnInit, Query } from '@angular/core';
 import { Product } from '../../../../models/product';
 import { ProductService } from '../../../../services/product.service';
-import { Form, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Form, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -19,6 +19,8 @@ export class ActualizarProductoComponent implements OnInit {
   product!: Product;
   idProduct!: any;
   idFarmacia!:any;
+  input = new FormControl('', [Validators.required]);
+
 
   constructor(
     private fb: FormBuilder,
@@ -39,7 +41,7 @@ export class ActualizarProductoComponent implements OnInit {
   }
 
   loadId(){
-    this.idFarmacia = this.route.snapshot.params['idFarmacia'];
+    this.idFarmacia = localStorage.getItem('farmaciaId');
   }
 
   reactiveForm(){
@@ -84,7 +86,7 @@ export class ActualizarProductoComponent implements OnInit {
     this.productService.updateProduct(this.idProduct, product).subscribe({
       next: (data)=>{
         this.snackBar.open('Producto actualizado exitosamente','',{duration: 3000});
-        this.router.navigate([`/ListaDeProductos/${this.idFarmacia}`]);
+        this.router.navigate([`farmacia/ListaDeProductos`]);
       },
       error:(err)=>{
         console.log(err);
@@ -96,5 +98,9 @@ export class ActualizarProductoComponent implements OnInit {
     this.categoriaService.getCategorias().subscribe((data: Categoria[])=>{
       this.categorias=data;
     })
+  }
+
+  gotoHome(){
+    this.router.navigate([`farmacia/ListaDeProductos`]);
   }
 }

@@ -28,18 +28,33 @@
     height: auto;
 }
 
-table{
+.mat-elevation-z8{
     margin: auto;
     width: 90%;
     height: auto;
 
 }
-mat-form-field{
-    margin-top: 10%;
-    font-size: 14px;
-    width: 90%;
-}
 
 .select{
     max-width: 150px;
+}
+
+.fondotabla{
+  min-width: 1120px;
+  overflow: auto;
+}
+
+@media only screen and (max-width: 1120px)
+{
+  .container{
+    padding: 2rem 0;
+    width: 1120px;
+    background-color: #FFFFFF;
+  }
+
+  .mat-elevation-z8{
+    width: 100%;
+  }
+
+
 }

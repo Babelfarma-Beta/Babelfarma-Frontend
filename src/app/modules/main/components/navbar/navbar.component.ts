@@ -10,6 +10,13 @@ export class NavbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(otherButton => otherButton.classList.remove('active'));
+        button.classList.add('active');
+      });
+    });
   }
 
 

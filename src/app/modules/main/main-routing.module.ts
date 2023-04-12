@@ -4,7 +4,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { InformacionComponent } from './components/informacion/informacion.component';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
 import { RegistroTipoComponent } from './components/registro-tipo/registro-tipo.component';
 import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recuperar-cuenta.component';
 import { RegistroCompradorComponent } from './components/registro-comprador/registro-comprador.component';
@@ -18,7 +17,7 @@ const routes: Routes = [
       {path: 'Informacion', component:InformacionComponent},
       {path: 'Contacatanos', component: ContactanosComponent},
       {path: 'Login', component: LoginComponent},
-      {path: '', component: HomeComponent},
+      {path: '', component: InformacionComponent},
       {path: 'registrotipo', component: RegistroTipoComponent},
       {path: 'RecuperaCuenta', component: RecuperarCuentaComponent},
     ]

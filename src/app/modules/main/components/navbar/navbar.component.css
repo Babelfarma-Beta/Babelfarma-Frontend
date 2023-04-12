@@ -2,84 +2,55 @@
   box-sizing: border-box;
 }
 
-mat-toolbar{
-    background-color: #EEE9DA;
+.list-options{
+  background-color: #3f51b5;
+  display: flex;
+  justify-content: end;
 }
 
-button{
+.button{
     margin: auto;
-    width: 250px;
+    font-size: 15px;
+    color: #FFFFFF;
+    background-color: #3f51b5;
+    border: none;
+    cursor: pointer;
+  }
+
+.button:hover{
+  background: linear-gradient(to bottom, transparent, #5d6bbd);
 }
 
-button:hover{
-  background-color: #3C84AB;
-  color: #FFF;
+.button.active {
+  background: linear-gradient(to bottom, transparent, #5d6bbd);
+}
+
+.buttons{
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .content-wrapper{
-  background-image: url('/assets/img/fondo.png');
-  background-size: cover;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
 }
 
-.container__responsive{
+.menu{
   display: none;
 }
 
 
-@media screen and (max-width: 1040px) {
-  .list-options {
+@media screen and (max-width: 500px) {
+  .menu{
+    display: block;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  .buttons{
     display: none;
   }
 
-  .container__responsive {
-    display: block;
-    z-index: 100;
-    max-width: 100%;
-    background-color: #EEE9DA;
-  }
-
-  .container__responsive-button {
-    margin: 0;
-    z-index: 100;
-    border: none;
-    width: 40px;
-    background-color: #EEE9DA;
-    cursor: pointer;
-    padding: 10px 0;
-  }
-
-  .container__responsive-options {
-    margin: 0;
-    position: absolute;
-    width: 100vw;
-    top: -200%;
-    transition: all 1s;
-    z-index: 10;
-  }
-
-  .responsive-button {
-    width: 100%;
-    border: 1px solid white;
-    background-color: #5C7396;
-    color: #FFFFFF;
-    padding: 10px 0;
-    position: relative;
-    text-align: center;
-    display: block;
-  }
-
-  .container__responsive-options.hidden {
-    top: -200%;
-  }
-
-  .container__responsive-options.visible {
-    top: 60px;
-    left: 0;
+  .list-options{
+    justify-content:flex-start;
   }
 }

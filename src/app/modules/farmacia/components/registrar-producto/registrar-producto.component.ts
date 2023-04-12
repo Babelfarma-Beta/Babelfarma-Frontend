@@ -98,7 +98,7 @@ export class RegistrarProductoComponent implements OnInit {
 
 
   gotoHome(){
-    this.router.navigate([`farmacia/Farmacia`]);
+    this.router.navigate([`farmacia/ListaDeProductos`]);
   }
 
   getCategorias(): void{

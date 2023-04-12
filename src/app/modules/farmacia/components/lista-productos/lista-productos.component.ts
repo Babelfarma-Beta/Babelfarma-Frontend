@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { ProductService } from '../../../../services/product.service';
 import { Product } from '../../../../models/product';
@@ -19,7 +19,10 @@ export class ListaProductosComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService,
+    private route: ActivatedRoute,
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -69,6 +72,14 @@ export class ListaProductosComponent implements OnInit {
         return p.id !== id ? p : false;
       })
     })
+  }
+
+  goToAddProduct(){
+    this.router.navigate(['farmacia/RegistarProducto']);
+  }
+
+  editProduct(id:any){
+    this.router.navigate([`farmacia/ActualizarProducto/${id}`]);
   }
 
 }

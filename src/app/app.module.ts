@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './modules/main/components/home/home.component';
 import { RegistroTipoComponent } from './modules/main/components/registro-tipo/registro-tipo.component';
 import { LoginComponent } from './modules/main/components/login/login.component';
 import { ContactanosComponent } from './modules/main/components/contactanos/contactanos.component';
@@ -28,7 +27,6 @@ import { ReporteProductoComprasComponent } from './modules/cliente/components/re
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     RegistroTipoComponent,
     LoginComponent,
     ContactanosComponent,
