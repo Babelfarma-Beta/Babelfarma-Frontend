@@ -1,0 +1,73 @@
+
+      <div class="container">
+        <h2 class="font-weight-bold">Registra tu producto aquí</h2>
+
+                    <div class="container align-self-center p-6">
+
+                        <h2 class="text-muted mb-5">Ingrese la siguiente información para registrar tu producto.</h2>
+
+                        <form [formGroup]="myForm" class="form-row">
+                          <mat-form-field class="form-group col-md-6">
+                            <mat-label class="font-weight-bold">Nombre del producto</mat-label>
+                            <input formControlName="nombre" matInput type="text" class="form-control" placeholder="Ingresa el nombre del producto" >
+                          </mat-form-field>
+
+                          <mat-form-field class="form-group col-md-6">
+                            <mat-label class="font-weight-bold">Precio</mat-label>
+                            <input formControlName="precio" matInput type="number" class="form-control" placeholder="Ingresa el precio por unidad">
+                          </mat-form-field>
+
+                          <mat-form-field class="form-group col-md-6">
+                            <mat-label class="font-weight-bold">Stock</mat-label>
+                            <input formControlName="stock" matInput type="number" class="form-control" placeholder="Ingresa la cantidad disponible">
+                          </mat-form-field>
+
+                          <mat-form-field class="form-group col-md-6">
+                            <mat-label class="font-weight-bold">Descripción del producto</mat-label>
+                            <input formControlName="descripcion" matInput type="text" class="form-control" placeholder="Ingrese la descripción del producto">
+                          </mat-form-field>
+
+                          <mat-form-field class="form-group col-md-6">
+                            <mat-label class="font-weight-bold">Categoría</mat-label>
+                            <mat-select class="select" formControlName="categoria" placeholder="Ingresa la categoria" [(value)]="idCategoria" required>
+                                  <mat-option *ngFor="let element of categorias" [value]="element.id">
+                                      {{element.categoria}}
+                                  </mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                            <div>
+                                <mat-label> Foto: </mat-label>
+                                <label for="file-upload" class="subir"> Subir archivo </label>
+
+                                <input
+                                  id="file-upload"
+                                  accept="image/png, image/jpeg"
+                                  (change)="onFileChanged($event)"
+                                  type="file"
+                                  formControlName="picture"
+                                  class="input-file"
+                                />
+                                <span> {{ nameImg }}</span>
+                              </div>
+
+
+
+                            <button
+                            class="btn btn-primary"
+                            mat-raised-button
+                            type="button"
+                            (click)="saveProduct()">
+                            Registrar producto
+                            </button>
+                            <button
+                            class="btn btn-primary"
+                             mat-raised-button
+                            type="button"
+                            (click)="gotoHome()"
+                              >
+                             Cancelar
+                          </button>
+                        </form>
+                    </div>
+                  </div>
+

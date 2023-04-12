@@ -6,18 +6,13 @@
     <span id="title"></span>
 
     <div class="container-graphics">
-      <div class="icon-content shopping-cart">
-        <mat-icon class="icon shop-icon"
-         mat-notification-icon routerLink="CarritoCompras">shopping_cart</mat-icon>
-         <nav class="quantity" *ngIf="getCantidad()">{{getCantidad()}}</nav>
-      </div>
       <div class="icon-content">
         <mat-icon class="icon" [matMenuTriggerFor]="menu">account_circle</mat-icon>
         <mat-menu #menu="matMenu" class="menu">
           <div class="name-container">
             <span>Bienvenido {{name}}</span>
           </div>
-          <button mat-menu-item class="update-button" routerLink="ActualizarDatosCliente">
+          <button mat-menu-item class="update-button" routerLink="ActualizarDatosFarmacia">
             <mat-icon>border_color</mat-icon>
             <span class="button-text">Actualizar datos</span>
           </button>
@@ -44,7 +39,7 @@
       <mat-nav-list>
         <mat-list-item
           [routerLinkActive]="['active-nav']"
-          routerLink="Comprador"
+          routerLink="Farmacia"
         >
           <mat-icon class="nav-icon" mat-list-icon>home</mat-icon>
           <a class="nav-link" matLine>Inicio</a>
@@ -52,18 +47,34 @@
 
         <mat-list-item
           [routerLinkActive]="['active-nav']"
-          routerLink="Busqueda"
+          routerLink="ReporteMontoPorMes"
         >
-          <mat-icon class="nav-icon" mat-list-icon>add_shopping_cart</mat-icon>
-          <a class="nav-link" matLine>Productos</a>
+          <mat-icon class="nav-icon" mat-list-icon>assignment_turned_in</mat-icon>
+          <a class="nav-link" matLine>Montos</a>
         </mat-list-item>
 
         <mat-list-item
-          [routerLinkActive]="['active-nav']"
-          routerLink="ReporteProductoCompras"
+        [routerLinkActive]="['active-nav']"
+        routerLink="RegistarProducto"
         >
           <mat-icon class="nav-icon" mat-list-icon>assignment_turned_in</mat-icon>
-          <a class="nav-link" matLine>Compras</a>
+          <a class="nav-link" matLine>Nuevo producto</a>
+        </mat-list-item>
+
+        <mat-list-item
+        [routerLinkActive]="['active-nav']"
+        routerLink="ListaDeProductos"
+        >
+          <mat-icon class="nav-icon" mat-list-icon>assignment_turned_in</mat-icon>
+          <a class="nav-link" matLine>Procuctos</a>
+        </mat-list-item>
+
+        <mat-list-item
+        [routerLinkActive]="['active-nav']"
+        routerLink="ListaDeVentas"
+        >
+          <mat-icon class="nav-icon" mat-list-icon>assignment_turned_in</mat-icon>
+          <a class="nav-link" matLine>Ventas</a>
         </mat-list-item>
 
         <mat-list-item class="logout"

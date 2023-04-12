@@ -86,11 +86,11 @@ export class LoginComponent implements OnInit {
     for(const f of this.farmacias) {
       if(f.correoContacto==c && f.contraseña==p && f.role.id==1)
       {
-        this.idFarmaciaIngresada=f.id
+        localStorage.setItem('farmaciaId', f.id.toString());
         this.snackBar.open('Ingreso exitoso', '', {
           duration: 3000,
         });
-        this.router.navigate([`/Farmacia/${this.idFarmaciaIngresada}`]);
+        this.router.navigate([`farmacia`]);
         break;
       }
        x++;
