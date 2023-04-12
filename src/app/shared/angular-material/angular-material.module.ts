@@ -18,6 +18,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { MatListModule } from '@angular/material/list';
     FormsModule,
     MatTabsModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
 
   ],
   exports:[
@@ -64,7 +66,8 @@ import { MatListModule } from '@angular/material/list';
     FormsModule,
     MatTabsModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
 ]
 })
 export class AngularMaterialModule { }

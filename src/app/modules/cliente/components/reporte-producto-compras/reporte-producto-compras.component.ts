@@ -23,7 +23,7 @@ export class ReporteProductoComprasComponent {
   }
 
   getCompras(){
-    this.idCliente = this.route.snapshot.params['id'];
+    this.idCliente = localStorage.getItem('userId');
     this.ventasService.getVentasByIdCliente(this.idCliente).subscribe({
       next: (data)=>{
         this.processVentasMontoResponse(data);

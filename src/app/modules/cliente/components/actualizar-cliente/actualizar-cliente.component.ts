@@ -40,7 +40,7 @@ export class ActualizarClienteComponent implements OnInit {
   }
 
   loadId(){
-    this.idCliente = this.route.snapshot.paramMap.get('id');
+    this.idCliente = localStorage.getItem('userId');
   }
 
   reactiveForm(){
@@ -106,12 +106,16 @@ export class ActualizarClienteComponent implements OnInit {
           this.snackBar.open('El cliente fue actualizado con exito!', '', {
             duration: 3000,
           });
-          this.router.navigate([`/Comprador/${this.idCliente}`]);
+          this.router.navigate([`client/Comprador`]);
         },
         error: (err) => {
           console.log(err);
         },
       });
+  }
+
+  gotoHome(){
+    this.router.navigate([`client/Comprador`]);
   }
 
   getDistritos(): void{

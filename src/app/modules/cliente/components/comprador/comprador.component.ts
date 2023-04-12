@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 import { FarmaciaService } from 'src/app/services/farmacia.service';
 import { Farmacia } from 'src/app/models/farmacia';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comprador',
@@ -29,6 +30,7 @@ export class CompradorComponent implements OnInit {
 
   constructor(    private productService: ProductService,
     private farmaciaService: FarmaciaService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -65,6 +67,9 @@ export class CompradorComponent implements OnInit {
     this.products=dateProduct;
   }
 
+  gotoBusqueda(){
+    this.router.navigate([`client/Busqueda`]);
+  }
 
 }
 

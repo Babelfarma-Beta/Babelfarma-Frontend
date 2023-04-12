@@ -31,8 +31,8 @@
                       <p class="subtotal summary-inf">Subtotal: S/.{{subtotal().toFixed(2)}}</p>
                       <p class="total summary-inf">Total a pagar: S/.{{subtotal().toFixed(2)}}</p>
                             <div class="summary-buttons">
-                                <button mat-raised-button class="button" routerLink="/RutaFarmacia/{{idClienteIngresado}}">Comprar</button>
-                                <button mat-raised-button class="clear-car" (click)="vaciarCarrito()">Eliminar</button>
+                                <button mat-raised-button class="button" (click)="registrarVentas()">Comprar</button>
+                                <button mat-raised-button class="clear-car" (click)="vaciarCarrito()">Vaciar</button>
                             </div>
 
                     </div>

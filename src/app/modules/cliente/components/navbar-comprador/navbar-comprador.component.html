@@ -1,44 +1,3 @@
-<!-- <mat-toolbar>
-    <img src="/assets/img/logo.png" class="logo">
-    <div class="columna">
-        <div class="c1">
-          <mat-chip-list>
-          <mat-chip class="opciones" routerLink="Comprador/{{idComprador}}">
-           Inicio
-          </mat-chip>
-          <mat-chip class="opciones" routerLink="Busqueda/{{idComprador}}">
-          Buscar Productos
-          </mat-chip>
-           <mat-chip class="opciones" routerLink="ReporteProductoCompras/{{idComprador}}">
-            Reporte de Compras
-          </mat-chip>
-          <mat-chip class="opciones" (click)="salir()">
-            Salir
-            </mat-chip>
-        </mat-chip-list>
-
-        </div>
-        <div>
-            <mat-chip-list >
-                <mat-chip class="opciones" routerLink="MedicamentosRecomendados/{{idComprador}}">
-                  Medicamentos recomendados
-                </mat-chip>
-                <mat-chip class="opciones" routerLink="MostrarFarmacias/{{idComprador}}">
-                  Farmacia
-                </mat-chip>
-                <mat-chip class="opciones" routerLink="ActualizarDatosCliente/{{idComprador}}">
-                  Actualizar datos
-                </mat-chip>
-              </mat-chip-list>
-        </div>
-    </div>
-    <img src="/assets/img/compra.PNG" class="compra" routerLink="CarritoCompras/{{idComprador}}">
-</mat-toolbar>
-
-
-<div class="content-wrapper">
-  <router-outlet></router-outlet>
-</div> -->
 <div class="container-main" [class.is-mobile]="mobileQuery.matches">
   <mat-toolbar class="toolbar">
     <button mat-icon-button (click)="snav.toggle()">
@@ -47,12 +6,26 @@
     <span id="title"></span>
 
     <div class="container-graphics">
-      <div class="icon-content">
+      <div class="icon-content shopping-cart">
         <mat-icon class="icon shop-icon"
          mat-notification-icon routerLink="CarritoCompras">shopping_cart</mat-icon>
+         <nav class="quantity" *ngIf="getCantidad()">{{getCantidad()}}</nav>
       </div>
       <div class="icon-content">
-        <mat-icon class="icon">account_circle</mat-icon>
+        <mat-icon class="icon" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+        <mat-menu #menu="matMenu" class="menu">
+          <div class="name-container">
+            <span>Bienvenido {{name}}</span>
+          </div>
+          <button mat-menu-item class="update-button" routerLink="ActualizarDatosCliente">
+            <mat-icon>border_color</mat-icon>
+            <span class="button-text">Actualizar datos</span>
+          </button>
+          <button mat-menu-item class="update-button" (click)="salir()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span class="button-text">Salir</span>
+          </button>
+        </mat-menu>
       </div>
       </div>
   </mat-toolbar>

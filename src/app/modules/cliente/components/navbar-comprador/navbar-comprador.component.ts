@@ -2,6 +2,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CarritoDeComprasService } from '../../../../services/carrito-de-compras.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-navbar-comprador',
@@ -11,6 +12,7 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 
 export class NavbarCompradorComponent implements OnInit, OnDestroy {
 
+  name!: string;
   idComprador!:any;
   mobileQuery!: MediaQueryList;
   fillerNav = Array.from({ length: 5 }, (_, i) => `Nav Item ${i + 1}`);
@@ -21,7 +23,9 @@ export class NavbarCompradorComponent implements OnInit, OnDestroy {
     private media: MediaMatcher,
     private carritoService: CarritoDeComprasService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private clientService: ClienteService
+
     ) {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -29,11 +33,7 @@ export class NavbarCompradorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.loadId();
-  }
-
-  loadId(){
-    this.idComprador = this.route.snapshot.params['id'];
+    this.getClientName();
   }
 
   ngOnDestroy(): void {
@@ -43,6 +43,26 @@ export class NavbarCompradorComponent implements OnInit, OnDestroy {
   salir(){
     this.carritoService.setproductosCarrito([]);
     this.router.navigate(['/']);
+  }
+
+  getCantidad(): any{
+    let carrito = localStorage.getItem('carrito');
+
+
+    if(carrito)
+    {
+      let arreglo = JSON.parse(carrito);
+      return arreglo.length;
+    }
+  }
+
+  getClientName(){
+      let clientId = localStorage.getItem('userId');
+
+      this.clientService.getClienteId(clientId).subscribe((data)=>{
+        this.name= data.nombres;
+      })
+
   }
 
 

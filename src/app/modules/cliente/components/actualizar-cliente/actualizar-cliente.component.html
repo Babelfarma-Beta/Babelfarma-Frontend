@@ -1,84 +1,60 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-<body>
-    <section class="contact-box">
-        <div class="row no-gutters bg-dark">
-            <div class="col-xl-5 col-lg-12 register-bg">
-
-            </div>
-            <div class="col-xl-7 col-lg-8 d-flex">
-                <div class="container align-self-center p-6">
-                    <h1 class="font-weight-bold">Actualiza tus datos</h1>
-
-                    <p class="text-muted mb-5">Modifique la información que desee actualizar</p>
-                    <form [formGroup]="myForm">
-                        <div class="form-row mb-2">
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">DNI<span class="text-danger">*</span></label>
-                                <input formControlName="dni" type="number" class="form-control" placeholder="Ingresa tu número de DNI" readonly>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Nombres<span class="text-danger">*</span></label>
-                                <input formControlName="nombres" type="text" class="form-control" placeholder="Ingresa tu nombre" readonly>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Apellido Paterno<span class="text-danger">*</span></label>
-                                <input formControlName="apellidoPaterno" type="text" class="form-control" placeholder="Ingresa tus apellido paterno" readonly>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Apellido Materno<span class="text-danger">*</span></label>
-                                <input formControlName="apellidoMaterno" type="text" class="form-control" placeholder="Ingresa tus apellido materno" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Correo electrónico<span class="text-danger">*</span></label>
-                            <input formControlName="correo" type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Número de celular<span class="text-danger">*</span></label>
-                            <input formControlName="celular" type="number" class="form-control" placeholder="Ingresa tu número de celular">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Dirección<span class="text-danger">*</span></label>
-                            <input formControlName="direccion" placeholder="Ingrese su dirección" type="text" class="form-control">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Distrito<span class="text-danger">*</span></label>
-                                <mat-select class="select" formControlName="distrito" placeholder="Seleccione su distrito"  [(value)]="idDistrito" required>
-                                  <mat-option *ngFor="let element of distritos" [value]="element.id">
-                                    {{element.nombreDistrito}}
-                                  </mat-option>
-                                </mat-select>
-                        </div>
-                        <button 
-                        class="btn btn-primary" 
-                        style="background-color: blue"
-                        type="button"
-                        (click)="updateCliente()">
-                        Actualizar datos
-                        </button>
-                        <button 
-                        class="btn btn-primary" 
-                        style="background-color: blue"
-                        type="button"
-                        routerLink="/Comprador/{{idCliente}}">
-                        Cancelar
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- Optional JavaScript; choose one of the two! -->
-
-<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-<!--
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
--->
-</body>
+<div class="container">
+  <h2 class="font-weight-bold">Actualiza tus datos</h2>
+<div class="content">
+    <div class="contact-box">
+                <h2 class="text-muted mb-5">Modifique la información que desee actualizar</h2>
+                <form [formGroup]="myForm" class="form-row">
+                        <mat-form-field class="form-group col-md-6">
+                            <mat-label class="font-weight-bold">DNI</mat-label>
+                            <input formControlName="dni" matInput [formControl]="input" class="form-control" placeholder="Ingresa tu número de DNI" readonly>
+                        </mat-form-field>
+                        <mat-form-field class="form-group col-md-6">
+                          <mat-label class="font-weight-bold">Nombres</mat-label>
+                            <input formControlName="nombres" matInput [formControl]="input" class="form-control" placeholder="Ingresa tu nombre" readonly>
+                        </mat-form-field>
+                        <mat-form-field class="form-group col-md-6">
+                          <mat-label class="font-weight-bold">Apellido Paterno</mat-label>
+                            <input formControlName="apellidoPaterno" matInput [formControl]="input" class="form-control" placeholder="Ingresa tus apellido paterno" readonly>
+                        </mat-form-field>
+                        <mat-form-field class="form-group col-md-6">
+                            <mat-label class="font-weight-bold">Apellido Materno</mat-label>
+                            <input formControlName="apellidoMaterno" matInput [formControl]="input" class="form-control" placeholder="Ingresa tus apellido materno" readonly>
+                        </mat-form-field>
+                    <mat-form-field class="form-group col-md-6">
+                      <mat-label class="font-weight-bold">Correo electrónico</mat-label>
+                      <input formControlName="correo" type="email" matInput [formControl]="input" class="form-control" placeholder="Ingresa tu correo electrónico">
+                  </mat-form-field>
+                  <mat-form-field class="form-group col-md-6">
+                    <mat-label class="font-weight-bold">Número de Celular</mat-label>
+                    <input formControlName="celular" type="number" matInput [formControl]="input" class="form-control" placeholder="Ingresa tu número de celular">
+                  </mat-form-field>
+                  <mat-form-field class="form-group col-md-6">
+                    <mat-label class="font-weight-bold">Dirección</mat-label>
+                    <input formControlName="direccion" matInput [formControl]="input" placeholder="Ingrese su dirección" type="text" class="form-control">
+                  </mat-form-field>
+                  <mat-form-field class="form-group col-md-6">
+                    <mat-label class="font-weight-bold">Distrito</mat-label>
+                    <mat-select class="select" formControlName="distrito" placeholder="Seleccione su distrito"  [(value)]="idDistrito" required>
+                              <mat-option *ngFor="let element of distritos" [value]="element.id">
+                                {{element.nombreDistrito}}
+                              </mat-option>
+                           </mat-select>
+                  </mat-form-field>
+                  <button
+                  mat-raised-button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="updateCliente()">
+                  Actualizar datos
+                  </button>
+                  <button
+                  mat-raised-button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="gotoHome()">
+                  Cancelar
+                  </button>
+              </form>
+          </div>
+    </div>
+  </div>

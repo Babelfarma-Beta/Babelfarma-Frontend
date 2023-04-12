@@ -55,7 +55,7 @@ export class CarritoComprasComponent implements OnInit {
 
   mostrarProc(){
       const carrito = JSON.parse(localStorage.getItem('carrito') ?? '[]');
-      this.processProductResponse(carrito);
+      this.productosCarrito= carrito;
       this.productosCarrito.forEach((element)=>{
       this.farmaciaService.getFarmaciaByProductoId(element.id).subscribe((data:Farmacia)=>{
         this.nombresFarmacias[element.id]=(data.nombreEstablecimiento);
@@ -84,20 +84,6 @@ export class CarritoComprasComponent implements OnInit {
 
   returnNombreFarmacia(id:any): string{
     return this.nombresFarmacias[id];
-  }
-
-  processProductResponse(resp: any) {
-    const dateProduct: Product[] = [];
-
-    let listCProduct = resp;
-
-
-    listCProduct.forEach((element: Product) => {
-      element.picture = 'data:image/jpeg;base64,' + element.picture;
-      dateProduct.push(element);
-    });
-
-    this.productosCarrito=dateProduct;
   }
 
 
@@ -140,7 +126,7 @@ export class CarritoComprasComponent implements OnInit {
   vaciarCarrito() {
     this.cantidadesProductos = [];
     this.productosCarrito = [];
-    localStorage.clear();
+    localStorage.removeItem('carrito');
   }
 
   getDistritos(): void {
@@ -169,7 +155,9 @@ export class CarritoComprasComponent implements OnInit {
 
   registrarVentas(){
     let c = new Cliente();
-    c.id= this.route.snapshot.params['id'];
+    const userId= localStorage.getItem('userId');
+    if(userId)
+    c.id= userId;
 
 
     for (let i = 0; i < this.productosCarrito.length; i++) {
@@ -185,39 +173,35 @@ export class CarritoComprasComponent implements OnInit {
           cantidad: this.cantidadesProductos[i].cantidad,
           precioTotal: (this.productosCarrito[i].precio)* (this.cantidadesProductos[i].cantidad),
         }
-        this.ventaService.addVenta(venta).subscribe(()=>{});
+        this.ventaService.addVenta(venta).subscribe(()=>{
+          for (let i = 0; i < this.productosCarrito.length; i++) {
+
+            const product: Product = {
+              id: 0,
+              nombre: this.productosCarrito[i].nombre,
+              precio: this.productosCarrito[i].precio,
+              stock: this.productosCarrito[i].stock - this.cantidadesProductos[i].cantidad,
+              descripcion: this.productosCarrito[i].descripcion,
+              categoria: this.productosCarrito[i].categoria,
+              picture: this.productosCarrito[i].picture
+            }
+            this.productService.updateProduct(this.productosCarrito[i].id, product).subscribe({
+              next: () => {
+                this.vaciarCarrito();
+                this.snackBar.open('Productos comprados con éxito', '', { duration: 3000 });
+                this.router.navigate([`client/Busqueda`]);
+              },
+              error: (err) => {
+                console.log(err);
+              }
+            });
+          }
+        });
 
       });
 
 
     }
-  }
-
-  actualizarStock() {
-    this.idClienteIngresado = this.route.snapshot.params['id'];
-
-    for (let i = 0; i < this.productosCarrito.length; i++) {
-
-      const product: Product = {
-        id: 0,
-        nombre: this.productosCarrito[i].nombre,
-        precio: this.productosCarrito[i].precio,
-        stock: this.productosCarrito[i].stock - this.cantidadesProductos[i].cantidad,
-        descripcion: this.productosCarrito[i].descripcion,
-        categoria: this.productosCarrito[i].categoria,
-        picture: this.productosCarrito[i].picture
-      }
-      this.productService.updateProduct(this.productosCarrito[i].id, product).subscribe({
-        next: (data) => {
-          this.snackBar.open('Productos comprados con éxito', '', { duration: 3000 });
-          this.router.navigate([`/Busqueda/${this.idClienteIngresado}`]);
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
-    }
-
   }
 }
 
