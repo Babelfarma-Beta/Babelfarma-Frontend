@@ -1,13 +1,70 @@
 
-   <mat-toolbar class="list-options">
-      <mat-icon class="menu" (click)="toggleMenu()">menu</mat-icon>
-      <div class="buttons">
-        <button routerLink="Informacion" class="button">Información</button>
-        <button routerLink="Contacatanos" class="button">Contáctanos</button>
-        <button routerLink="Login" class="button">Login</button>
-        <button routerLink="registrotipo" class="button">Regístate</button>
-      </div>
-    </mat-toolbar>
+<div class="container-main" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar class="toolbar">
+    <button mat-icon-button (click)="snav.toggle()" class="button-menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="buttons">
+        <button class="button" routerLink="Informacion">Información</button>
+        <button class="button" routerLink="Contacatanos"
+        >Contáctanos</button>
+        <button class="button" routerLink="Login">
+          Login</button>
+        <button class="button" routerLink="registrotipo"
+        >Regístrate</button>
+    </div>
+  </mat-toolbar>
+    <mat-sidenav-container
+    class="sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    >
+    <mat-sidenav
+      #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+      class="responsive-menu"
+    >
+            <mat-nav-list>
+              <mat-list-item
+                [routerLinkActive]="['active-nav']"
+                routerLink="Informacion"
+              >
+                <mat-icon class="nav-icon" mat-list-icon>home</mat-icon>
+                <a class="nav-link" matLine>Información</a>
+              </mat-list-item>
+
+              <mat-list-item
+                [routerLinkActive]="['active-nav']"
+                routerLink="Contacatanos"
+              >
+                <mat-icon class="nav-icon" mat-list-icon>add_shopping_cart</mat-icon>
+                <a class="nav-link" matLine>Contáctanos</a>
+              </mat-list-item>
+
+              <mat-list-item
+                [routerLinkActive]="['active-nav']"
+                routerLink="Login"
+              >
+                <mat-icon class="nav-icon" mat-list-icon>assignment_turned_in</mat-icon>
+                <a class="nav-link" matLine>Login</a>
+              </mat-list-item>
+
+              <mat-list-item
+              [routerLinkActive]="['active-nav']"
+              routerLink="registrotipo"
+            >
+              <mat-icon class="nav-icon" mat-list-icon>assignment_turned_in</mat-icon>
+              <a class="nav-link" matLine>Regístate</a>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
       <div class="content-wrapper">
         <router-outlet></router-outlet>
       </div>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>
