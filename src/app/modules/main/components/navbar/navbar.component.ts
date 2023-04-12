@@ -1,5 +1,3 @@
-import { Router, ActivatedRoute } from '@angular/router';
-import { CarritoDeComprasService } from '../../../../services/carrito-de-compras.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 
@@ -25,13 +23,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit(): void {
-    const buttons = document.querySelectorAll('.button');
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        buttons.forEach(otherButton => otherButton.classList.remove('active'));
-        button.classList.add('active');
-      });
-    });
   }
 
   ngOnDestroy(): void {

@@ -38,6 +38,7 @@
 }
 
 .responsive-menu{
+  display: none;
   background-color: #F0EFFF;
 }
 
@@ -85,6 +86,10 @@
 {
  .buttons{
   display: none;
+ }
+
+ .responsive-menu{
+  display: block;
  }
 
  .button-menu{
