@@ -1,11 +1,24 @@
-    <div class="contenedor">
-        <div class="main-div">
-            <mat-card class="example-card">
-                <p>Formulario de contacto</p>
-                <input type="text" class="form-control" placeholder="Ingresa tu nombre completo">
-                <input type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
-                <textarea placeholder="Ingresa su mensaje"  class="form-control2"> </textarea>
-                <button mat-raised-button>Enviar</button>
-            </mat-card>
-        </div>
+<div class="container">
+  <form [formGroup]="myForm" class="my-form">
+    <h2 class="text-center mb-4">Formulario de contacto</h2>
+      <div class="form-row">
+            <mat-form-field class="form-group col-md-6">
+              <label for="nombre">Nombre completo</label>
+              <input matInput formControlName="nombre" type="text" class="form-control" id="nombre">
+              <mat-error *ngIf="myForm.controls['nombre'].hasError('required')" class="message-error">El nombre completo es requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-group col-md-6">
+              <label for="email">Correo electrónico</label>
+              <input matInput formControlName="email" type="email" class="form-control" id="email">
+              <mat-error *ngIf="myForm.controls['email'].hasError('required')" class="message-error">El correo electrónico es requerido</mat-error>
+              <mat-error *ngIf="myForm.controls['email'].hasError('email')" class="message-error">El correo electrónico es inválido</mat-error>
+            </mat-form-field>
+          <mat-form-field class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea matInput matTextareaAutosize formControlName="mensaje" class="form-control" id="mensaje"></textarea>
+            <mat-error *ngIf="myForm.controls['mensaje'].hasError('required')" class="message-error">El mensaje es requerido</mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" class="button">Enviar</button>
     </div>
+  </form>
+</div>

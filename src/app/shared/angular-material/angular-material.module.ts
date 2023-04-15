@@ -19,7 +19,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
-
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [],
@@ -44,8 +44,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTabsModule,
     MatSidenavModule,
     MatListModule,
-    MatMenuModule
-
+    MatMenuModule,
+    SlickCarouselModule
   ],
   exports:[
     MatToolbarModule,
@@ -67,7 +67,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTabsModule,
     MatSidenavModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    SlickCarouselModule
 ]
 })
 export class AngularMaterialModule { }

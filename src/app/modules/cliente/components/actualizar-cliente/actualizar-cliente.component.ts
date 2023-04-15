@@ -15,7 +15,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./actualizar-cliente.component.css']
 })
 export class ActualizarClienteComponent implements OnInit {
-  input = new FormControl('', [Validators.required]);
   myForm!: FormGroup;
   idDistrito!: number;
   distritos!: Distrito[];
@@ -68,8 +67,8 @@ export class ActualizarClienteComponent implements OnInit {
         nombres: [this.cliente.nombres, [Validators.required]],
         apellidoPaterno: [this.cliente.apellidoPaterno, [Validators.required]],
         apellidoMaterno: [this.cliente.apellidoMaterno, [Validators.required]],
-        correo: [this.cliente.correo, [Validators.required]],
-        celular: [this.cliente.celular, [Validators.required]],
+        correo: [this.cliente.correo, [Validators.required, Validators.email]],
+        celular: [this.cliente.celular, [Validators.required, Validators.min(900000000), Validators.max(999999999)]],
         direccion: [this.cliente.direccion, [Validators.required]],
         distrito: [this.cliente.distrito.id, [Validators.required]],
 

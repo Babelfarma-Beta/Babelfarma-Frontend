@@ -6,16 +6,21 @@
                 <form [formGroup]="myForm" class="form-row">
                         <mat-form-field class="form-group col-md-6">
                             <mat-label class="font-weight-bold">Dirección del establecimiento</mat-label>
-                            <input formControlName="direccion" matInput [formControl]="input" class="form-control" placeholder="Ingresa la dirección del establecimiento">
+                            <input formControlName="direccion" matInput class="form-control" placeholder="Ingresa la dirección del establecimiento">
+                            <mat-error *ngIf="myForm.controls['direccion'].hasError('required')" class="message-error">La dirección es requerida</mat-error>
                         </mat-form-field>
                         <mat-form-field class="form-group col-md-6">
                           <mat-label class="font-weight-bold">Correo del establecimiento</mat-label>
-                            <input formControlName="correoContacto" matInput [formControl]="input" class="form-control" placeholder="Ingresa el correo">
+                            <input formControlName="correoContacto" matInput class="form-control" placeholder="Ingresa el correo">
+                            <mat-error *ngIf="myForm.controls['correoContacto'].hasError('required')" class="message-error">El correo electrónico es requerido</mat-error>
+                            <mat-error *ngIf="myForm.controls['correoContacto'].hasError('email')" class="message-error">El correo electrónico es inválido</mat-error>
                         </mat-form-field>
                         <mat-form-field class="form-group col-md-6">
                           <mat-label class="font-weight-bold">Número telefónico</mat-label>
-                            <input formControlName="telefonoContacto" matInput [formControl]="input" class="form-control" placeholder="Ingresa el número de teléfono">
-                        </mat-form-field>
+                            <input formControlName="telefonoContacto" matInput class="form-control" maxlength="9" placeholder="Ingresa el número de teléfono">
+                            <mat-error *ngIf="myForm.controls['telefonoContacto'].hasError('required')" class="message-error">El teléfono es requerido</mat-error>
+                            <mat-error *ngIf="myForm.controls['telefonoContacto'].hasError('min')" class="message-error">Debe tener 9 dígitos y comenzar con 9</mat-error>
+                            <mat-error *ngIf="myForm.controls['telefonoContacto'].hasError('max')" class="message-error">Máximo de 9 dígitos</mat-error>                        </mat-form-field>
                   <mat-form-field class="form-group col-md-6">
                     <mat-label class="font-weight-bold">Distrito</mat-label>
                     <mat-select class="select" formControlName="distrito" placeholder="Seleccione su distrito"  [(value)]="idDistrito" required>
@@ -27,9 +32,10 @@
                   <button
                   mat-raised-button
                   class="btn btn-primary"
-                  type="button"
+                  type="submit"
+                  [disabled]="myForm.invalid"
                   (click)="updateFarmacia()">
-                  Actualizar datos
+                    Actualizar datos
                   </button>
                   <button
                   mat-raised-button

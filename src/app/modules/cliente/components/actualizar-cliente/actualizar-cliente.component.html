@@ -6,31 +6,37 @@
                 <form [formGroup]="myForm" class="form-row">
                         <mat-form-field class="form-group col-md-6">
                             <mat-label class="font-weight-bold">DNI</mat-label>
-                            <input formControlName="dni" matInput [formControl]="input" class="form-control" placeholder="Ingresa tu número de DNI" readonly>
+                            <input formControlName="dni" matInput class="form-control" placeholder="Ingresa tu número de DNI" readonly>
                         </mat-form-field>
                         <mat-form-field class="form-group col-md-6">
                           <mat-label class="font-weight-bold">Nombres</mat-label>
-                            <input formControlName="nombres" matInput [formControl]="input" class="form-control" placeholder="Ingresa tu nombre" readonly>
+                            <input formControlName="nombres" matInput class="form-control" placeholder="Ingresa tu nombre" readonly>
                         </mat-form-field>
                         <mat-form-field class="form-group col-md-6">
                           <mat-label class="font-weight-bold">Apellido Paterno</mat-label>
-                            <input formControlName="apellidoPaterno" matInput [formControl]="input" class="form-control" placeholder="Ingresa tus apellido paterno" readonly>
+                            <input formControlName="apellidoPaterno" matInput class="form-control" placeholder="Ingresa tus apellido paterno" readonly>
                         </mat-form-field>
                         <mat-form-field class="form-group col-md-6">
                             <mat-label class="font-weight-bold">Apellido Materno</mat-label>
-                            <input formControlName="apellidoMaterno" matInput [formControl]="input" class="form-control" placeholder="Ingresa tus apellido materno" readonly>
+                            <input formControlName="apellidoMaterno" matInput class="form-control" placeholder="Ingresa tus apellido materno" readonly>
                         </mat-form-field>
                     <mat-form-field class="form-group col-md-6">
                       <mat-label class="font-weight-bold">Correo electrónico</mat-label>
-                      <input formControlName="correo" type="email" matInput [formControl]="input" class="form-control" placeholder="Ingresa tu correo electrónico">
+                      <input formControlName="correo" type="email" matInput class="form-control" placeholder="Ingresa tu correo electrónico">
+                      <mat-error *ngIf="myForm.controls['correo'].hasError('required')" class="message-error">El correo electrónico es requerido</mat-error>
+                      <mat-error *ngIf="myForm.controls['correo'].hasError('email')" class="message-error">El correo electrónico es inválido</mat-error>
                   </mat-form-field>
                   <mat-form-field class="form-group col-md-6">
                     <mat-label class="font-weight-bold">Número de Celular</mat-label>
-                    <input formControlName="celular" type="number" matInput [formControl]="input" class="form-control" placeholder="Ingresa tu número de celular">
+                    <input formControlName="celular" type="number" matInput class="form-control" maxlength="9" placeholder="Ingresa tu número de celular">
+                    <mat-error *ngIf="myForm.controls['celular'].hasError('required')" class="message-error">El número de celuar es requerida</mat-error>
+                    <mat-error *ngIf="myForm.controls['celular'].hasError('min')" class="message-error">Debe tener 9 dígitos y comenzar con 9</mat-error>
+                    <mat-error *ngIf="myForm.controls['celular'].hasError('max')" class="message-error">Máximo de 9 dígitos</mat-error>
                   </mat-form-field>
                   <mat-form-field class="form-group col-md-6">
                     <mat-label class="font-weight-bold">Dirección</mat-label>
-                    <input formControlName="direccion" matInput [formControl]="input" placeholder="Ingrese su dirección" type="text" class="form-control">
+                    <input formControlName="direccion" matInput placeholder="Ingrese su dirección" type="text" class="form-control">
+                    <mat-error *ngIf="myForm.controls['direccion'].hasError('required')" class="message-error">La dirección es requerida</mat-error>
                   </mat-form-field>
                   <mat-form-field class="form-group col-md-6">
                     <mat-label class="font-weight-bold">Distrito</mat-label>
@@ -44,6 +50,7 @@
                   mat-raised-button
                   class="btn btn-primary"
                   type="button"
+                  [disabled]="myForm.invalid"
                   (click)="updateCliente()">
                   Actualizar datos
                   </button>

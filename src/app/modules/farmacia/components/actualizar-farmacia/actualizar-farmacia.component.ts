@@ -15,7 +15,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActualizarFarmaciaComponent implements OnInit {
 
-  input = new FormControl('', [Validators.required]);
   myForm!: FormGroup;
   idDistrito!: number;
   distritos!: Distrito[];
@@ -46,8 +45,8 @@ export class ActualizarFarmaciaComponent implements OnInit {
   reactiveForm(){
     this.myForm = this.fb.group({
       direccion: ['', [Validators.required]],
-      correoContacto: ['', [Validators.required, Validators.maxLength]],
-      telefonoContacto: ['', [Validators.required]],
+      correoContacto: ['', [Validators.required, Validators.email]],
+      telefonoContacto: ['', [Validators.required, Validators.minLength(9)]],
       distrito: ['', [Validators.required]],
     }
     )
@@ -61,8 +60,8 @@ export class ActualizarFarmaciaComponent implements OnInit {
       this.farmacia = data;
       this.myForm = this.fb.group({
         direccion: [this.farmacia.direccion, [Validators.required]],
-        correoContacto: [this.farmacia.correoContacto, [Validators.required, Validators.maxLength]],
-        telefonoContacto: [this.farmacia.telefonoContacto, [Validators.required]],
+        correoContacto: [this.farmacia.correoContacto, [Validators.required, Validators.email]],
+        telefonoContacto: [this.farmacia.telefonoContacto, [Validators.required, Validators.min(900000000), Validators.max(999999999)]],
         distrito: [this.farmacia.distrito.id, [Validators.required]],
 
       });

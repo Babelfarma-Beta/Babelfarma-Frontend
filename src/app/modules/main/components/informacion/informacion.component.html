@@ -1,32 +1,23 @@
 <div class="container">
-
-   <div class="image-container">
-      <img src="/assets/img/logo.png" alt="babelfarma" class="logo">
-   </div>
-    <div class="section client">
-        <div class="image-container">
-
-        </div>
-        <div class="information">
-          <h2><b>Comprador</b></h2>
-          <ul class="list">
-              <li>Podrás acceder al   catálogo completo de medicamentos disponibles.</li>
-              <li>Podrás recojer tus productos comprados en la farmacia o en tu domicilio.</li>
-          </ul>
-        </div>
+  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel"  [config]="slideConfig">
+    <div ngxSlickItem class="slide" *ngFor="let slide of slides">
+      <div class="image-container">
+        <img src="assets/images/{{ slide.image }}" alt="{{ slide.title }}" class="image-slide">
       </div>
-
-    <div class="section farmacia">
-        <div class="information">
-            <h2><b>Dueño de farmacia</b></h2>
-            <ul class="list">
-              <li>Podrás ofrecer los medicamentos que esten disponibles en tú farmacia.</li>
-              <li>Podrás realizar tus ventas mediante la aplicación.</li>
-            </ul>
-        </div>
-        <div class="image-container">
-
+        <div class="slide-information">
+          <h1 class="slide-title">{{ slide.title }}</h1>
+          <p class="slide-text">{{ slide.description }}</p>
         </div>
     </div>
+  </ngx-slick-carousel>
+  <div class="details">
+    <div class="detail-container" *ngFor="let image of images">
+      <div class="image-container-detail">
+        <mat-icon class="icon">{{image.url}}</mat-icon>
+      </div>
+      <div class="detail">
+          <p class="detail-message">{{ image.detail }}</p>
+      </div>
+    </div>
+  </div>
 </div>
-

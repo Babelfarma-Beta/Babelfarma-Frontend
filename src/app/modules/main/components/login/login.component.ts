@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
   reactiveForm() {
     this.myForm = this.fb.group({
 
-      correo: ['', [Validators.required]],
+      correo: ['', [Validators.required,Validators.email]],
       contraseña: ['', [Validators.required]],
 
     });
