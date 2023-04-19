@@ -1,26 +1,38 @@
+<div class="container">
+  <form [formGroup]="myForm" class="my-form">
+    <h2 class="text-center mb-4">Recuperar contraseña</h2>
+      <div class="form-row">
+            <mat-form-field class="form-group col-md-6">
+              <label for="nombre">Ingresa tu número de DNI/RUC</label>
+              <input matInput formControlName="id" type="text" class="form-control">
+              <mat-error *ngIf="myForm.controls['id'].hasError('required')" class="message-error">Campo requerido</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-group col-md-6">
+              <label for="email">Correo electrónico</label>
+              <input matInput formControlName="correo" type="email" class="form-control">
+              <mat-error *ngIf="myForm.controls['correo'].hasError('required')" class="message-error">El correo electrónico es requerido</mat-error>
+              <mat-error *ngIf="myForm.controls['correo'].hasError('email')" class="message-error">El correo electrónico es inválido</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-group col-md-6">
+              <label for="password">Nueva Contraseña</label>
+              <input matInput formControlName="contrasenia" type="password" class="form-control">
+              <mat-error *ngIf="myForm.controls['contrasenia'].hasError('required')" class="message-error">La contraseña es requerida</mat-error>
+              <mat-error *ngIf="myForm.controls['contrasenia'].hasError('minlenght')" class="message-error"> Tu contraseña debe tener como mínimo 8 caracteres</mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-group col-md-6">
+              <label for="password">Confirmar Contraseña</label>
+              <input matInput formControlName="confContrasenia" type="password" class="form-control">
+              <mat-error *ngIf="myForm.controls['confContrasenia'].hasError('required')" class="message-error">Confirma tu contraseña</mat-error>
+            </mat-form-field>
 
-<div class="contenedor">
-<div [formGroup]="myForm" class="main-div">
-    <mat-card class="example-card">
-        <p class="title">Recuperar contraseña</p>
-        <img src="/assets/img/logo.png">
-        <input formControlName="id" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" minlength="8" maxlength="11" class="form-control" placeholder="Ingresa tu número de DNI/RUC">
-        <input formControlName="correo" onKeypress="if(event.keyCode == 32) event.returnValue = false;" type="email" class="form-control" placeholder="Ingresa tu correo electronico">
-        <input formControlName="contrasenia" type="password" class="form-control" placeholder="Ingresa tu nueva contraseña">
-        <div *ngIf="myForm.get('contrasenia')?.errors?.['minlength'] && myForm.get('contrasenia')?.touched" style="color:rgb(157, 0, 0);">
-            <span class="mda-form-msg">
-              Tu contraseña debe tener como mínimo 8 caracteres
-            </span>
+            <button
+            class="update"
+            mat-raised-button
+            color="primary"
+            (click)="updateContrasenia()"
+            [disabled]="myForm.invalid">
+            Actualizar contraseña
+            </button>
           </div>
-        <input formControlName="confContrasenia" type="password" class="form-control" placeholder="Confirma tu contraseña">
-        <button
-        mat-raised-button
-        type="button"
-        (click)="updateContrasenia()"
-        [disabled]="myForm.invalid">
-        Actualizar contraseña
-        </button>
-    </mat-card>
-
-   </div>
+  </form>
 </div>

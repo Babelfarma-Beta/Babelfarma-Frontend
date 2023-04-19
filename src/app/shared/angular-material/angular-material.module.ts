@@ -20,6 +20,20 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_FORMATS, MatDateFormats, MAT_DATE_LOCALE } from '@angular/material/core';
+
+const MY_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [],
@@ -45,7 +59,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports:[
     MatToolbarModule,
@@ -68,7 +84,14 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    SlickCarouselModule
-]
+    SlickCarouselModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+],
+providers: [
+  { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+  // Aquí se agrega el proveedor de formato de fecha
+  { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+],
 })
 export class AngularMaterialModule { }

@@ -19,14 +19,9 @@
     margin: auto;
 }
 
-.img1{
-  width: 200px;
-  height: 200px;
-}
-
-.img2{
+.image{
   width: 150px;
-  height: 200px;
+  height: 150px;
 }
 
 .content{
@@ -49,6 +44,12 @@ button{
   text-align: center;
   color: #FFF;
   font-size: 25px;
+}
+
+.img-container{
+  background: #FFF;
+  border-radius: 15px;
+  padding: 10px;
 }
 
 @media (max-width: 768px) {

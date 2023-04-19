@@ -1,121 +1,133 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-<body>
-    <section class="contact-box">
-        <div class="row no-gutters bg-dark">
-            <div class="col-xl-5 col-lg-12 register-bg">
-            </div>
-            <div class="col-xl-7 col-lg-8 d-flex">
-                <div class="container align-self-center p-6">
-                    <h1 class="font-weight-bold">Crea tu cuenta de Comprador</h1>
 
-                    <p class="text-muted mb-5">Ingrese la siguiente información para registrarte.</p>
+    <div class="container">
 
-                    <form [formGroup]="myForm" class="myForm">
-                        <div class="form-row mb-2">
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">DNI<span class="text-danger">*</span></label>
-                                <input formControlName="dni" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" minlength="8" maxlength="8" class="form-control" placeholder="Ingresa tu número de DNI">
+                    <h1 class="font-weight-bold title">Crea tu cuenta de Comprador</h1>
+                    <div class="content">
+                              <h2 class="text-muted">Ingrese la siguiente información para registrarte.</h2>
+                              <div class="form-container">
+                              <form [formGroup]="myForm" class="form-row" id="container" autocomplete="off">
+                                <div class="first-part">
+                                    <mat-form-field class="form-group col-md-6">
+                                      <mat-label class="font-weight-bold">DNI</mat-label>
+                                      <input formControlName="dni" matInput class="form-control" placeholder="Ingresa su DNI">
+                                      <mat-error *ngIf="myForm.controls['dni'].hasError('required')" class="message-error">El DNI es requerido</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field class="form-group col-md-6">
+                                      <mat-label class="font-weight-bold">Nombres</mat-label>
+                                      <input formControlName="nombres" matInput class="form-control" placeholder="Ingresa sus nombres">
+                                      <mat-error *ngIf="myForm.controls['nombres'].hasError('required')" class="message-error">Sus nombres son requeridos</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field class="form-group col-md-6">
+                                      <mat-label class="font-weight-bold">Apellido Paterno</mat-label>
+                                      <input formControlName="apellidoPaterno" matInput class="form-control" placeholder="Ingresa su apellido paterno">
+                                      <mat-error *ngIf="myForm.controls['apellidoPaterno'].hasError('required')" class="message-error">Su apellido paterno es requerido</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field class="form-group col-md-6">
+                                      <mat-label class="font-weight-bold">Apellido Materno</mat-label>
+                                      <input formControlName="apellidoMaterno" matInput class="form-control" placeholder="Ingresa su apellido materno">
+                                      <mat-error *ngIf="myForm.controls['apellidoMaterno'].hasError('required')" class="message-error">Su apellido materno es requerido</mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field class="form-group col-md-6">
+                                      <mat-select class="select" formControlName="sexo" placeholder="Seleccione su sexo" required>
+                                        <mat-option value="Masculino"> Masculino </mat-option>
+                                        <mat-option value="Femenino"> Femenino </mat-option>
+                                      </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field class="form-group col-md-6">
+                                    <mat-label class="font-weight-bold">Correo electrónico</mat-label>
+                                      <input formControlName="correo" matInput class="form-control" placeholder="Ingresa el correo">
+                                      <mat-error *ngIf="myForm.controls['correo'].hasError('required')" class="message-error">El correo electrónico es requerido</mat-error>
+                                      <mat-error *ngIf="myForm.controls['correo'].hasError('email')" class="message-error">El correo electrónico es inválido</mat-error>
+                                  </mat-form-field>
+                                  <div class="first-button"></div>
+                                  <button mat-raised-button class="btn first-button" type="button" (click)="onNextClick()">Siguiente</button>
+                                </div>
+                                <div class="first-options">
+                                  <div class="form-group col-md-6">
+                                      <div class="form-check">
+                                          <mat-label class="form-check-label text-muted">Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad</mat-label>
+                                      </div>
+                                  </div>
+                                  <div class="button-container">
+                                  <button
+                                  class="btn btn-primary"
+                                  mat-raised-button
+                                  (click)="saveCliente()"
+                                  [disabled]="myForm.invalid"
+                                  >
+                                  Registrate
+                                  </button>
+                                  <button
+                                  class="btn btn-primary"
+                                  mat-raised-button
+                                  routerLink="/home/registrotipo"
+                                  >
+                                  Cancelar
+                                  </button>
+                                  </div>
+                                </div>
+                                <div class="second-part">
+                                  <mat-form-field class="form-group col-md-6">
+                                    <mat-label class="font-weight-bold">Número de celular</mat-label>
+                                    <input formControlName="celular" matInput class="form-control" placeholder="Ingresa su npumero de celular">
+                                    <mat-error *ngIf="myForm.controls['celular'].hasError('required')" class="message-error">El número de celular es requerido</mat-error>
+                                  </mat-form-field>
+                                  <mat-form-field class="form-group col-md-6">
+                                    <mat-label class="font-weight-bold">Seleccione su fecha de nacimiento</mat-label>
+                                    <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha" formControlName="fechaNacimiento" class="form-control">
+                                    <mat-datepicker-toggle matSuffix [for]="picker" class="schedule"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                  </mat-form-field>
+                                  <mat-form-field class="form-group col-md-6">
+                                    <mat-label class="font-weight-bold">Dirección</mat-label>
+                                    <input formControlName="direccion" matInput class="form-control" placeholder="Ingrese su dirección">
+                                    <mat-error *ngIf="myForm.controls['direccion'].hasError('required')" class="message-error">La dirección es requerida</mat-error>
+                                  </mat-form-field>
+                                  <mat-form-field class="form-group col-md-6">
+                                    <mat-label class="font-weight-bold">Distrito</mat-label>
+                                    <mat-select class="select" formControlName="distrito" placeholder="Seleccione su distrito"  [(value)]="idDistrito" required>
+                                              <mat-option *ngFor="let element of distritos" [value]="element.id">
+                                                {{element.nombreDistrito}}
+                                              </mat-option>
+                                          </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field class="form-group col-md-6">
+                                    <mat-label class="font-weight-bold">Contraseña</mat-label>
+                                    <input formControlName="contraseña" type="password"  matInput class="form-control" placeholder="Ingrese su dirección">
+                                    <mat-error *ngIf="myForm.controls['contraseña'].hasError('required')" class="message-error">La dirección es requerida</mat-error>
+                                    <mat-error *ngIf="myForm.controls['contraseña'].hasError('minlength')" class="message-error">Tu contraseña debe tener como mínimo 8 caracteres</mat-error>
+                                  </mat-form-field>
+                                  <mat-form-field class="form-group col-md-6">
+                                    <mat-label class="font-weight-bold">Confirmar contraseña</mat-label>
+                                    <input formControlName="confContraseña" type="password"  matInput class="form-control" placeholder="Repita su contraseña">
+                                    <mat-error *ngIf="myForm.controls['confContraseña'].hasError('required')" class="message-error">Repita su contraseña</mat-error>
+                                  </mat-form-field>
+                                  <button mat-raised-button class="btn second-button" type="button" (click)="onPreviousClick()">Anterior</button>
+                                </div>
+                                  <div class="form-group col-md-6">
+                                      <div class="form-check">
+                                          <mat-label class="form-check-label text-muted">Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad</mat-label>
+                                      </div>
+                                  </div>
+                                  <div class="button-container">
+                                  <button
+                                  class="btn btn-primary"
+                                  mat-raised-button
+                                  (click)="saveCliente()"
+                                  [disabled]="myForm.invalid"
+                                  >
+                                  Registrate
+                                  </button>
+                                  <button
+                                  class="btn btn-primary"
+                                  mat-raised-button
+                                  routerLink="/home/registrotipo"
+                                  >
+                                  Cancelar
+                                  </button>
+                                  </div>
+                              </form>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Nombres<span class="text-danger">*</span></label>
-                                <input formControlName="nombres" onKeypress="if(event.keyCode == 32 || (event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) event.returnValue = true; else event.returnValue = false;" type="text" class="form-control" placeholder="Ingresa tu nombre">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Apellido Paterno<span class="text-danger">*</span></label>
-                                <input formControlName="apellidoPaterno" onKeypress="if(event.keyCode == 32 || (event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) event.returnValue = true; else event.returnValue = false;" type="text" class="form-control" placeholder="Ingresa tu apellido paterno">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Apellido Materno<span class="text-danger">*</span></label>
-                                <input formControlName="apellidoMaterno" onKeypress="if(event.keyCode == 32 || (event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122)) event.returnValue = true; else event.returnValue = false;" type="text" class="form-control" placeholder="Ingresa tu apellido materno">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label class="font-weight-bold">Sexo:<span class="text-danger">*</span></label>
-                                <select name="sexo" class="box" formControlName="sexo">
-                                        <option value disabled selected hidden>Seleccione una opción</option>
-                                        <option class="box__option">Masculino</option>
-                                        <option class="box__option">Femenino</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Correo electrónico<span class="text-danger">*</span></label>
-                            <input formControlName="correo" onKeypress="if(event.keyCode == 32) event.returnValue = false;" type="email" class="form-control" placeholder="Ingresa tu correo electrónico">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Número de celular<span class="text-danger">*</span></label>
-                            <input formControlName="celular" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;" minlength="9" maxlength="9" class="form-control" placeholder="Ingresa tu número de celular">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Seleccione tu fecha de nacimiento<span class="text-danger">*</span></label>
-                            <br>
-                            <input formControlName="fechaNacimiento" type="date" id="start" name="trip-start" value="AAAA-MM-DD" class="fecha">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Dirección<span class="text-danger">*</span></label>
-                            <input formControlName="direccion" placeholder="Ingrese su dirección" type="text" class="form-control">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Distrito<span class="text-danger">*</span></label>
-                                <mat-select class="select" formControlName="distrito" placeholder="Seleccione su distrito" [(value)]="idDistrito" required>
-                                  <mat-option *ngFor="let element of distritos" [value]="element.id">
-                                    {{element.nombreDistrito}}
-                                  </mat-option>
-                                </mat-select>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="font-weight-bold">Contraseña<span class="text-danger">*</span></label>
-                            <input formControlName="contraseña" type="password" class="form-control" placeholder="Ingresa tu contraseña"/>
-                            <div *ngIf="myForm.get('contraseña')?.errors?.['minlength'] && myForm.get('contraseña')?.touched" style="color:rgb(157, 0, 0);">
-                                <span class="mda-form-msg">
-                                  Tu contraseña debe tener como mínimo 8 caracteres
-                                </span>
-                              </div>
-                        </div>
+                  </div>
+      </div>
 
-                        <div class="form-group mb-3">
-
-                            <label class="font-weight-bold">Confirmar contraseña<span class="text-danger">*</span></label>
-                            <input formControlName="confContraseña" type="password" class="form-control" placeholder="Repita su contraseña">
-                        </div>
-                        <div class="form-group mb-5">
-                            <div class="form-check">
-                                <label class="form-check-label text-muted">Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad</label>
-                            </div>
-                        </div>
-                        <button
-                        class="btn btn-primary"
-                        style="background-color: blue"
-                        type="button"
-                        (click)="saveCliente()"
-                        [disabled]="myForm.invalid"
-                        >
-                        Registrate
-                        </button>
-                        <button
-                        class="btn btn-primary"
-                        style="background-color: blue"
-                        type="button"
-                        routerLink="/home/registrotipo"
-                        >
-                        Cancelar
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- Optional JavaScript; choose one of the two! -->
-
-
-<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-
-<!-- Option 2: Separate Popper and Bootstrap JS -->
-
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-
-</body>

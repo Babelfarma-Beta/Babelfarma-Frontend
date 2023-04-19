@@ -72,7 +72,7 @@ export class RecuperarCuentaComponent implements OnInit {
               this.snackBar.open('Se actualizó correctamente la contraseña', '', {
                 duration: 3000,
               });
-              this.router.navigate(['/Login']);
+              this.router.navigate(['home/Login']);
             },
             error: (err) => {
               console.log(err);

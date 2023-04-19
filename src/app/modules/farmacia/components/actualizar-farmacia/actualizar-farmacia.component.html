@@ -17,7 +17,7 @@
                         </mat-form-field>
                         <mat-form-field class="form-group col-md-6">
                           <mat-label class="font-weight-bold">Número telefónico</mat-label>
-                            <input formControlName="telefonoContacto" matInput class="form-control" maxlength="9" placeholder="Ingresa el número de teléfono">
+                            <input formControlName="telefonoContacto" matInput type="number" class="form-control" maxlength="9" placeholder="Ingresa el número de teléfono">
                             <mat-error *ngIf="myForm.controls['telefonoContacto'].hasError('required')" class="message-error">El teléfono es requerido</mat-error>
                             <mat-error *ngIf="myForm.controls['telefonoContacto'].hasError('min')" class="message-error">Debe tener 9 dígitos y comenzar con 9</mat-error>
                             <mat-error *ngIf="myForm.controls['telefonoContacto'].hasError('max')" class="message-error">Máximo de 9 dígitos</mat-error>                        </mat-form-field>

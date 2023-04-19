@@ -1,90 +1,134 @@
-:root{
-    --color-dark: #15181f;
-    --color-dark-x: #2d343f;
-    --color-dark-xx: #1f232b;
-    --color-light: #ffff;
-    --color-grey: #f5f6f8;
+*{
+  box-sizing: border-box;
 }
-
-body{
-    font-size: 'Roboto', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: var(--color-dark-xx);
-    letter-spacing:.05rem ;
-}
-
-.box{
-    background-color: lightgray;
-    border: 1px solid var(--color-dark-xx);
-    border-radius: .2rem;
-    padding: 1rem;
-    color: black;
-    width: 100%;
-    font-size: 15px;
-    height: 50px;
-}
-
-.bg-light{
-    background-color: var(--color-grey)!important;
+.container{
+  padding: 2rem;
+  background: linear-gradient(to bottom, #3f51b5, #6691e3);
+  min-height: 100vh;
 
 }
 
-.bg-dark{
-    background-color: var(--color-grey)!important;
+
+.text-muted{
+  color: rgb(202, 202, 202);
+  width: 100%;
 }
 
-.p-6{
-    padding: 4rem 7rem;
+.title{
+  font-weight: bold;
+  color: #FFF;
 }
 
-.contact-box{
 
-    padding: auto;
-    background-image: url('/assets/img/fondo.png');
-    background-size: cover;
-    padding: 0rem;
+.form-check-label{
+  width: 100%;
+}
 
+
+.form-row{
+  width: 710px;
+  background: #F0EFFF;
+  height: 505px;
+  overflow: hidden;
+}
+
+.schedule{
+  font-size: 20px;
+}
+
+.first-part, .second-part{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  gap: 1rem 2rem;
+  height: 400px;
+  background: transparent;
+}
+
+.second-part{
+  margin-top: 10px;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form-container{
+  padding: 2rem;
+  background: #F0EFFF;
+  border-radius: 15px;
 }
 
 .btn{
-    font-weight: 400;
-    padding: 1rem 2rem;
-    border-radius: 5rem;
-    min-width: 10rem;
-    margin: 10px 10px 10px 0;
+  width: 200px;
+  height: 50px;
 }
 
-.btn-outline-dark{
-    border: 2px solid var(--color-dark-xx);
-    background-color: transparent;
+.form-check{
+  text-align: center;
+  padding: 1rem 0;
 }
 
-.form-control{
-    background-color: lightgray;
-    border: 2px solid var(--color-dark-xx);
-    border-radius: .2rem;
-    padding: 1.3rem 1rem;
+.button-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.select{
-    background-color: lightgray;
-    border-radius: .2rem;
-    padding: 0.4rem;
-}
-
-.register-bg{
-    background-image: url('/assets/img/logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    
+.btn-primary{
+  background: #3f51b5;
+  color: #FFF;
 }
 
 
-@media only screen and (max-width: 770px)
-{
-    .p-6{
-        padding: 30px!important;
-    }
-  
+@media only screen and (max-width: 800px){
+  .container{
+    padding: 2rem 0;
+  }
+
+  .first-part, .second-part{
+    display: block;
+    height: auto;
+  }
+
+  .form-row{
+    width: 100vw;
+    padding: 10px;
+    overflow: auto;
+  }
+
+  .col-md-6{
+    width: 100%;
+  }
+
+  .form-container{
+    padding: 1rem 0;
+  }
+
+  .second-button, .first-options, .first-button{
+    display: none;
+  }
+
+  .second-part{
+    margin: 0;
+  }
+
+  .button-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    row-gap: 1rem;
+    column-gap: .8rem;
+  }
+
+  .btn{
+    width: 100%;
+  }
+
 }
+
+
+

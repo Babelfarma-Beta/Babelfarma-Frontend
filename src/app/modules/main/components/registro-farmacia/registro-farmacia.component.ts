@@ -18,6 +18,8 @@ export class RegistroFarmaciaComponent implements OnInit {
   myForm!: FormGroup;
   idDistrito!: number;
   distritos!: Distrito[];
+  container!: HTMLElement;
+
 
   constructor(
     private fb: FormBuilder,
@@ -31,6 +33,15 @@ export class RegistroFarmaciaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.container = document.getElementById('container') as HTMLElement;
+  }
+
+  onNextClick() {
+    this.container.scrollTop += 900;
+  }
+
+  onPreviousClick() {
+    this.container.scrollTop -= 900;
   }
 
   getDistritos(): void{
@@ -83,7 +94,7 @@ export class RegistroFarmaciaComponent implements OnInit {
           this.snackBar.open('Se ha registrado correctamente', '', {
             duration: 3000
           });
-          this.router.navigate(['/Login']);
+          this.router.navigate(['home/Login']);
         },
         error:(err)=>{
           console.log(err);

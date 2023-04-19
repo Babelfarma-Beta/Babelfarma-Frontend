@@ -1,7 +1,7 @@
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Distrito } from 'src/app/models/distrito';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -18,6 +18,7 @@ export class RegistroCompradorComponent implements OnInit {
   myForm!: FormGroup;
   idDistrito!: number;
   distritos!: Distrito[];
+  container!: HTMLElement;
 
   constructor(
     private fb: FormBuilder,
@@ -31,7 +32,18 @@ export class RegistroCompradorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.container = document.getElementById('container') as HTMLElement;
   }
+
+
+  onNextClick() {
+    this.container.scrollTop += 900;
+  }
+
+  onPreviousClick() {
+    this.container.scrollTop -= 900;
+  }
+
 
   reactiveForm() {
     this.myForm = this.fb.group({
@@ -82,7 +94,7 @@ export class RegistroCompradorComponent implements OnInit {
           this.snackBar.open('El cliente fue registrado con exito!', '', {
             duration: 3000,
           });
-          this.router.navigate(['/Login']);
+          this.router.navigate(['home/Login']);
         },
         error: (err) => {
           console.log(err);
