@@ -58,13 +58,13 @@ export class RegistroCompradorComponent implements OnInit {
   reactiveForm() {
     this.myForm = this.fb.group({
       id: [''],
-      dni: ['', [Validators.required]],
+      dni: ['', [Validators.required, Validators.min(10000000), Validators.max(99999999)]],
       nombres: ['', [Validators.required]],
       apellidoPaterno: ['', [Validators.required]],
       apellidoMaterno: ['', [Validators.required]],
       sexo: ['', [Validators.required]],
-      correo: ['', [Validators.required]],
-      celular: ['', [Validators.required]],
+      correo: ['', [Validators.required, Validators.email]],
+      celular: ['', [Validators.required, Validators.min(900000000),Validators.max(999999999)]],
       fechaNacimiento: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
       contraseña: ['', [Validators.required, Validators.minLength(8)]],

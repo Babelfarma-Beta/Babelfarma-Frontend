@@ -9,8 +9,9 @@
                                 <div class="first-part">
                                     <mat-form-field class="form-group col-md-6">
                                       <mat-label class="font-weight-bold">DNI</mat-label>
-                                      <input formControlName="dni" matInput class="form-control" placeholder="Ingresa su DNI">
+                                      <input formControlName="dni" type="number" matInput class="form-control" placeholder="Ingresa su DNI">
                                       <mat-error *ngIf="myForm.controls['dni'].hasError('required')" class="message-error">El DNI es requerido</mat-error>
+                                      <mat-error *ngIf="myForm.controls['dni'].hasError('min') || myForm.controls['dni'].hasError('max')" class="message-error">Tiene que teber 8 díditos</mat-error>
                                     </mat-form-field>
                                     <mat-form-field class="form-group col-md-6">
                                       <mat-label class="font-weight-bold">Nombres</mat-label>
@@ -31,7 +32,10 @@
                                       <mat-select class="select" formControlName="sexo" placeholder="Seleccione su sexo" required>
                                         <mat-option value="Masculino"> Masculino </mat-option>
                                         <mat-option value="Femenino"> Femenino </mat-option>
+                                        <mat-option value="LGBTIQ PLUS Z KAI">LGBTIQ PLUS Z KAI</mat-option>
+                                        <mat-option value="Indefinido"> Prefiero no decirlo  </mat-option>
                                       </mat-select>
+                                      <mat-error *ngIf="myForm.controls['sexo'].hasError('required')" class="message-error">El sexo es requerido</mat-error>
                                   </mat-form-field>
                                   <mat-form-field class="form-group col-md-6">
                                     <mat-label class="font-weight-bold">Correo electrónico</mat-label>
@@ -69,14 +73,17 @@
                                 <div class="second-part">
                                   <mat-form-field class="form-group col-md-6">
                                     <mat-label class="font-weight-bold">Número de celular</mat-label>
-                                    <input formControlName="celular" matInput class="form-control" placeholder="Ingresa su npumero de celular">
+                                    <input formControlName="celular" type="number" matInput class="form-control" placeholder="Ingresa su npumero de celular">
                                     <mat-error *ngIf="myForm.controls['celular'].hasError('required')" class="message-error">El número de celular es requerido</mat-error>
+                                    <mat-error *ngIf="myForm.controls['celular'].hasError('min') || myForm.controls['dni'].hasError('max')" class="message-error">Tiene que teber 9 díditos y empezar con 9</mat-error>
+
                                   </mat-form-field>
                                   <mat-form-field class="form-group col-md-6">
                                     <mat-label class="font-weight-bold">Seleccione su fecha de nacimiento</mat-label>
                                     <input matInput [matDatepicker]="picker" placeholder="Seleccione una fecha" formControlName="fechaNacimiento" class="form-control">
                                     <mat-datepicker-toggle matSuffix [for]="picker" class="schedule"></mat-datepicker-toggle>
                                     <mat-datepicker #picker></mat-datepicker>
+                                    <mat-error *ngIf="myForm.controls['fechaNacimiento'].hasError('required')" class="message-error">Fecha inválida</mat-error>
                                   </mat-form-field>
                                   <mat-form-field class="form-group col-md-6">
                                     <mat-label class="font-weight-bold">Dirección</mat-label>
@@ -90,6 +97,7 @@
                                                 {{element.nombreDistrito}}
                                               </mat-option>
                                           </mat-select>
+                                          <mat-error *ngIf="myForm.controls['distrito'].hasError('required')" class="message-error">El distrito es requerido</mat-error>
                                   </mat-form-field>
                                   <mat-form-field class="form-group col-md-6">
                                     <mat-label class="font-weight-bold">Contraseña</mat-label>
