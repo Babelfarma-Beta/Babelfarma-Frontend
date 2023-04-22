@@ -1,4 +1,3 @@
-import { FarmaciaService } from '../../../../services/farmacia.service';
 import { CategoriaService } from '../../../../services/categoria.service';
 import { Categoria } from '../../../../models/categoria';
 import { Component, OnInit } from '@angular/core';
@@ -6,7 +5,7 @@ import { Product } from '../../../../models/product';
 import { ProductService } from '../../../../services/product.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -36,6 +35,8 @@ export class RegistrarProductoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // TODO document why this method 'ngOnInit' is empty
+
   }
 
   loadId(){

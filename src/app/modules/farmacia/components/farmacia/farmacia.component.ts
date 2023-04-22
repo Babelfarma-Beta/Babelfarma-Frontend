@@ -42,7 +42,7 @@ export class FarmaciaComponent implements OnInit {
 
 
   processProductResponse(resp: any) {
-    const nameProduct: String[]= [];
+    const nameProduct: string[]= [];
     const account: number[] = [];
 
     let listCProduct= resp;
@@ -77,10 +77,10 @@ export class FarmaciaComponent implements OnInit {
   }
 
   processProductCategoryResponse(resp: any) {
-    const nameCategory: String[]= [];
-    const nameUniqueCategories: String[]=[];
+    const nameCategory: string[]= [];
+    const nameUniqueCategories: string[]=[];
     const account: number[] = [];
-    var x=0;
+    let x=0;
 
     let listCProduct= resp;
 
@@ -91,10 +91,7 @@ export class FarmaciaComponent implements OnInit {
 
     for(const element of nameCategory)
     {
-      if(nameUniqueCategories.includes(element)){
-
-      }
-      else{
+      if(!nameUniqueCategories.includes(element)){
         nameUniqueCategories.push(element);
       }
     }

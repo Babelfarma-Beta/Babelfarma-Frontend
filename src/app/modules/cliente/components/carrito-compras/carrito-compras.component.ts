@@ -48,7 +48,7 @@ export class CarritoComprasComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    // TODO document why this method 'ngOnInit' is empty
   }
   checked = false;
   disabled = false;

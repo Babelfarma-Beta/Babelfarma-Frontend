@@ -5,7 +5,7 @@ import { DistritoService } from '../../../../services/distrito.service';
 import { FarmaciaService } from '../../../../services/farmacia.service';
 import { Farmacia } from '../../../../models/farmacia';
 import { Distrito } from '../../../../models/distrito';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -36,6 +36,8 @@ export class ActualizarFarmaciaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // TODO document why this method 'ngOnInit' is empty
+
   }
 
   loadId(){
