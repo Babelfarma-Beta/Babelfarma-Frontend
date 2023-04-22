@@ -51,13 +51,10 @@ export class ReporteProductoComprasComponent {
 
     for(let element of productos)
     {
-      if(productosUnicos.includes(element)){
-        // TODO document why this block is empty
-
-      }
-      else{
+      if(!productosUnicos.includes(element)){
         productosUnicos.push(element);
       }
+
     }
 
       for(let element of productosUnicos){
