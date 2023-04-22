@@ -1,5 +1,4 @@
 import { FarmaciaService } from '../../../../services/farmacia.service';
-import { Cliente } from '../../../../models/cliente';
 import { Farmacia } from '../../../../models/farmacia';
 import { VentaService } from '../../../../services/venta.service';
 import { Venta } from '../../../../models/venta';
@@ -151,9 +150,7 @@ export class CarritoComprasComponent implements OnInit {
   }
 
   registrarVentas(){
-    let c = new Cliente();
     const userId= localStorage.getItem('userId');
-
 
     for (let i = 0; i < this.productosCarrito.length; i++) {
       this.farmaciaService.getFarmaciaByProductoId(this.productosCarrito[i].id).subscribe((data)=>{
