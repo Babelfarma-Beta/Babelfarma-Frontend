@@ -1,4 +1,4 @@
-import { Venta } from './../models/venta';
+import { Venta, VentaView } from './../models/venta';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -15,18 +15,18 @@ export class VentaService {
   }
 
   getVentasByIdFarmacia(farmaciaId: any){
-    return this.http.get<Venta[]>(`${this.basePath}/ventas/buscarporfarmacia/${farmaciaId}`)
+    return this.http.get<VentaView[]>(`${this.basePath}/ventas/buscarporfarmacia/${farmaciaId}`)
   }
 
   getVentasByClienteName(nombre:any, idFarmacia:any)
   {
-    return this.http.get<Venta[]>(`${this.basePath}/ventas/buscarporcliente/${nombre}/${idFarmacia}`)
+    return this.http.get<VentaView[]>(`${this.basePath}/ventas/buscarporcliente/${nombre}/${idFarmacia}`)
 
   }
 
   getVentasByMes(mes:any, idFarmacia:any)
   {
-    return this.http.get<Venta[]>(`${this.basePath}/ventas/buscarpormes/${mes}/${idFarmacia}`)
+    return this.http.get<VentaView[]>(`${this.basePath}/ventas/buscarpormes/${mes}/${idFarmacia}`)
 
   }
 

@@ -17,7 +17,7 @@
 
 .form-row{
   display: grid;
-  grid-template-columns: repeat(2,minmax(350px,1fr));
+  grid-template-columns: repeat(2,minmax(300px,1fr));
   column-gap: 3rem;
   row-gap: 2rem;
   background-color: #F0EFFF;
@@ -26,22 +26,15 @@
 }
 
 
-@media only screen and (max-width: 1070px)
-{
+
+
+@media only screen and (max-width: 1040px){
   .form-row{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    width: 100%;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
   }
 
   .container{
     padding: 2rem 0;
     width: 100%;
-  }
-}
-
-@media only screen and (max-width: 600px){
-  .container{
-    padding: 2rem 0;
   }
 }

@@ -46,7 +46,7 @@ export class ReporteProductoComprasComponent {
     let listCVenta= resp;
 
     listCVenta.forEach((element:Venta) => {
-      productos.push(element.producto.nombre);
+      productos.push(element.productName);
     });
 
     for(let element of productos)
@@ -63,7 +63,7 @@ export class ReporteProductoComprasComponent {
       for(let element of productosUnicos){
         x=0;
           for(let venta of listCVenta){
-            if(venta.producto.nombre==element){
+            if(venta.productName==element){
               x+=1;
             }
 

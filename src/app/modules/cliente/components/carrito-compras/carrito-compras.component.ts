@@ -156,19 +156,17 @@ export class CarritoComprasComponent implements OnInit {
   registrarVentas(){
     let c = new Cliente();
     const userId= localStorage.getItem('userId');
-    if(userId)
-    c.id= userId;
 
 
     for (let i = 0; i < this.productosCarrito.length; i++) {
-      let f= new Farmacia();
       this.farmaciaService.getFarmaciaByProductoId(this.productosCarrito[i].id).subscribe((data)=>{
         const venta:Venta={
           id:0,
           fecha: new Date(),
-          cliente: c,
-          farmacia: data,
-          producto: this.productosCarrito[i],
+          idCliente: userId,
+          idFarmacia: data.id,
+          idProducto: this.productosCarrito[i].id,
+          productName: this.productosCarrito[i].nombre,
           precioUnit: this.productosCarrito[i].precio,
           cantidad: this.cantidadesProductos[i].cantidad,
           precioTotal: (this.productosCarrito[i].precio)* (this.cantidadesProductos[i].cantidad),

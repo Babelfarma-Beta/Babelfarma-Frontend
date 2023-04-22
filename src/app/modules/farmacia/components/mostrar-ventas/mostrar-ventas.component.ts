@@ -1,10 +1,9 @@
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatTabGroup } from '@angular/material/tabs';
-import { ActivatedRoute } from '@angular/router';
 import { VentaService } from '../../../../services/venta.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Venta } from '../../../../models/venta';
+import { VentaView } from '../../../../models/venta';
 import { Component, ViewChild } from '@angular/core';
 
 @Component({
@@ -13,11 +12,11 @@ import { Component, ViewChild } from '@angular/core';
   styleUrls: ['./mostrar-ventas.component.css']
 })
 export class MostrarVentasComponent {
-  displayedColumns: string[] = ['id', 'cantidad', 'fecha', 'precioTotal', 'precioUnit','cliente', 'farmacia','producto'];
-  dataSource = new MatTableDataSource<Venta>();
+  displayedColumns: string[] = ['id', 'cantidad', 'fecha', 'precioTotal', 'precioUnit','cliente','producto'];
+  dataSource = new MatTableDataSource<VentaView>();
 
   MyForm!: FormGroup;
-  ventas!: Venta[];
+  ventas!: VentaView[];
   idFarmacia!:any;
   numeroMes!:any;
 
@@ -25,7 +24,6 @@ export class MostrarVentasComponent {
   @ViewChild('tab') tabGroup!: MatTabGroup;
 
   constructor(private ventasService: VentaService,
-    private route: ActivatedRoute,
     private fb: FormBuilder) {
        this.reactiveForm()
     }
@@ -43,7 +41,7 @@ export class MostrarVentasComponent {
 
   getVentas() {
     this.idFarmacia = localStorage.getItem('farmaciaId');
-    this.ventasService.getVentasByIdFarmacia(this.idFarmacia).subscribe((data:Venta[])=>{
+    this.ventasService.getVentasByIdFarmacia(this.idFarmacia).subscribe((data:VentaView[])=>{
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     })
