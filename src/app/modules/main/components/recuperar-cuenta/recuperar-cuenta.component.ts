@@ -52,6 +52,7 @@ export class RecuperarCuentaComponent implements OnInit {
     if(contraseña == confContraseña){
       if(this.myForm.get('id')!.value >= 10000000 && this.myForm.get('id')!.value <= 99999999){
         this.clienteService.getClienteDniCorreo(this.myForm.get('id')!.value, this.myForm.get('correo')!.value).subscribe((data: Cliente)=>{
+          if(data){
           this.cliente={
             id: data.id,
             dni: data.dni,
@@ -78,10 +79,17 @@ export class RecuperarCuentaComponent implements OnInit {
               console.log(err);
             },
           });
+        }
+        else{
+          this.snackBar.open('DNI/RUC o correo incorrecto', '', {
+            duration: 3000,
+          });
+        }
         });
       }
       else if(this.myForm.get('id')!.value >= 10000000000 && this.myForm.get('id')!.value <= 99999999999){
         this.farmaciaService.getFarmaciaRucCorreo(this.myForm.get('id')!.value, this.myForm.get('correo')!.value).subscribe((data: Farmacia)=>{
+          if(data){
           this.farmacia={
             id: data.id,
             ruc: data.ruc,
@@ -106,6 +114,12 @@ export class RecuperarCuentaComponent implements OnInit {
               console.log(err);
             },
           });
+        }
+        else{
+          this.snackBar.open('DNI/RUC o correo incorrecto', '', {
+            duration: 3000,
+          });
+        }
         });
       }
       else{

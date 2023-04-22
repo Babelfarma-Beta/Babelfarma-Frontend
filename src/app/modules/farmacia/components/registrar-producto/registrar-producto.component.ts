@@ -29,8 +29,6 @@ export class RegistrarProductoComponent implements OnInit {
     private categoriaService: CategoriaService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private farmaciaService: FarmaciaService,
-    private route: ActivatedRoute
   ){
     this.reactiveForm();
     this.getCategorias();
@@ -48,8 +46,8 @@ export class RegistrarProductoComponent implements OnInit {
     this.myForm = this.fb.group({
       id:[''],
       nombre: ['', [Validators.required]],
-      precio: ['', [Validators.required]],
-      stock: ['', [Validators.required]],
+      precio: ['', [Validators.required, Validators.maxLength,Validators.min(0)]],
+      stock: ['', [Validators.required,  Validators.min(0)]],
       descripcion: ['', [Validators.required]],
       categoria: ['', [Validators.required]],
       picture: ['', [Validators.required]]

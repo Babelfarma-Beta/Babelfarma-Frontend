@@ -44,6 +44,7 @@ export class MostrarVentasComponent {
     this.ventasService.getVentasByIdFarmacia(this.idFarmacia).subscribe((data:VentaView[])=>{
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
+      this.paginator.firstPage();
     })
     this.MyForm = this.fb.group({
       nombre: [''],
@@ -58,7 +59,9 @@ export class MostrarVentasComponent {
       this.ventasService.getVentasByClienteName( nombreCliente,this.idFarmacia).subscribe(
         (data)=>{
           this.dataSource = new MatTableDataSource(data);
-      },
+          this.dataSource.paginator = this.paginator;
+          this.paginator.firstPage();
+              },
       (error: any) => {
         console.log('error en productos: ', error);
       }
@@ -68,6 +71,9 @@ export class MostrarVentasComponent {
       this.ventasService.getVentasByMes(this.numeroMes,this.idFarmacia).subscribe(
         (data)=>{
           this.dataSource = new MatTableDataSource(data);
+          this.dataSource.paginator = this.paginator;
+          this.paginator.firstPage();
+
       },
       (error: any) => {
         console.log('error en productos: ', error);

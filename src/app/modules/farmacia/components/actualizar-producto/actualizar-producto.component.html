@@ -1,5 +1,5 @@
         <div class="container">
-          <h2 class="font-weight-bold">Actualiza tus datos</h2>
+          <h2 class="font-weight-bold">Actualiza su producto</h2>
         <div class="content">
             <div class="contact-box">
                         <h2 class="text-muted mb-5">Modifique la información que desee actualizar</h2>
@@ -7,24 +7,31 @@
                                 <mat-form-field class="form-group col-md-6">
                                     <mat-label class="font-weight-bold">Nombre del producto</mat-label>
                                     <input formControlName="nombre" matInput [formControl]="input" class="form-control" placeholder="Ingresa el nombre del producto">
+                                    <mat-error *ngIf="myForm.controls['nombre'].hasError('required')" class="message-error">El nombre del producto es requerido</mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="form-group col-md-6">
                                   <mat-label class="font-weight-bold">Precio</mat-label>
-                                    <input formControlName="precio" matInput [formControl]="input" class="form-control" placeholder="Ingresa el precio por unidad">
+                                    <input formControlName="precio" type="number" matInput [formControl]="input" class="form-control" placeholder="Ingresa el precio por unidad">
+                                    <mat-error *ngIf="myForm.controls['precio'].hasError('required')" class="message-error">El precio es requerido</mat-error>
+                                    <mat-error *ngIf="myForm.controls['precio'].hasError('min')" class="message-error">El precio no puede ser menor a 0</mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="form-group col-md-6">
                                   <mat-label class="font-weight-bold">Stock</mat-label>
-                                    <input formControlName="stock" matInput [formControl]="input" class="form-control" placeholder="Ingresa la cantidad disponible">
+                                    <input formControlName="stock" type="number" matInput [formControl]="input" class="form-control" placeholder="Ingresa la cantidad disponible">
+                                    <mat-error *ngIf="myForm.controls['stock'].hasError('required')" class="message-error">El stock es requerido</mat-error>
+                                    <mat-error *ngIf="myForm.controls['stock'].hasError('min')" class="message-error">El stock no puede ser menor a 0</mat-error>
                                 </mat-form-field>
                                 <mat-form-field class="form-group col-md-6">
                                   <mat-label class="font-weight-bold">Descripción del producto</mat-label>
                                     <input formControlName="descripcion" matInput [formControl]="input" class="form-control" placeholder="Ingrese la descripción del producto">
+                                    <mat-error *ngIf="myForm.controls['descripcion'].hasError('required')" class="message-error">La descripción es requerida</mat-error>
                                 </mat-form-field>
 
                           <button
                           mat-raised-button
                           class="btn btn-primary"
                           type="button"
+                          [disabled]="myForm.invalid"
                           (click)="updateProduct()">
                           Actualizar datos
                           </button>

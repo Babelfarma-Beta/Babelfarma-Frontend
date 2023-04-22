@@ -59,9 +59,6 @@ export class ReporteMontoPorMesComponent {
         account.push(x);
       }
 
-
-    console.log(account);
-
     this.chartBar = new Chart('canvas-bar',{
       type:'bar',
       data:{

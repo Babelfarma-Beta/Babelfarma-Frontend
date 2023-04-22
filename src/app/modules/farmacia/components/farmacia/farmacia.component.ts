@@ -46,7 +46,6 @@ export class FarmaciaComponent implements OnInit {
     const account: number[] = [];
 
     let listCProduct= resp;
-    console.log('listCProduct', listCProduct);
 
     listCProduct.forEach((element:Product) => {
       nameProduct.push(element.nombre);

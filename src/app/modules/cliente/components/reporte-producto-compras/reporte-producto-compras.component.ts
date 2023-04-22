@@ -64,7 +64,7 @@ export class ReporteProductoComprasComponent {
         x=0;
           for(let venta of listCVenta){
             if(venta.productName==element){
-              x+=1;
+              x+=venta.cantidad;
             }
 
         }
@@ -77,7 +77,7 @@ export class ReporteProductoComprasComponent {
         labels: productosUnicos,
         datasets:[
           {
-            label:'Compras por Producto',
+            label:'Productos comprados',
             data:account,
             borderColor: '#3cba8f',
             backgroundColor:[

@@ -72,15 +72,12 @@ export class CarritoComprasComponent implements OnInit {
       this.cantidadesProductos.push(cantidad);
     })
 
-    console.log(this.cantidadesProductos);
   }
 
   getClienteId(){
     this.idClienteIngresado = this.route.snapshot.params['id'];
   }
 
-  //       this.registrarVentas(); Estas funciones se usan cuando se realiza la compra
-  //       this.actualizarStock(); Estas funciones se usan cuando se realiza la compra
 
   returnNombreFarmacia(id:any): string{
     return this.nombresFarmacias[id];

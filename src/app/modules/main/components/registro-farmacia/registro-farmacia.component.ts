@@ -34,6 +34,15 @@ export class RegistroFarmaciaComponent implements OnInit {
 
   ngOnInit(): void {
     this.container = document.getElementById('container') as HTMLElement;
+    window.addEventListener('resize', () => {
+      this.adjustScroll();
+    });
+  }
+
+  adjustScroll() {
+    if (window.innerWidth >= 800) {
+      this.container.scrollTop = 0;
+    }
   }
 
   onNextClick() {

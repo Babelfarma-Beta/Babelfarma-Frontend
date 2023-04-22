@@ -51,20 +51,19 @@ export class CompradorComponent implements OnInit {
   processProductResponse(resp: any) {
     const dateProduct: Product[] = [];
 
-    let listCProduct = resp;
+      let listCProduct = resp;
 
+      listCProduct.forEach((element: Product) => {
+        element.picture = 'data:image/jpeg;base64,' + element.picture;
+        dateProduct.push(element);
 
-    listCProduct.forEach((element: Product) => {
-      element.picture = 'data:image/jpeg;base64,' + element.picture;
-      dateProduct.push(element);
+        this.farmaciaService.getFarmaciaByProductoId(element.id).subscribe((data:Farmacia)=>{
+          this.nombresFarmacias[element.id]=(data.nombreEstablecimiento);
+        })
 
-      this.farmaciaService.getFarmaciaByProductoId(element.id).subscribe((data:Farmacia)=>{
-        this.nombresFarmacias[element.id]=(data.nombreEstablecimiento);
-      })
+      });
 
-    });
-
-    this.products=dateProduct;
+      this.products=dateProduct;
   }
 
   gotoBusqueda(){

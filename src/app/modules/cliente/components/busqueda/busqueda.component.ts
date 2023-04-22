@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
 import { Product } from '../../../../models/product';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-busqueda',
@@ -30,8 +31,8 @@ export class BusquedaComponent implements OnInit {
     private productService: ProductService,
     private categoriaService: CategoriaService,
     private fb: FormBuilder,
-    private carritoService: CarritoDeComprasService,
     private farmaciaService: FarmaciaService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -125,12 +126,19 @@ export class BusquedaComponent implements OnInit {
 
   AgregarAlCarrito(number: number): void {
     this.productService.getProductId(number).subscribe((data) => {
-      const carrito = JSON.parse(localStorage.getItem('carrito') ?? '[]');
-      const existeProducto = carrito.some((producto:any) => producto.id === data.id);
-      if (!existeProducto) {
-        carrito.push(data);
-        localStorage.setItem('carrito', JSON.stringify(carrito));
+      if(data.stock>=1)
+      {
+        const carrito = JSON.parse(localStorage.getItem('carrito') ?? '[]');
+        const existeProducto = carrito.some((producto:any) => producto.id === data.id);
+        if (!existeProducto) {
+          carrito.push(data);
+          localStorage.setItem('carrito', JSON.stringify(carrito));
+        }
       }
+      else
+      this.snackBar.open('Stock agotado', '', {
+        duration: 3000,
+      });
     });
   }
 

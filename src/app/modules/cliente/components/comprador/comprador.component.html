@@ -51,7 +51,7 @@
             <h2>Ofertas</h2>
           </div>
           <div class="offer-container">
-            <div class="offer">
+            <div class="offer" *ngIf="products && products.length > 0">
               <mat-card class="example-card">
                 <img [src]="products[0].picture" alt="Oferta Farmacia 1" class="offer-image">
                 <h3 class="offer-title">{{products[0].nombre}}</h3>
@@ -60,7 +60,7 @@
                 <button mat-raised-button (click)="gotoBusqueda()">Comprar ahora</button>
               </mat-card>
             </div>
-            <div class="offer">
+            <div class="offer" *ngIf="products && products.length > 1">
               <mat-card class="example-card">
                 <img [src]="products[1].picture" alt="Oferta Farmacia 2" class="offer-image">
                 <h3 class="offer-title">{{products[1].nombre}}</h3>
@@ -69,7 +69,7 @@
                 <button mat-raised-button (click)="gotoBusqueda()">Comprar ahora</button>
               </mat-card>
             </div>
-            <div class="offer">
+            <div class="offer" *ngIf="products && products.length > 2">
               <mat-card class="example-card">
                 <img [src]="products[2].picture" alt="Oferta Farmacia 3" class="offer-image">
                 <h3 class="offer-title">{{products[2].nombre}}</h3>
@@ -78,5 +78,4 @@
                 <button mat-raised-button (click)="gotoBusqueda()">Comprar ahora</button>
               </mat-card>
             </div>
-          </div>
     </div>

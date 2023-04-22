@@ -64,8 +64,8 @@ export class ActualizarProductoComponent implements OnInit {
         this.myForm = this.fb.group({
           id: this.product,
           nombre: [this.product.nombre, [Validators.required]],
-          precio: [this.product.precio, [Validators.required, Validators.maxLength]],
-          stock: [this.product.stock, [Validators.required]],
+          precio: [this.product.precio, [Validators.required, Validators.maxLength,Validators.min(0)]],
+          stock: [this.product.stock, [Validators.required,  Validators.min(0)]],
           descripcion: [this.product.descripcion, [Validators.required]],
           categoria: [this.product.categoria, [Validators.required]],
           picture:[this.product.picture, [Validators.required]],
