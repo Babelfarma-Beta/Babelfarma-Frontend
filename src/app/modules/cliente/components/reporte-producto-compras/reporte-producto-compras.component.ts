@@ -54,7 +54,6 @@ export class ReporteProductoComprasComponent {
       if(!productosUnicos.includes(element)){
         productosUnicos.push(element);
       }
-
     }
 
       for(let element of productosUnicos){
