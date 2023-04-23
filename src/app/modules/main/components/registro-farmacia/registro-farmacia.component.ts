@@ -62,14 +62,14 @@ export class RegistroFarmaciaComponent implements OnInit {
   reactiveForm(){
     this.myForm = this.fb.group({
       id: [''],
-      ruc: ['', [Validators.required]],
+      ruc: ['', [Validators.required, Validators.min(10000000000), Validators.max(99999999999)]],
       nombresDuenio: ['', [Validators.required]],
       apellidosDuenio: ['', [Validators.required]],
       nombreEstablecimiento: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
       distrito: ['', [Validators.required]],
-      correoContacto: ['', [Validators.required]],
-      telefonoContacto: ['', [Validators.required]],
+      correoContacto: ['', [Validators.required, Validators.email]],
+      telefonoContacto: ['', [Validators.required, Validators.min(900000000), Validators.max(999999999)]],
       contraseña: ['', [Validators.required, Validators.minLength(8)]],
       confContraseña:['', [Validators.required]]
     })

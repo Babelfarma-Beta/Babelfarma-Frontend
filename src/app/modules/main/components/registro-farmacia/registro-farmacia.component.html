@@ -8,35 +8,37 @@
               <div class="first-part">
                   <mat-form-field class="form-group col-md-6">
                     <mat-label class="font-weight-bold">Nombre del dueño</mat-label>
-                    <input formControlName="nombresDuenio" matInput class="form-control" placeholder="Ingresa su DNI">
+                    <input formControlName="nombresDuenio" matInput class="form-control" placeholder="Ingresa sus nombres">
                     <mat-error *ngIf="myForm.controls['nombresDuenio'].hasError('required')" class="message-error">Sus nombres son requeridos</mat-error>
                   </mat-form-field>
                   <mat-form-field class="form-group col-md-6">
                     <mat-label class="font-weight-bold">Apellidos del dueño</mat-label>
-                    <input formControlName="apellidosDuenio" matInput class="form-control" placeholder="Ingresa sus nombres">
+                    <input formControlName="apellidosDuenio" matInput class="form-control" placeholder="Ingresa sus apellidos">
                     <mat-error *ngIf="myForm.controls['apellidosDuenio'].hasError('required')" class="message-error">Sus apellidos son requeridos</mat-error>
                   </mat-form-field>
                   <mat-form-field class="form-group col-md-6">
                     <mat-label class="font-weight-bold">Nombre del establecimiento</mat-label>
-                    <input formControlName="nombreEstablecimiento" matInput class="form-control" placeholder="Ingresa su apellido paterno">
+                    <input formControlName="nombreEstablecimiento" matInput class="form-control" placeholder="Ingresa el nombre del establecimiento">
                     <mat-error *ngIf="myForm.controls['nombreEstablecimiento'].hasError('required')" class="message-error">El nombre del establecimiento es requerido</mat-error>
                   </mat-form-field>
                   <mat-form-field class="form-group col-md-6">
                     <mat-label class="font-weight-bold">Dirección del establecimiento</mat-label>
-                    <input formControlName="direccion" matInput class="form-control" placeholder="Ingresa su apellido materno">
+                    <input formControlName="direccion" matInput class="form-control" placeholder="Ingresa la dirección">
                     <mat-error *ngIf="myForm.controls['direccion'].hasError('required')" class="message-error">La dirección es requerida</mat-error>
                   </mat-form-field>
                   <mat-form-field class="form-group col-md-6">
                     <mat-label class="font-weight-bold">Correo del establecimiento</mat-label>
-                    <input formControlName="correoContacto" matInput class="form-control" placeholder="Ingresa el correo">
+                    <input formControlName="correoContacto" matInput type="email" class="form-control" placeholder="Ingresa el correo">
                     <mat-error *ngIf="myForm.controls['correoContacto'].hasError('required')" class="message-error">El correo electrónico es requerido</mat-error>
                     <mat-error *ngIf="myForm.controls['correoContacto'].hasError('email')" class="message-error">El correo electrónico es inválido</mat-error>
                   </mat-form-field>
 
                 <mat-form-field class="form-group col-md-6">
                   <mat-label class="font-weight-bold">RUC</mat-label>
-                    <input formControlName="ruc" matInput class="form-control" placeholder="Ingresa el correo">
+                    <input formControlName="ruc" matInput type="number" class="form-control" placeholder="Ingresa el RUC">
                     <mat-error *ngIf="myForm.controls['ruc'].hasError('required')" class="message-error">El RUC es requerido</mat-error>
+                    <mat-error *ngIf="myForm.controls['ruc'].hasError('min') || myForm.controls['ruc'].hasError('max')" class="message-error">El ruc debe tener 11 dígitos</mat-error>
+
                 </mat-form-field>
                 <div></div>
                 <button mat-raised-button class="btn first-button" type="button" (click)="onNextClick()">Siguiente</button>
@@ -68,8 +70,10 @@
               <div class="second-part">
                 <mat-form-field class="form-group col-md-6">
                   <mat-label class="font-weight-bold">Número de celular</mat-label>
-                  <input formControlName="telefonoContacto" matInput class="form-control" placeholder="Ingresa su número de contacto">
+                  <input formControlName="telefonoContacto" matInput type="number" class="form-control" placeholder="Ingresa su número de contacto">
                   <mat-error *ngIf="myForm.controls['telefonoContacto'].hasError('required')" class="message-error">El número de contacto es requerido</mat-error>
+                  <mat-error *ngIf="myForm.controls['telefonoContacto'].hasError('min')" class="message-error">Debe tener 9 dígitos y empezar con 9</mat-error>
+                  <mat-error *ngIf="myForm.controls['telefonoContacto'].hasError('max')" class="message-error">Máximo de 9 dígitos</mat-error>
                 </mat-form-field>
 
                 <mat-form-field class="form-group col-md-6">
@@ -82,7 +86,7 @@
                 </mat-form-field>
                 <mat-form-field class="form-group col-md-6">
                   <mat-label class="font-weight-bold">Contraseña</mat-label>
-                  <input formControlName="contraseña" type="password"  matInput class="form-control" placeholder="Ingrese su dirección">
+                  <input formControlName="contraseña" type="password"  matInput class="form-control" placeholder="Ingrese su contraseña">
                   <mat-error *ngIf="myForm.controls['contraseña'].hasError('required')" class="message-error">La dirección es requerida</mat-error>
                   <mat-error *ngIf="myForm.controls['contraseña'].hasError('minlength')" class="message-error">Tu contraseña debe tener como mínimo 8 caracteres</mat-error>
                 </mat-form-field>

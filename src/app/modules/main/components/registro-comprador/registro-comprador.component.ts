@@ -1,13 +1,13 @@
-
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Distrito } from 'src/app/models/distrito';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { DistritoService } from 'src/app/services/distrito.service';
 import { Cliente } from 'src/app/models/cliente';
 import { Role } from 'src/app/models/role';
+
 
 @Component({
   selector: 'app-registro-comprador',
@@ -45,7 +45,6 @@ export class RegistroCompradorComponent implements OnInit {
     }
   }
 
-
   onNextClick() {
     this.container.scrollTop += 900;
   }
@@ -71,7 +70,9 @@ export class RegistroCompradorComponent implements OnInit {
       distrito: ['', [Validators.required]],
       confContraseña: ['', [Validators.required]],
     });
+
   }
+
 
   saveCliente(){
     const contraseña: string = this.myForm.get('contraseña')!.value;
@@ -83,6 +84,9 @@ export class RegistroCompradorComponent implements OnInit {
       let d= new Distrito();
       d.id= this.idDistrito;
 
+      const fechaNacimiento = new Date(this.myForm.get('fechaNacimiento')!.value);
+      fechaNacimiento.setDate(fechaNacimiento.getDate() + 1);
+
       const cliente: Cliente = {
         id: 0,
         dni: this.myForm.get('dni')!.value,
@@ -92,7 +96,7 @@ export class RegistroCompradorComponent implements OnInit {
         sexo: this.myForm.get('sexo')!.value,
         correo: this.myForm.get('correo')!.value,
         celular: this.myForm.get('celular')!.value,
-        fechaNacimiento: this.myForm.get('fechaNacimiento')!.value,
+        fechaNacimiento: fechaNacimiento,
         direccion: this.myForm.get('direccion')!.value,
         distrito:d,
         contraseña: this.myForm.get('contraseña')!.value,

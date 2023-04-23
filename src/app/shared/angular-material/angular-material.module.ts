@@ -21,19 +21,8 @@ import { MatListModule } from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MAT_DATE_FORMATS, MatDateFormats, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_DATE_LOCALE, DateAdapter } from '@angular/material/core';
 
-const MY_FORMATS: MatDateFormats = {
-  parse: {
-    dateInput: 'LL',
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 
 @NgModule({
   declarations: [],
@@ -61,7 +50,6 @@ const MY_FORMATS: MatDateFormats = {
     MatMenuModule,
     SlickCarouselModule,
     MatDatepickerModule,
-    MatNativeDateModule,
   ],
   exports:[
     MatToolbarModule,
@@ -86,12 +74,9 @@ const MY_FORMATS: MatDateFormats = {
     MatMenuModule,
     SlickCarouselModule,
     MatDatepickerModule,
-    MatNativeDateModule
 ],
 providers: [
   { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
-  // Aquí se agrega el proveedor de formato de fecha
-  { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
 ],
 })
 export class AngularMaterialModule { }

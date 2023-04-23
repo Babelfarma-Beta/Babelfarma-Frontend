@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ClienteService } from '../../../../services/cliente.service';
 import { Cliente } from '../../../../models/cliente';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit, enableProdMode } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',

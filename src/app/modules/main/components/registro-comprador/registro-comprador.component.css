@@ -31,10 +31,6 @@
   overflow: hidden;
 }
 
-.schedule{
-  font-size: 20px;
-}
-
 .first-part, .second-part{
   width: 100%;
   display: grid;
