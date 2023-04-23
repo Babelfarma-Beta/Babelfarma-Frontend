@@ -106,7 +106,9 @@ export class RegistroFarmaciaComponent implements OnInit {
           this.router.navigate(['home/Login']);
         },
         error:(err)=>{
-          console.log(err);
+          this.snackBar.open('Este correo ya está registrado como farmacia', '',{
+            duration: 5000,
+          });
         },
       });
     }

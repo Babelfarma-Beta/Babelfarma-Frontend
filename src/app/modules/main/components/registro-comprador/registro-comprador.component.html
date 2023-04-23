@@ -11,7 +11,7 @@
                                       <mat-label class="font-weight-bold">DNI</mat-label>
                                       <input formControlName="dni" type="number" matInput class="form-control" placeholder="Ingresa su DNI">
                                       <mat-error *ngIf="myForm.controls['dni'].hasError('required')" class="message-error">El DNI es requerido</mat-error>
-                                      <mat-error *ngIf="myForm.controls['dni'].hasError('min') || myForm.controls['dni'].hasError('max')" class="message-error">Tiene que teber 8 díditos</mat-error>
+                                      <mat-error *ngIf="myForm.controls['dni'].hasError('min') || myForm.controls['dni'].hasError('max')" class="message-error">Tiene que tener 8 díditos</mat-error>
                                     </mat-form-field>
                                     <mat-form-field class="form-group col-md-6">
                                       <mat-label class="font-weight-bold">Nombres</mat-label>
@@ -75,8 +75,8 @@
                                     <mat-label class="font-weight-bold">Número de celular</mat-label>
                                     <input formControlName="celular" type="number" matInput class="form-control" placeholder="Ingresa su npumero de celular">
                                     <mat-error *ngIf="myForm.controls['celular'].hasError('required')" class="message-error">El número de celular es requerido</mat-error>
-                                    <mat-error *ngIf="myForm.controls['celular'].hasError('min') || myForm.controls['celular'].hasError('max')" class="message-error">Tiene que teber 9 díditos y empezar con 9</mat-error>
-                                    <mat-error *ngIf="myForm.controls['celular'].hasError('max') || myForm.controls['celular'].hasError('max')" class="message-error">Máximo de 9 dígitos</mat-error>
+                                    <mat-error *ngIf="myForm.controls['celular'].hasError('min')" class="message-error">Debe tener 9 díditos y empezar con 9</mat-error>
+                                    <mat-error *ngIf="myForm.controls['celular'].hasError('max')" class="message-error">Máximo de 9 dígitos</mat-error>
 
                                   </mat-form-field>
                                   <mat-form-field class="form-group col-md-6">

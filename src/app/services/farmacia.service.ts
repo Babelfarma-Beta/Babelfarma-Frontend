@@ -69,5 +69,9 @@ export class FarmaciaService {
     return this.idFarmacia;
   }
 
+  getFarmaciaByCorreoAndContraseña(correo:any, contraseña:any){
+      return this.http.get<Farmacia>(`${this.basePath}/farmacias/correo/${correo}/contraseña/${contraseña}`)
+  }
+
 
 }

@@ -111,7 +111,9 @@ export class RegistroCompradorComponent implements OnInit {
           this.router.navigate(['home/Login']);
         },
         error: (err) => {
-          console.log(err);
+          this.snackBar.open('Este correo ya está registrado como cliente', '',{
+            duration: 5000,
+          });
         },
       });
     }

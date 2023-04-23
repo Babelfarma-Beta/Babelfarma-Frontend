@@ -42,6 +42,9 @@ export class ClienteService {
     return this.http.delete<Cliente>(`${this.basePath}/clientes/${id}`);
   }
 
+  getClienteByCorreoAndContraseña(correo:any, contraseña:any){
+    return this.http.get<Cliente>(`${this.basePath}/clientes/correo/${correo}/contraseña/${contraseña}`)
+  }
 
 
 }

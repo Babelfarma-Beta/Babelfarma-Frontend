@@ -4,7 +4,6 @@ import { DistritoService } from '../../../../services/distrito.service';
 import { ClienteService } from '../../../../services/cliente.service';
 import { Distrito } from '../../../../models/distrito';
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -36,6 +35,8 @@ export class ActualizarClienteComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    // TODO document why this method 'ngOnInit' is empty
+
   }
 
   loadId(){

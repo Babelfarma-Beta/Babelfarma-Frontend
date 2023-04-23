@@ -27,8 +27,6 @@ export class LoginComponent implements OnInit {
      private snackBar: MatSnackBar
      ) {
     this.reactiveForm();
-    this.getClientes();
-    this.getFarmacias();
    }
 
   ngOnInit(): void {
@@ -37,23 +35,6 @@ export class LoginComponent implements OnInit {
 
   }
 
-
-  getClientes(){
-    this.clienteService.getClientes().subscribe((data: Cliente[]) => {
-
-      this.clientes=data;
-
-    });
-
-  }
-
-  getFarmacias(){
-    this.farmaciaService.getFarmacias().subscribe((data: Farmacia[]) => {
-
-      this.farmacias=data;
-
-    });
-  }
 
   reactiveForm() {
     this.myForm = this.fb.group({
@@ -69,43 +50,26 @@ export class LoginComponent implements OnInit {
     let c= this.myForm.get('correo')!.value;
     let p= this.myForm.get('contraseña')!.value;
 
-
-    for(const element of this.clientes)
-    {
-      if(element.correo==c && element.contraseña==p && element.role.id==2)
-      {
-        this.idClienteIngresado=element.id
-        localStorage.setItem('userId', element.id.toString());
-        this.snackBar.open('Ingreso exitoso', '', {
-          duration: 3000,
-        });
-        this.router.navigate([`client`]);
-        break;
+    this.clienteService.getClienteByCorreoAndContraseña(c, p).toPromise().then((data: Cliente|undefined) => {
+      if (data) {
+          localStorage.setItem('userId', data.id.toString());
+          this.snackBar.open('Ingreso exitoso', '', { duration: 3000 });
+          this.router.navigate([`client`]);
       }
-      x++;
-    }
+  }).catch(() => {
+      this.farmaciaService.getFarmaciaByCorreoAndContraseña(c, p).toPromise().then((farmacia: Farmacia|undefined) => {
+          if (farmacia) {
+              localStorage.setItem('farmaciaId', farmacia.id.toString());
+              this.snackBar.open('Ingreso exitoso', '', { duration: 3000 });
+              this.router.navigate([`farmacia`]);
+          } else {
+              this.snackBar.open('Datos incorrectos', '', { duration: 3000 });
+          }
+      }).catch(() => {
+          this.snackBar.open('Datos incorrectos', '', { duration: 3000 });
+      });
+  });
 
-    for(const f of this.farmacias) {
-      if(f.correoContacto==c && f.contraseña==p && f.role.id==1)
-      {
-        localStorage.setItem('farmaciaId', f.id.toString());
-        this.snackBar.open('Ingreso exitoso', '', {
-          duration: 3000,
-        });
-        this.router.navigate([`farmacia`]);
-        break;
-      }
-       x++;
-    }
-
-    if(x==this.farmacias.length+this.clientes.length)
-    {
-
-        this.snackBar.open('Datos ingresados incorrectos', '', {
-          duration: 3000,
-        });
-
-    }
 
 }
 
