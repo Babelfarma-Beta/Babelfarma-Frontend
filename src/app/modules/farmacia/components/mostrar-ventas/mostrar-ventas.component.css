@@ -39,10 +39,6 @@
     max-width: 150px;
 }
 
-.fondotabla{
-  min-width: 1120px;
-  overflow: auto;
-}
 
 @media only screen and (max-width: 1120px)
 {

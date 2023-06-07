@@ -16,7 +16,7 @@
         <mat-form-field class="form-group col-md-6">
           <label for="email">Contraseña</label>
           <input matInput formControlName="contraseña" type="password" class="form-control">
-          <mat-error *ngIf="myForm.controls['contraseña'].hasError('required')" class="message-error">El correo electrónico es requerido</mat-error>
+          <mat-error *ngIf="myForm.controls['contraseña'].hasError('required')" class="message-error">La contraseña es requerida</mat-error>
         </mat-form-field>
         <button mat-raised-button (click)="validate()" color="primary" class="button">Iniciar Sesión</button>
         <div class="more-options">

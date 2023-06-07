@@ -10,6 +10,7 @@ import { DistritoService } from '../../../../services/distrito.service';
 import { Distrito } from '../../../../models/distrito';
 import { Product } from '../../../../models/product';
 import { Component, OnInit } from '@angular/core';
+import { Cliente } from 'src/app/models/cliente';
 
 
 @Component({
@@ -151,15 +152,17 @@ export class CarritoComprasComponent implements OnInit {
 
   registrarVentas(){
     const userId= localStorage.getItem('userId');
+    const customer = new Cliente();
+    customer.id = userId;
 
     for (let i = 0; i < this.productosCarrito.length; i++) {
       this.farmaciaService.getFarmaciaByProductoId(this.productosCarrito[i].id).subscribe((data)=>{
         const venta:Venta={
           id:0,
           fecha: new Date(),
-          idCliente: userId,
-          idFarmacia: data.id,
-          idProducto: this.productosCarrito[i].id,
+          idCliente: customer,
+          idFarmacia: data,
+          idProducto: this.productosCarrito[i],
           productName: this.productosCarrito[i].nombre,
           precioUnit: this.productosCarrito[i].precio,
           cantidad: this.cantidadesProductos[i].cantidad,
