@@ -81,7 +81,8 @@ export class ActualizarProductoComponent implements OnInit {
       stock: this.myForm.get('stock')!.value,
       descripcion: this.myForm.get('descripcion')!.value,
       categoria: this.product.categoria,
-      picture: this.product.picture
+      picture: this.product.picture,
+      status: this.product.status
     }
     this.productService.updateProduct(this.idProduct, product).subscribe({
       next: (data)=>{

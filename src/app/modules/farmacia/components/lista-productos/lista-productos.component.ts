@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./lista-productos.component.css']
 })
 export class ListaProductosComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nombre', 'precio', 'stock', 'picture', 'opciones'];
+  displayedColumns: string[] = ['id', 'nombre', 'precio', 'stock', 'picture', 'status', 'opciones'];
   dataSource = new MatTableDataSource<Product>();
 
   products!: Product[];
@@ -20,7 +20,6 @@ export class ListaProductosComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
 
   constructor(private productService: ProductService,
-    private route: ActivatedRoute,
     private router: Router,
     ) { }
 
@@ -33,7 +32,6 @@ export class ListaProductosComponent implements OnInit {
     this.idFarmacia = localStorage.getItem('farmaciaId');
     this.productService.getProductoFarmacia(this.idFarmacia).subscribe(
       (data)=>{
-        //console.log('respuesta de productos: ', data);
         this.processProductResponse(data);
       },
       (error: any) => {
@@ -43,6 +41,41 @@ export class ListaProductosComponent implements OnInit {
 
   }
 
+toggleStatus(element: Product) {
+  let newStatus = '';
+  if (element.status === '1') {
+    newStatus = '0';
+  } else if (element.status === '0') {
+    newStatus = '1';
+  }
+
+  if (newStatus === element.status) {
+    return;
+  }
+
+    this.productService.getProductId(element.id)
+    .subscribe((data)=>{
+      let updatedProduct: Product={
+        id: 0,
+        nombre: data.nombre,
+        precio: data.precio,
+        stock: data.stock,
+        descripcion: data.descripcion,
+        categoria:data.categoria,
+        picture: data.picture,
+        status: newStatus
+      }
+      this.productService.updateProduct(element.id, updatedProduct).subscribe(
+        () => {
+          this.getProducts();
+        },
+        (error: any) => {
+          console.log('Error al actualizar el producto:', error);
+        }
+      );
+
+    })
+  }
 
   processProductResponse(resp: any) {
     const dateProduct: Product[] = [];

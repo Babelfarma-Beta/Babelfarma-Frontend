@@ -178,7 +178,8 @@ export class CarritoComprasComponent implements OnInit {
               stock: this.productosCarrito[i].stock - this.cantidadesProductos[i].cantidad,
               descripcion: this.productosCarrito[i].descripcion,
               categoria: this.productosCarrito[i].categoria,
-              picture: this.productosCarrito[i].picture
+              picture: this.productosCarrito[i].picture,
+              status: this.productosCarrito[i].status
             }
             this.productService.updateProduct(this.productosCarrito[i].id, product).subscribe({
               next: () => {

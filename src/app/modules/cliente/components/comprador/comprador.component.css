@@ -87,6 +87,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .offer-image {
   height: 200px;
+  max-width: 75%;
   object-fit: cover;
   border-radius: 8px;
 }

@@ -72,6 +72,7 @@ export class RegistrarProductoComponent implements OnInit {
       descripcion: this.myForm.get('descripcion')!.value,
       categoria: this.myForm.get('categoria')?.value,
       picture: this.selectedFile,
+      status:  '1',
     }
 
     const uploadImageData = new FormData();
@@ -81,6 +82,7 @@ export class RegistrarProductoComponent implements OnInit {
     uploadImageData.append('stock', product.stock.toString());
     uploadImageData.append('descripcion', product.descripcion);
     uploadImageData.append('categoryId', product.categoria);
+    uploadImageData.append('status', product.status);
 
     this.productService.addProduct(this.idFarmacia, uploadImageData).subscribe({
       next: (data)=>{

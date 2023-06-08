@@ -6,4 +6,5 @@ export class Product {
     descripcion: string='';
     categoria: any;
     picture!: any;
+    status: string = '';
 }
