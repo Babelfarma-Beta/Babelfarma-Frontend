@@ -46,13 +46,13 @@ export class ProductService {
   updateProduct(id: any, product: Product){
     return this.http.put<Product>(`${this.basePath}/productos/${id}`, product);
   }
-  
+
   deleteProduct(id: any){
     return this.http.delete<Product>(`${this.basePath}/productos/${id}`);
   }
 
-  getProductoFarmacia(id: any){
-    return this.http.get<Product[]>(`${this.basePath}/productos/farmacia/${id}`);
+  getProductoFarmacia(id: any, status:string){
+    return this.http.get<Product[]>(`${this.basePath}/productos/farmacia/${id}?status=${status}`);
   }
 
 

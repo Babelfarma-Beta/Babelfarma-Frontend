@@ -54,7 +54,7 @@ export class BusquedaComponent implements OnInit {
 
     let listCProduct = resp;
 
-
+    if(resp)
     listCProduct.forEach((element: Product) => {
       element.picture = 'data:image/jpeg;base64,' + element.picture;
       dateProduct.push(element);

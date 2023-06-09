@@ -8,9 +8,16 @@
   </div>
   <div class="fondotabla">
     <div class="buscador">
-      <mat-form-field appearance="standard">
+      <mat-form-field class="searcher">
         <mat-label>Buscar</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Buscar producto" #input>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select class="select" placeholder="Seleccione el estado" [(ngModel)]="status" (selectionChange)="getProducts()">
+          <mat-option value="Activos">Activos</mat-option>
+          <mat-option value="Inactivos">Inactivos</mat-option>
+          <mat-option value="Todos">Todos</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -58,13 +65,13 @@
       >
         <mat-icon>edit</mat-icon>
       </a>
-      <a
+      <!-- <a
         class="pointer"
         (click)="deleteProduct(element.id)"
         style="color: #e15639"
       >
         <mat-icon>delete</mat-icon>
-      </a>
+      </a>-->
     </td>
   </ng-container>
 

@@ -27,7 +27,7 @@ export class FarmaciaComponent implements OnInit {
 
   getProducts(){
     this.idFarmacia = localStorage.getItem('farmaciaId');
-    this.productService.getProductoFarmacia(this.idFarmacia).subscribe({
+    this.productService.getProductoFarmacia(this.idFarmacia, "Todos").subscribe({
       next: (data)=>{
         this.processProductResponse(data);
         this.processProductCategoryResponse(data);

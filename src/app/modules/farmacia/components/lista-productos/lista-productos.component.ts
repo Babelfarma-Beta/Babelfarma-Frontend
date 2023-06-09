@@ -1,9 +1,10 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { ProductService } from '../../../../services/product.service';
 import { Product } from '../../../../models/product';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-lista-productos',
@@ -13,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListaProductosComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nombre', 'precio', 'stock', 'picture', 'status', 'opciones'];
   dataSource = new MatTableDataSource<Product>();
-
+  status: string = "Todos";
   products!: Product[];
   idFarmacia!:any;
 
@@ -21,7 +22,8 @@ export class ListaProductosComponent implements OnInit {
 
   constructor(private productService: ProductService,
     private router: Router,
-    ) { }
+    ) {
+    }
 
   ngOnInit(): void {
     this.getProducts();
@@ -30,7 +32,7 @@ export class ListaProductosComponent implements OnInit {
 
   getProducts() {
     this.idFarmacia = localStorage.getItem('farmaciaId');
-    this.productService.getProductoFarmacia(this.idFarmacia).subscribe(
+    this.productService.getProductoFarmacia(this.idFarmacia, this.status).subscribe(
       (data)=>{
         this.processProductResponse(data);
       },
@@ -40,6 +42,7 @@ export class ListaProductosComponent implements OnInit {
     );
 
   }
+
 
 toggleStatus(element: Product) {
   let newStatus = '';
@@ -81,7 +84,7 @@ toggleStatus(element: Product) {
     const dateProduct: Product[] = [];
 
     let listCProduct = resp;
-
+    if(resp)
     listCProduct.forEach((element: Product) => {
       //element.category = element.category.name;
       element.picture = 'data:image/jpeg;base64,' + element.picture;
