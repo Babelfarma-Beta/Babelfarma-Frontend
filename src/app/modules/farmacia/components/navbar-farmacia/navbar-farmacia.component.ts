@@ -40,7 +40,6 @@ export class NavbarFarmaciaComponent implements OnInit, OnDestroy {
   }
 
   salir(){
-    this.carritoService.setproductosCarrito([]);
     localStorage.clear();
     this.router.navigate(['/']);
   }

@@ -1,14 +1,12 @@
-import { Farmacia } from '../../../../models/farmacia';
-import { FarmaciaService } from '../../../../services/farmacia.service';
-import { CarritoDeComprasService } from '../../../../services/carrito-de-compras.service';
 import { MatTabGroup } from '@angular/material/tabs';
 import { CategoriaService } from '../../../../services/categoria.service';
 import { Categoria } from '../../../../models/categoria';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ProductService } from '../../../../services/product.service';
-import { Product } from '../../../../models/product';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Product,ProductView } from '../../../../models/product';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CarritoDeComprasService } from 'src/app/services/carrito-de-compras.service';
 
 @Component({
   selector: 'app-busqueda',
@@ -19,11 +17,9 @@ export class BusquedaComponent implements OnInit {
 
   MyForm!: FormGroup;
   categorias!: Categoria[];
-  products:Product[]=[];
+  products:ProductView[]=[];
   nombreCategoria!:string;
   productosCarrito:Product[]=[];
-  nombresFarmacias:string[]=[];
-
 
   @ViewChild('tab') tabGroup!: MatTabGroup;
 
@@ -31,8 +27,7 @@ export class BusquedaComponent implements OnInit {
     private productService: ProductService,
     private categoriaService: CategoriaService,
     private fb: FormBuilder,
-    private farmaciaService: FarmaciaService,
-    private snackBar: MatSnackBar
+    private carritoService:CarritoDeComprasService
   ) { }
 
   ngOnInit(): void {
@@ -50,27 +45,17 @@ export class BusquedaComponent implements OnInit {
 
 
   processProductResponse(resp: any) {
-    const dateProduct: Product[] = [];
+    const dateProduct: ProductView[] = [];
 
     let listCProduct = resp;
 
     if(resp)
-    listCProduct.forEach((element: Product) => {
+    listCProduct.forEach((element: ProductView) => {
       element.picture = 'data:image/jpeg;base64,' + element.picture;
       dateProduct.push(element);
-
-      this.farmaciaService.getFarmaciaByProductoId(element.id).subscribe((data:Farmacia)=>{
-        this.nombresFarmacias[element.id]=(data.nombreEstablecimiento);
-      })
-
     });
 
     this.products=dateProduct;
-  }
-
-
-  returnNombreFarmacia(id:any): string{
-    return this.nombresFarmacias[id];
   }
 
   getProducts(){
@@ -89,14 +74,6 @@ export class BusquedaComponent implements OnInit {
     this.categoriaService.getCategorias().subscribe((data: Categoria[]) => {
       this.categorias=data;
     });
-  }
-
-  getFarmaciaByProducto(id: number): void {
-
-     this.farmaciaService.getFarmaciaByProductoId(id).subscribe((data)=>{
-
-     });
-
   }
 
   search() {
@@ -125,34 +102,7 @@ export class BusquedaComponent implements OnInit {
   }
 
   AgregarAlCarrito(number: number): void {
-    this.productService.getProductId(number).subscribe((data) => {
-      if(data.stock>=1)
-      {
-        const carrito = JSON.parse(localStorage.getItem('carrito') ?? '[]');
-        const existeProducto = carrito.some((producto:any) => producto.id === data.id);
-        if (!existeProducto) {
-          carrito.push(data);
-          localStorage.setItem('carrito', JSON.stringify(carrito));
-        }
-      }
-      else
-      this.snackBar.open('Stock agotado', '', {
-        duration: 3000,
-      });
-    });
+    this.carritoService.AgregarAlCarrito(number);
   }
 
-
-  ValidarSinRepeticion(product: Product):boolean{
-
-
-    if(this.productosCarrito)
-    for(let item of this.productosCarrito)
-    {
-      if(item.id==product.id)
-      return false;
-    }
-
-    return true;
-  }
 }

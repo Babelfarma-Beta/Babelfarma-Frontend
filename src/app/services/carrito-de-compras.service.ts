@@ -1,21 +1,33 @@
-import { Product } from './../models/product';
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarritoDeComprasService {
 
-  productosCarrito: Product[]= [];
+  constructor(
+    private productService: ProductService,
+    private snackBar: MatSnackBar
+  ) { }
 
-  constructor() { }
-
-  setproductosCarrito(productosCarrito: Product[]){
-    this.productosCarrito=productosCarrito;
-  }
-
-  getproductosCarrito():Product[]{
-    return this.productosCarrito;
+  AgregarAlCarrito(number: number): void {
+    this.productService.getProductId(number).subscribe((data) => {
+      if(data.stock>=1)
+      {
+        const carrito = JSON.parse(localStorage.getItem('carrito') ?? '[]');
+        const existeProducto = carrito.some((producto:any) => producto.id === data.id);
+        if (!existeProducto) {
+          carrito.push(data);
+          localStorage.setItem('carrito', JSON.stringify(carrito));
+        }
+      }
+      else
+      this.snackBar.open('Stock agotado', '', {
+        duration: 3000,
+      });
+    });
   }
 
 }

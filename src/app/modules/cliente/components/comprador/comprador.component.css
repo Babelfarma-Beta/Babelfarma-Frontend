@@ -125,6 +125,14 @@ button:hover{
   color: #000000;
 }
 
+.example-element-row{
+  position: relative;
+}
+
+.button-expand{
+  display: none;
+}
+
 
 @media only screen and (max-width: 400px)
 {

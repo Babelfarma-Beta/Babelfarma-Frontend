@@ -1,5 +1,5 @@
 import { ReactiveFormsModule } from '@angular/forms';
-import { Product } from './../models/product';
+import { Product, ProductView } from './../models/product';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment'
@@ -17,11 +17,11 @@ export class ProductService {
   }
 
   getProductoNombre(nombre: string){
-    return this.http.get<Product[]>(`${this.basePath}/productos/nombre/${nombre}`);
+    return this.http.get<ProductView[]>(`${this.basePath}/productos/nombre/${nombre}`);
   }
 
   getProductoCategoria(categoria: string){
-    return this.http.get<Product[]>(`${this.basePath}/productos/categoria/${categoria}`);
+    return this.http.get<ProductView[]>(`${this.basePath}/productos/categoria/${categoria}`);
   }
 
   getProductoStock(stock: any){
@@ -29,7 +29,7 @@ export class ProductService {
   }
 
   getProductoPrecio(){
-    return this.http.get<Product[]>(`${this.basePath}/productos/precio`);
+    return this.http.get<ProductView[]>(`${this.basePath}/productos/precio`);
   }
 
   addProduct(idFarmacia: any, product: any) {
