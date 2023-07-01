@@ -56,7 +56,7 @@
                                 />
                                 <span> {{ nameImg }}</span>
                                 <mat-error *ngIf="myForm.controls['picture'].hasError('required')" class="message-error">La imagen es requerida</mat-error>
-
+                                <mat-error *ngIf="myForm.controls['picture'].invalid && !myForm.controls['picture'].hasError('required')" class="message-error">Formato de archivo no válido. Solo se permiten archivos JPG, WEBP, PNG.</mat-error>
                               </div>
 
 

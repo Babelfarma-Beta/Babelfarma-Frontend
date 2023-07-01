@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
-import { FarmaciaService } from 'src/app/services/farmacia.service';
 import { Router } from '@angular/router';
 import { CarritoDeComprasService } from 'src/app/services/carrito-de-compras.service';
 

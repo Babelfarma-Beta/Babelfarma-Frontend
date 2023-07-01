@@ -56,8 +56,16 @@ export class RegistrarProductoComponent implements OnInit {
   }
 
   onFileChanged(event: any) {
-    this.selectedFile = event.target.files[0];
-    this.nameImg = event.target.files[0].name;
+    let file = event.target.files[0];
+    this.nameImg = file.name;
+    if (file) {
+      let extension = file.name.split('.').pop().toLowerCase();
+      let validFormats = ['jpg', 'jpeg', 'png', 'webp'];
+
+      if (!validFormats.includes(extension)) {
+        this.myForm.controls['picture'].setErrors({ invalidFormat: true });
+      }
+    }
   }
 
   saveProduct() {
